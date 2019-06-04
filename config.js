@@ -18,12 +18,12 @@ module.exports = {
       path: '/pages/about',
     },
     {
-      label: 'Category',
-      path: '/categories',
+      label: 'Log',
+      path: '/tag/log/',
     },
     {
-      label: 'Tags',
-      path: '/tags',
+      label: 'Category',
+      path: '/categories',
     },
   ],
   author: {
