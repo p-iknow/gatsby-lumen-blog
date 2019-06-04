@@ -13,11 +13,10 @@ const useSiteMetadata = () => {
               photo
               contacts {
                 email
-                telegram
                 twitter
                 github
                 rss
-                vkontakte
+                facebook
               }
             }
             menu {
@@ -32,7 +31,7 @@ const useSiteMetadata = () => {
           }
         }
       }
-    `
+    `,
   );
 
   return site.siteMetadata;

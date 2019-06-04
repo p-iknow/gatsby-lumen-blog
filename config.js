@@ -2,37 +2,40 @@
 
 module.exports = {
   url: 'https://lumen.netlify.com',
-  title: 'Blog by John Doe',
-  subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+  title: "p-iknow's devlog",
+  subtitle: '잘하기 위해 자랍니다.',
   copyright: '© All rights reserved.',
   disqusShortname: '',
-  postsPerPage: 4,
-  googleAnalyticsId: 'UA-73379983-2',
+  postsPerPage: 6,
+  googleAnalyticsId: 'UA-110581115-1',
   menu: [
     {
       label: 'Articles',
-      path: '/'
+      path: '/',
     },
     {
       label: 'About me',
-      path: '/pages/about'
+      path: '/pages/about',
     },
     {
-      label: 'Contact me',
-      path: '/pages/contacts'
-    }
+      label: 'Category',
+      path: '/categories',
+    },
+    {
+      label: 'Tags',
+      path: '/tags',
+    },
   ],
   author: {
-    name: 'John Doe',
-    photo: '/photo.jpg',
-    bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    name: 'P-iknow(피아노)',
+    photo: '/profile.jpg',
+    bio: '잘하기 위한 자라기',
     contacts: {
       email: '#',
-      telegram: '#',
       twitter: '#',
       github: '#',
       rss: '#',
-      vkontakte: '#'
-    }
-  }
+      facebook: '#',
+    },
+  },
 };
