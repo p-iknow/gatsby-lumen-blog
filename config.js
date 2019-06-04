@@ -31,11 +31,11 @@ module.exports = {
     photo: '/profile.jpg',
     bio: '잘하기 위한 자라기',
     contacts: {
-      email: '#',
-      twitter: '#',
-      github: '#',
+      email: 'apricotsoul@gmail.com',
+      twitter: 'iknow_p',
+      github: 'P-iknow',
       rss: '#',
-      facebook: '#',
+      facebook: 'devpiknow',
     },
   },
 };
