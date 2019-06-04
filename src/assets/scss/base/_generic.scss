@@ -39,35 +39,35 @@ h2 {
   font-size: $typographic-base-font-size * 1.6875;
   @include line-height(1.5);
   @include margin-top(2);
-  @include margin-bottom(.5);
+  @include margin-bottom(0.5);
 }
 
 h3 {
   font-size: $typographic-base-font-size * 1.375;
   @include line-height(1);
   @include margin-top(2);
-  @include margin-bottom(.5);
+  @include margin-bottom(0.5);
 }
 
 h4 {
   font-size: $typographic-base-font-size * 1.2;
   @include line-height(1);
   @include margin-top(1.5);
-  @include margin-bottom(.5);
+  @include margin-bottom(0.5);
 }
 
 h5 {
   font-size: $typographic-base-font-size;
   @include line-height(1);
   @include margin-top(2.5);
-  @include margin-bottom(.5);
+  @include margin-bottom(0.5);
 }
 
 h6 {
   font-size: $typographic-base-font-size;
   @include line-height(1);
   @include margin-top(2.5);
-  @include margin-bottom(.5);
+  @include margin-bottom(0.5);
 }
 
 img {
@@ -87,7 +87,15 @@ hr {
   margin-right: auto;
   margin-left: auto;
   background-size: 100% 26px;
-  background-image: linear-gradient(to bottom, transparent 1px, transparent 11px, $color-base 11px, $color-base 15px, transparent 15px, transparent 26px);
+  background-image: linear-gradient(
+    to bottom,
+    transparent 1px,
+    transparent 11px,
+    $color-base 11px,
+    $color-base 15px,
+    transparent 15px,
+    transparent 26px
+  );
   width: 100px;
 }
 
@@ -100,35 +108,59 @@ a {
   &:active {
     color: $typographic-link-s-font-color;
   }
-
 }
 
 b,
 strong {
   font-weight: 600;
 }
-
+// 커스텀
 ul {
-  list-style: square;
+  list-style: disc;
   @include margin-bottom(1);
 
   & li {
     padding: 0 5px;
     margin-bottom: 10px;
+    & p {
+      margin-bottom: 10px;
+    }
+    & ul {
+      list-style: circle;
+      margin-bottom: 10px;
+    }
   }
-
 }
+// ul {
+//   list-style: square;
+//   @include margin-bottom(1);
+
+//   & li {
+//     padding: 0 5px;
+//     margin-bottom: 10px;
+//   }
+
+// }
 
 p {
   @include line-height(1);
   @include margin-bottom(1);
 }
-
+// 커스텀
 blockquote {
-  padding: 0;
-  font-style: italic;
-  text-align: center;
+  margin-left: 1.3em;
+  margin-bottom: 16px;
+  margin-top: 0;
+  border-left: 0.25em solid #dfe2e5;
+  color: #6a737d;
+  padding: 0 1em;
 }
+
+// blockquote {
+//   padding: 0;
+//   font-style: italic;
+//   text-align: center;
+// }
 
 figure {
   display: block;
@@ -137,8 +169,8 @@ figure {
 }
 
 figcaption {
-  @include line-height(.75);
-  @include margin-top(.25);
+  @include line-height(0.75);
+  @include margin-top(0.25);
   color: $color-base;
   font-size: $typographic-small-font-size;
   font-style: italic;
@@ -165,5 +197,4 @@ figcaption {
   .float-left {
     float: left;
   }
-
 }
