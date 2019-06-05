@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  url: 'https://lumen.netlify.com',
+  url: 'https://iknow-p.netlify.com/',
   title: "p-iknow's devlog",
   subtitle: '잘하기 위해 자랍니다.',
   copyright: '© All rights reserved.',
