@@ -1,5 +1,5 @@
 ---
-title: JS comma operator
+title: JS comma operator(쉼표 연산자)
 date: '2019-05-24T23:46:37.121Z'
 template: 'post'
 draft: false
@@ -10,9 +10,6 @@ tags:
   - 'comma operator'
 description: '"," 가 operator 였다는 사실을 알았는가?, 타인의 코드에서 볼 수 있는 comma operator에 대해 알아보자'
 ---
-
-# Comma Operator(쉼표 연산자)
-
 ## 들어가며
 
 [Code Signal](https://app.codesignal.com/)의 BoxBlur 라는 문제를 풀었다. 문제는 아래와 같다.

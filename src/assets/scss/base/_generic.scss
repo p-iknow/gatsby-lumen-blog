@@ -198,3 +198,15 @@ figcaption {
     float: left;
   }
 }
+// 모바일 ul 개선
+@media (max-width:837px){
+  ul {
+      padding-left: 30px;
+  }
+}
+
+@media (max-width:820px){
+  ul {
+      padding-left: 20px;
+  }
+}
