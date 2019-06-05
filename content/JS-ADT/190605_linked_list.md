@@ -1,15 +1,14 @@
 ---
-title: JS 자료구조, 링크드리스트(Linked List)
-date: '2019-06-05T11:46:37.121Z'
+title: Linked List JS
+date: '2019-06-05T23:46:37.121Z'
 template: 'post'
 draft: True
-slug: 'adt/linked-list/'
-category: 'ADT'
+slug: 'data-structure/linked-list/'
+category: 'Data Structure'
 tags:
-	- 'js'
-  	- 'ADT'
-  	- '자료구조'
-description: 'linked list를 자바스크립트로 구현해 보자'
+  - '자료구조'
+  - 'ADT'
+description: '자바스크립트로 linked list 를 구현해보자'
 ---
 
 
@@ -28,7 +27,7 @@ description: 'linked list를 자바스크립트로 구현해 보자'
 
 ## Linked List 만들기 
 
-우선 구현에 필요한 핵심코드를 간단히 살펴보자
+우선 구현에 필요한 핵심코드를 간단히 살펴보자
 
 ```js
 class Node {         // [1]
