@@ -10,6 +10,7 @@
 
   &__title {
     font-size: $typographic-base-font-size * 2.5;
+    text-align: center;
     font-weight: 600;
     @include line-height(2);
     @include margin-top(0);
@@ -20,6 +21,10 @@
     font-size: $typographic-base-font-size;
     @include line-height(1);
     @include margin(0, 0, 1);
+    // page 페딩 개선
+    ul {
+      padding-left: 27px;
+    }
   }
 
 }
