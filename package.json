@@ -104,6 +104,7 @@
     "eslint-watch": "5.1.2",
     "flow-bin": "^0.98.1",
     "flow-typed": "^2.5.1",
+    "gatsby-remark-emoji": "^0.0.3",
     "gatsby-remark-emojis": "^0.3.2",
     "gh-pages": "2.0.1",
     "identity-obj-proxy": "3.0.0",
