@@ -2,7 +2,7 @@
 title: inline box의 독특한 특성
 date: '2019-05-21T23:46:37.121Z'
 template: 'post'
-draft: false
+draft: True
 slug: 'css/inline/'
 category: 'css'
 tags:

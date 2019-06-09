@@ -2,7 +2,7 @@
 title: Float 속성, display 속성별 반응차이
 date: '2019-05-21T23:46:37.121Z'
 template: 'post'
-draft: false
+draft: True
 slug: 'css/float/'
 category: 'css'
 tags:
