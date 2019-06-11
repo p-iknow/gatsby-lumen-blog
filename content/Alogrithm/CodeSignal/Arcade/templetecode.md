@@ -1,6 +1,6 @@
 ---
-title: CodeSignal - Arcade - Array Change
-date: '2019-04-11T23:46:37.121Z'
+title: CodeSignal - Arcade - evenDigitsOnly
+date: '2019-06-11T23:46:37.121Z'
 template: 'post'
 draft: true
 slug: 'algorithm/codesignal/Array-Change'
