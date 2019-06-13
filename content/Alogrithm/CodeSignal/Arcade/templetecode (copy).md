@@ -1,19 +1,19 @@
 ---
-title: CodeSignal - Arcade - evenDigitsOnly
+title: CodeSignal - variableName
 date: '2019-06-11T23:46:37.121Z'
 template: 'post'
 draft: true
-slug: 'algorithm/codesignal/Array-Change'
+slug: 'algorithm/codesignal/variableName'
 category: 'algorithm'
 tags:
   - 'algorithm'
   - 'codesignal'
-description: 'CodeSignal - Array Change를 풀었다'
+description: 'CodeSignal - variableName를 풀었다'
 ---
 
-# CodeSignal - Arcade - 
-
 ## Problem
+
+![image-20190613211657668](assets/image-20190613211657668.png
 
 ## My solution
 
@@ -21,7 +21,7 @@ description: 'CodeSignal - Array Change를 풀었다'
 
 ```
 
-## Solution
+## JS Solution
 
 ```javascript
 
@@ -35,6 +35,3 @@ description: 'CodeSignal - Array Change를 풀었다'
 
 ## What I learned 
 
-
-
-## 
