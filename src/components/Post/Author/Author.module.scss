@@ -3,8 +3,7 @@
 
 .author {
   border-top: 1px solid $color-gray-border;
-  // max-width 조정
-  max-width: $layout-post-width * 1.2;
+  max-width: $layout-post-width;
   padding-top: 20px;
   @include line-height(1);
   @include margin-top(1);

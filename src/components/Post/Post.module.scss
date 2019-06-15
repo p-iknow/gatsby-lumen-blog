@@ -3,15 +3,13 @@
 
 .post {
   &__footer {
-    // max-width 조정
-    max-width: $layout-post-width * 1.2;
+    max-width: $layout-post-width;
     margin: 0 auto;
     padding: 0 15px;
   }
 
   &__comments {
-    // max-width 조정
-    max-width: $layout-post-width * 1.2;
+    max-width: $layout-post-width;
     margin: 0 auto;
     padding: 0 15px;
   }

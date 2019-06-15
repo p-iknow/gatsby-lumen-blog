@@ -9,9 +9,8 @@
   margin: 0 auto;
 
   &__title {
-   
     font-size: $typographic-base-font-size * 2;
-    max-width: $layout-post-width * 1.2;
+    max-width: $layout-post-width;
     margin-left: auto;
     margin-right: auto;
     font-weight: 600;
@@ -25,20 +24,78 @@
     & figure {
       @include margin-bottom(1);
       & p {
-        max-width: $layout-post-width * 1.2;
+        max-width: $layout-post-width;
         font-size: $typographic-base-font-size * 1.6817;
         margin-top: 0;
         @include margin-bottom(1);
         @include line-height(1.5);
       }
     }
+    // table 스타일 변경
+
+    & table {
+      font-size: 1rem;
+      background: #fafafa;
+      width: 100%;
+      overflow: auto;
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+    @media screen and (max-width: 959px) {
+      & table {
+        table-layout: fixed;
+        word-break: break-all;
+      }
+    }
+    & table th,
+    & table td {
+      border: 1px solid #ccc;
+      padding: 0.5em 1em;
+      vertical-align: top;
+    }
+    & table th.empty,
+    & table td.empty {
+      background: white;
+      border: none;
+    }
+    & table th.no,
+    & table td.no {
+      color: crimson;
+    }
+    & table th.yes span,
+    & table td.yes span {
+      background: #6ecd56;
+      color: white;
+      padding: 2px 5px;
+    }
+    & table th {
+      background: #eee;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    & table th strong {
+      display: block;
+    }
+    & table code {
+      display: inline-block;
+      margin-bottom: 5px;
+      vertical-align: top;
+    }
+    & table pre {
+      margin: 0;
+      padding: 0;
+    }
+    & table pre:before {
+      display: none;
+    }
+    // 테이블 스타일 변경 종료
 
     & a {
       text-decoration: none;
     }
 
     & * {
-      max-width: $layout-post-width * 1.2;
+      max-width: $layout-post-width;
       margin-left: auto;
       margin-right: auto;
     }
