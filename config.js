@@ -5,7 +5,7 @@ module.exports = {
   title: "p-iknow's devlog",
   subtitle: '잘하기 위해 자랍니다.',
   copyright: '© All rights reserved.',
-  disqusShortname: '',
+  disqusShortname: 'p-iknows-devlog',
   postsPerPage: 6,
   googleAnalyticsId: 'UA-110581115-1',
   menu: [
