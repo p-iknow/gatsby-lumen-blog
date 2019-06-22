@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  url: 'https://iknow-p.netlify.com/',
+  url: 'https://p-iknow.netlify.com/',
   title: "p-iknow's devlog",
   subtitle: '잘하기 위해 자랍니다.',
   copyright: '© All rights reserved.',
@@ -19,7 +19,7 @@ module.exports = {
     },
     {
       label: 'Log',
-      path: '/tag/log/',
+      path: '/tag/log',
     },
     {
       label: 'Category',
