@@ -3,7 +3,7 @@ title: HTTP 역사 알아보기
 date: '2019-04-30T23:46:37.121Z'
 template: 'post'
 draft: false
-slug: 'network/history-of-http/'
+slug: 'network/history-of-http'
 category: 'http'
 tags:
   - 'http'
@@ -61,7 +61,7 @@ description: 'http 1.0 부터 최근 http2.0 까지의 거슬러 오기까지의
 ## SPDY 의 등장과 목표
 
 - ajax, comet등 사용성을 쾌적하게 하는 여러가지 기술이 등장해서 어느정도 개선 됬지만, protocol의 근본적인 제약은 protocol 자체의 개선으로 해결할 수 밖에 없어서 등장
-- 참고로 HTTP 2.0 은 SPDY를 표준으로 지정한 프로토콜 버젼이다.
+- 참고로 HTTP 2.0 은 SPDY를 표준으로 지정한 프로토콜 버젼이다.
 
 ### SPDY 설계와 기능
 
