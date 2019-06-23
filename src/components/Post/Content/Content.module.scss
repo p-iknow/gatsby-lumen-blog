@@ -31,8 +31,8 @@
         @include line-height(1.5);
       }
     }
-    // table 스타일 변경
 
+    // table 스타일 변경
     & table {
       font-size: 1rem;
       background: #fafafa;
@@ -99,6 +99,10 @@
       margin-left: auto;
       margin-right: auto;
     }
+    // blockquote 정렬을 위한 커스텀 수정
+    & blockquote {
+      margin-left: 5em;
+    }
 
     & img {
       max-width: 100%;
@@ -109,10 +113,10 @@
 
       & li {
         padding: 0 5px;
-        margin-bottom: 10px;
+        margin-bottom: 9px;
         // list 내부 리스트의 수정
         & p {
-          margin-bottom: 10px;
+          margin-bottom: 9px;
         }
         & ul {
           list-style: circle;
@@ -128,7 +132,7 @@
     padding: 0;
 
     &__title {
-      font-size: $typographic-base-font-size * 3;
+      font-size: $typographic-base-font-size * 2.3;
       @include line-height(2.25);
       @include margin-top(2.25);
       @include margin-bottom(1.5);

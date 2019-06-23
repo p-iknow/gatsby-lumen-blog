@@ -7,7 +7,7 @@ import styles from './Layout.module.scss';
 type Props = {
   children: ReactNode,
   title: string,
-  description?: string
+  description?: string,
 };
 
 const Layout = ({ children, title, description }: Props) => (
@@ -19,6 +19,12 @@ const Layout = ({ children, title, description }: Props) => (
       <meta property="og:site_name" content={title} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />
+      {/* 폰트 등록 */}
+      <link
+        href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap"
+        rel="stylesheet"
+      />
+      >
     </Helmet>
     {children}
   </div>

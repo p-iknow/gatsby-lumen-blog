@@ -29,7 +29,7 @@ h6 {
 }
 
 h1 {
-  font-size: $typographic-base-font-size * 2.5;
+  font-size: $typographic-base-font-size * 3;
   @include line-height(2);
   @include margin-top(4);
   @include margin-bottom(1);
@@ -40,6 +40,11 @@ h2 {
   @include line-height(1.5);
   @include margin-top(2);
   @include margin-bottom(0.5);
+}
+// h2 이전 '\'
+h2:before {
+  content: '| ';
+  color: #f7a046;
 }
 
 h3 {
@@ -59,6 +64,11 @@ h4 {
   @include line-height(1);
   @include margin-top(1.5);
   @include margin-bottom(0.5);
+}
+// h3 이전 # 붙이도록 추가
+h4:before {
+  content: ' ※  ';
+  color: #f7a046;
 }
 
 h5 {
@@ -119,6 +129,7 @@ b,
 strong {
   font-weight: 600;
 }
+
 // 커스텀
 ul {
   padding-left: 60px;
@@ -126,7 +137,7 @@ ul {
   @include margin-bottom(1);
 
   & li {
-    padding: 0 5px;
+    padding: 0 0 0 5px;
     margin-bottom: 10px;
     & p {
       margin-bottom: 10px;
@@ -148,6 +159,17 @@ ul {
 //   }
 
 // }
+// 체크박스 컨트롤을 위한 수정
+#이번주-도전 ~ ul,
+#다음주-도전 ~ ul {
+  padding-left: 0.6em;
+  list-style: none;
+}
+#이번주-도전 ~ ul input[type='checkbox'],
+#다음주-도전 ~ ul input[type='checkbox'] {
+  transform: scale(1.6);
+  margin-right: 0.5em;
+}
 
 p {
   @include line-height(1);
@@ -155,7 +177,6 @@ p {
 }
 // 커스텀
 blockquote {
-  margin-left: 1.3em;
   margin-bottom: 16px;
   margin-top: 0;
   border-left: 0.25em solid #dfe2e5;
