@@ -29,7 +29,7 @@ module.exports = {
   author: {
     name: 'P-iknow(피아노)',
     photo: '/profile.jpg',
-    bio: '잘하기 위한 자라기',
+    bio: '잘하기 위해 자랍니다.',
     contacts: {
       email: 'apricotsoul@gmail.com',
       twitter: 'iknow_p',

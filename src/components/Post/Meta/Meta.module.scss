@@ -3,9 +3,9 @@
 
 .meta {
   &__date {
-    font-style: bold;
-  }
-  &__date:before {
-    content: '';
+    font-size: $typographic-base-font-size * 1.1;
+    margin: 0.5rem auto;
+    font-style: normal;
+    text-align: center;
   }
 }

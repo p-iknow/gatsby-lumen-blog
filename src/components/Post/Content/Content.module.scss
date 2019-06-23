@@ -15,7 +15,7 @@
     text-align: center;
     @include line-height(1.65);
     @include margin-top(1);
-    @include margin-bottom(0);
+    @include margin-bottom(0.5);
   }
 
   &__body {
@@ -29,7 +29,36 @@
         @include line-height(1.5);
       }
     }
+    // h2 이전 '\'
+    & h2:before {
+      content: '| ';
+      color: #f7a046;
+    }
 
+    & h3 {
+      padding-left: 0.4rem;
+    }
+    // h3 이전 # 붙이도록 추가
+    & h3:before {
+      content: '# ';
+      color: #f7a046;
+    }
+
+    & h4 {
+      padding-left: 0.8rem;
+    }
+
+    // & h4 + ul {
+    //   padding-left: 4rem;
+    // }
+    // h3 이전 # 붙이도록 추가
+    & h4:before {
+      content: '';
+      color: #f7a046;
+    }
+    & p {
+      padding-left: 1rem;
+    }
     // table 스타일 변경
     & table {
       font-size: 1rem;
@@ -100,23 +129,33 @@
     // blockquote 정렬을 위한 커스텀 수정
     & blockquote {
       margin-left: 5em;
+
+      & h2::before {
+        content: '';
+      }
+      & ul {
+        padding-left: 2rem;
+      }
     }
 
     & img {
       max-width: 100%;
     }
+    // 커스텀
     & ul {
+      padding-left: 2rem;
       list-style: disc;
       @include margin-bottom(1);
 
       & li {
-        padding: 0 5px;
+        padding-left: 0rem;
         margin-bottom: 9px;
         // list 내부 리스트의 수정
         & p {
           margin-bottom: 9px;
         }
         & ul {
+          padding-left: 25px;
           list-style: circle;
           margin-bottom: 10px;
         }
@@ -133,7 +172,7 @@
       font-size: $typographic-base-font-size * 2.3;
       @include line-height(2.25);
       @include margin-top(2.25);
-      @include margin-bottom(1.5);
+      @include margin-bottom(0.5);
     }
 
     &__body {
@@ -147,31 +186,61 @@
         @include margin-bottom(1.125);
       }
       & ul {
-        padding-left: auto;
+        padding-left: 4rem;
       }
     }
   }
 }
 
+// 모바일 화면
 @include breakpoint-xs {
   .content {
     &__title {
       font-size: $typographic-base-font-size * 1.6;
     }
 
-    & h2 {
-      font-size: $typographic-base-font-size * 1.4;
-    }
+    &__body {
+      & h2 {
+        font-size: $typographic-base-font-size * 1.4;
+      }
 
-    & h3 {
-      font-size: $typographic-base-font-size * 1.2;
-    }
-    & blockquote {
-      margin-left: 0em;
-    }
+      & h3 {
+        font-size: $typographic-base-font-size * 1.2;
+      }
 
-    & ul {
-      padding-left: 1;
+      & h4 {
+        font-size: $typographic-base-font-size * 1.15;
+      }
+      & blockquote {
+        margin-left: 0;
+        & ul {
+          padding-left: 1.3rem;
+        }
+      }
+
+      & ul {
+        padding-left: 2rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 800px) and (max-width: 853px) {
+  .content {
+    &__body {
+      & ul {
+        padding-left: 2.5rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 853px) and (max-width: 946px) {
+  .content {
+    &__body {
+      & ul {
+        padding-left: 3.8rem;
+      }
     }
   }
 }

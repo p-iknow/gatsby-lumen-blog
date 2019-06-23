@@ -10,6 +10,7 @@ type Props = {
 
 const Tags = ({ tags, tagSlugs }: Props) => (
   <div className={styles['tags']}>
+    {/* <h2 className={styles['tags__header']}>{'관련 태그'}</h2> */}
     <ul className={styles['tags__list']}>
       {tagSlugs &&
         tagSlugs.map((slug, i) => (

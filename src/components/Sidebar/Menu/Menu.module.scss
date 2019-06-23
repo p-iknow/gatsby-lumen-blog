@@ -6,12 +6,12 @@
 
   &__list {
     list-style: none;
-    padding: 1rem;
-    margin: 0;
+    padding: 0.2rem;
+    margin-bottom: 2rem;
 
     &-item {
       padding: 0;
-      margin: 10px 0;
+      margin: 0.4rem 0;
 
       &-link {
         font-size: $typographic-base-font-size;
@@ -28,7 +28,7 @@
         &--active {
           color: $color-secondary;
           border-bottom: 1px solid $color-secondary;
-          font-size: $typographic-base-font-size * 1.4;
+          // font-size: $typographic-base-font-size * 1.2;
         }
       }
     }

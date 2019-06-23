@@ -26,6 +26,7 @@
   }
 
   &__subtitle {
+    word-break: break-all;
     color: $color-gray;
     @include line-height(1);
     @include margin-bottom(1);

@@ -31,7 +31,7 @@ h6 {
 h1 {
   font-size: $typographic-base-font-size * 3;
   @include line-height(2);
-  @include margin-top(4);
+  @include margin-top(3);
   @include margin-bottom(1);
 }
 
@@ -39,36 +39,21 @@ h2 {
   font-size: $typographic-base-font-size * 1.6875;
   @include line-height(1.5);
   @include margin-top(2);
-  @include margin-bottom(0.5);
-}
-// h2 이전 '\'
-h2:before {
-  content: '| ';
-  color: #f7a046;
+  @include margin-bottom(1);
 }
 
 h3 {
   font-size: $typographic-base-font-size * 1.375;
   @include line-height(1);
-  @include margin-top(1.3);
-  @include margin-bottom(0.5);
-}
-// h3 이전 # 붙이도록 추가
-h3:before {
-  content: '# ';
-  color: #f7a046;
+  @include margin-top(1);
+  @include margin-bottom(0.8);
 }
 
 h4 {
   font-size: $typographic-base-font-size * 1.2;
   @include line-height(1);
-  @include margin-top(1.5);
+  @include margin-top(1);
   @include margin-bottom(0.5);
-}
-// h3 이전 # 붙이도록 추가
-h4:before {
-  content: ' ※  ';
-  color: #f7a046;
 }
 
 h5 {
@@ -130,54 +115,28 @@ strong {
   font-weight: 600;
 }
 
-// 커스텀
 ul {
-  padding-left: 2em;
-  list-style: disc;
+  list-style: square;
   @include margin-bottom(1);
 
   & li {
-    padding: 0 0 0 5px;
+    padding: 0 5px;
     margin-bottom: 10px;
-    text-indent: -0.6em;
-    & p {
-      margin-bottom: 10px;
-    }
-    & ul {
-      padding-left: 25px;
-      list-style: circle;
-      margin-bottom: 10px;
-    }
   }
 }
-// ul {
-//   list-style: square;
-//   @include margin-bottom(1);
-
-//   & li {
-//     padding: 0 5px;
-//     margin-bottom: 10px;
-//   }
-
-// }
 
 // 체크박스 컨트롤을 위한 수정
 #이번주-도전 ~ ul,
 #다음주-도전 ~ ul {
-  padding-left: 1.6em;
+  padding-left: 1.3em;
   list-style: none;
 }
 #이번주-도전 ~ ul input[type='checkbox'],
 #다음주-도전 ~ ul input[type='checkbox'] {
-  transform: scale(1.4);
-  margin-right: 0.5em;
-  vertical-align: -18%;
+  transform: scale(1.5);
+  margin-right: 0.8em;
+  vertical-align: 0%;
 }
-
-// #이번주-도전 ~ ul li,
-// #다음주-도전 ~ ul li {
-//   vertical-align: top;
-// }
 
 p {
   @include line-height(1);
@@ -188,7 +147,7 @@ p {
 blockquote {
   margin-bottom: 16px;
   margin-top: 0;
-  border-left: 0.25rem solid #dfe2e5;
+  border-left: 0.4rem solid #dfe2e5;
   color: #6a737d;
   padding: 0 1rem;
   & ul {
@@ -232,13 +191,8 @@ figcaption {
     float: left;
   }
 }
-// padding-left: 0.6rem;
 
 @include breakpoint-xs {
-  ul {
-    padding-left: 1.6rem;
-  }
-
   #이번주-도전 ~ ul,
   #다음주-도전 ~ ul {
     padding-left: 0rem;
@@ -247,11 +201,5 @@ figcaption {
   #이번주-도전 ~ ul input[type='checkbox'],
   #다음주-도전 ~ ul input[type='checkbox'] {
     transform: scale(1.2);
-  }
-}
-
-@include breakpoint-800-for-padding {
-  ul {
-    padding-left: 3.6rem;
   }
 }

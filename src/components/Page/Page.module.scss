@@ -9,7 +9,7 @@
   }
 
   &__title {
-    font-size: $typographic-base-font-size * 2.5;
+    font-size: $typographic-base-font-size * 2;
     text-align: center;
     font-weight: 600;
     @include line-height(2);
@@ -26,7 +26,6 @@
       padding-left: 27px;
     }
   }
-
 }
 
 @include breakpoint-sm {
@@ -36,9 +35,7 @@
     &__inner {
       padding: 30px 20px;
     }
-
   }
-
 }
 
 @include breakpoint-md {
@@ -48,7 +45,5 @@
     &__inner {
       padding: 40px 35px;
     }
-
   }
-
 }

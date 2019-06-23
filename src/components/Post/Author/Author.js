@@ -26,7 +26,11 @@ const Author = () => {
         >
           <strong>{author.name}</strong>
         </a>
-        <span className={styles['author__bio-subtitle']}>{author.bio}</span>
+        <span className={styles['author__bio-subtitle']}>
+          {author.bio}
+          <br />
+          계발자 이영창 입니다.
+        </span>
       </p>
     </div>
   );

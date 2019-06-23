@@ -6,14 +6,15 @@
     @include margin-bottom(1.25);
 
     &:last-child {
-      @include margin-bottom(.5);
+      @include margin-bottom(0.5);
     }
 
     &-title {
       font-size: $typographic-base-font-size * 1.6875;
       @include line-height(1.5);
       @include margin-top(0);
-      @include margin-bottom(.5);
+      @include margin-bottom(0.5);
+      letter-spacing: 0.07rem;
 
       &-link {
         color: $color-base;
@@ -23,15 +24,13 @@
           color: $color-base;
           border-bottom: 1px solid $color-base;
         }
-
       }
-
     }
 
     &-description {
       font-size: $typographic-base-font-size;
       @include line-height(1);
-      @include margin-bottom(.75);
+      @include margin-bottom(0.75);
     }
 
     &-meta {
@@ -57,11 +56,8 @@
           &:focus {
             color: $color-primary;
           }
-
         }
-
       }
-
     }
 
     &-readmore {
@@ -73,9 +69,6 @@
         color: $color-primary;
         border-bottom: 1px solid $color-primary;
       }
-
     }
-
   }
-
 }
