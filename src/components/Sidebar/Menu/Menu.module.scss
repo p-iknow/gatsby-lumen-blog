@@ -2,11 +2,11 @@
 @import '../../../assets/scss/mixins';
 
 .menu {
-  @include margin-bottom(1);
+  @include margin-bottom(0.6);
 
   &__list {
     list-style: none;
-    padding: 0;
+    padding: 1rem;
     margin: 0;
 
     &-item {
@@ -21,19 +21,16 @@
 
         &:hover,
         &:focus {
-          color: $color-primary;
-          border-bottom: 1px solid $color-primary;
+          color: $color-secondary;
+          border-bottom: 1px solid $color-secondary;
         }
 
         &--active {
-          color: $color-base;
-          border-bottom: 1px solid $color-base;
+          color: $color-secondary;
+          border-bottom: 1px solid $color-secondary;
+          font-size: $typographic-base-font-size * 1.4;
         }
-
       }
-
     }
-
   }
-
 }

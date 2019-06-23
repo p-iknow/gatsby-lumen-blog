@@ -9,10 +9,25 @@
   @include margin-top(1);
   @include margin-bottom(2);
 
+  &__photo {
+    float: left;
+    margin-top: 0.8rem;
+    margin-bottom: 0;
+    border-radius: 50%;
+    background-clip: padding-box;
+  }
+
   &__bio {
+    padding-left: 5.5rem;
+
     &-twitter {
       display: block;
-      text-decoration: underline;
+      text-decoration: none;
+      color: $color-secondary;
+    }
+    &-subtitle {
+      display: block;
+      color: #888888;
     }
   }
 }

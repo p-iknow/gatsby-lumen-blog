@@ -24,7 +24,6 @@ const Layout = ({ children, title, description }: Props) => (
         href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap"
         rel="stylesheet"
       />
-      >
     </Helmet>
     {children}
   </div>

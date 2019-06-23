@@ -132,13 +132,14 @@ strong {
 
 // 커스텀
 ul {
-  padding-left: 60px;
+  padding-left: 2em;
   list-style: disc;
   @include margin-bottom(1);
 
   & li {
     padding: 0 0 0 5px;
     margin-bottom: 10px;
+    text-indent: -0.6em;
     & p {
       margin-bottom: 10px;
     }
@@ -159,39 +160,41 @@ ul {
 //   }
 
 // }
+
 // 체크박스 컨트롤을 위한 수정
 #이번주-도전 ~ ul,
 #다음주-도전 ~ ul {
-  padding-left: 0.6em;
+  padding-left: 1.6em;
   list-style: none;
 }
 #이번주-도전 ~ ul input[type='checkbox'],
 #다음주-도전 ~ ul input[type='checkbox'] {
-  transform: scale(1.6);
+  transform: scale(1.4);
   margin-right: 0.5em;
+  vertical-align: -18%;
 }
+
+// #이번주-도전 ~ ul li,
+// #다음주-도전 ~ ul li {
+//   vertical-align: top;
+// }
 
 p {
   @include line-height(1);
-  @include margin-bottom(1);
+  @include margin-bottom(0.7);
 }
+
 // 커스텀
 blockquote {
   margin-bottom: 16px;
   margin-top: 0;
-  border-left: 0.25em solid #dfe2e5;
+  border-left: 0.25rem solid #dfe2e5;
   color: #6a737d;
-  padding: 0 1em;
+  padding: 0 1rem;
   & ul {
     padding-left: 30px;
   }
 }
-
-// blockquote {
-//   padding: 0;
-//   font-style: italic;
-//   text-align: center;
-// }
 
 figure {
   display: block;
@@ -229,15 +232,26 @@ figcaption {
     float: left;
   }
 }
-// 모바일 ul 개선
-@media (max-width: 837px) {
+// padding-left: 0.6rem;
+
+@include breakpoint-xs {
   ul {
-    padding-left: 30px;
+    padding-left: 1.6rem;
+  }
+
+  #이번주-도전 ~ ul,
+  #다음주-도전 ~ ul {
+    padding-left: 0rem;
+  }
+
+  #이번주-도전 ~ ul input[type='checkbox'],
+  #다음주-도전 ~ ul input[type='checkbox'] {
+    transform: scale(1.2);
   }
 }
 
-@media (max-width: 820px) {
+@include breakpoint-800-for-padding {
   ul {
-    padding-left: 26px;
+    padding-left: 3.6rem;
   }
 }

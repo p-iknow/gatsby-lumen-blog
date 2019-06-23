@@ -3,7 +3,9 @@
 
 .meta {
   &__date {
-    font-style: italic;
+    font-style: bold;
   }
-
+  &__date:before {
+    content: '';
+  }
 }

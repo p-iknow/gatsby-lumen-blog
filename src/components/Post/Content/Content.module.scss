@@ -1,8 +1,6 @@
 @import '../../../assets/scss/variables';
 @import '../../../assets/scss/mixins';
 
-// $layout-post-width 에 * 1.2 일괄 적용
-
 .content {
   max-width: $layout-post-single-width;
   padding: 0 15px;
@@ -148,6 +146,32 @@
         @include line-height(1.125);
         @include margin-bottom(1.125);
       }
+      & ul {
+        padding-left: auto;
+      }
+    }
+  }
+}
+
+@include breakpoint-xs {
+  .content {
+    &__title {
+      font-size: $typographic-base-font-size * 1.6;
+    }
+
+    & h2 {
+      font-size: $typographic-base-font-size * 1.4;
+    }
+
+    & h3 {
+      font-size: $typographic-base-font-size * 1.2;
+    }
+    & blockquote {
+      margin-left: 0em;
+    }
+
+    & ul {
+      padding-left: 1;
     }
   }
 }
