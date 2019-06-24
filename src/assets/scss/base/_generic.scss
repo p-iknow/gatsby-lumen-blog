@@ -29,9 +29,9 @@ h6 {
 }
 
 h1 {
-  font-size: $typographic-base-font-size * 3;
+  font-size: $typographic-base-font-size * 2.5;
   @include line-height(2);
-  @include margin-top(3);
+  @include margin-top(4);
   @include margin-bottom(1);
 }
 
@@ -45,14 +45,14 @@ h2 {
 h3 {
   font-size: $typographic-base-font-size * 1.375;
   @include line-height(1);
-  @include margin-top(1);
-  @include margin-bottom(0.8);
+  @include margin-top(2);
+  @include margin-bottom(1);
 }
 
 h4 {
   font-size: $typographic-base-font-size * 1.2;
   @include line-height(1);
-  @include margin-top(1);
+  @include margin-top(1.5);
   @include margin-bottom(0.5);
 }
 
@@ -69,7 +69,6 @@ h6 {
   @include margin-top(2.5);
   @include margin-bottom(0.5);
 }
-
 img {
   border: 0;
   max-width: 100%;
@@ -140,7 +139,7 @@ ul {
 
 p {
   @include line-height(1);
-  @include margin-bottom(0.7);
+  @include margin-bottom(1);
 }
 
 // 커스텀
@@ -192,10 +191,17 @@ figcaption {
   }
 }
 
+// 리스트 내부 이미지의 bottom, top 조정
+.gatsby-resp-image-link {
+  @include margin-top(1);
+  @include margin-bottom(1);
+}
+
+//
 @include breakpoint-xs {
   #이번주-도전 ~ ul,
   #다음주-도전 ~ ul {
-    padding-left: 0rem;
+    padding-left: 0.8rem;
   }
 
   #이번주-도전 ~ ul input[type='checkbox'],

@@ -2,12 +2,11 @@
 import React from 'react';
 import styles from './Content.module.scss';
 import Meta from '../Meta';
-import type { Node } from '../../types';
 
 type Props = {
-  date: Node.frontmatte.date,
   body: string,
   title: string,
+  date: string,
 };
 
 const Content = ({ body, title, date }: Props) => (

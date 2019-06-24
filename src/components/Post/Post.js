@@ -25,7 +25,7 @@ const Post = ({ post }: Props) => {
       </Link>
 
       <div className={styles['post__content']}>
-        <Content body={html} title={title} />
+        <Content body={html} title={title} date={date} />
       </div>
 
       <div className={styles['post__footer']}>

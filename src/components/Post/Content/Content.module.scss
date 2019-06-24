@@ -21,13 +21,51 @@
   &__body {
     & figure {
       @include margin-bottom(1);
-      & p {
-        max-width: $layout-post-width;
-        font-size: $typographic-base-font-size * 1.6817;
+
+      & blockquote {
+        font-style: italic;
+        text-align: center;
         margin-top: 0;
-        @include margin-bottom(1);
-        @include line-height(1.5);
+        @include padding(1, 0);
+
+        & p {
+          max-width: $layout-post-width;
+          font-size: $typographic-base-font-size * 1.6817;
+          margin-top: 0;
+          @include margin-bottom(1);
+          @include line-height(1.5);
+        }
       }
+    }
+
+    & h2 {
+      font-size: $typographic-base-font-size * 1.6875;
+      @include margin-top(1.5);
+    }
+
+    & h2:nth-of-type(1) {
+      @include margin-top(2.4);
+    }
+
+    & h2 + h3 {
+      font-size: $typographic-base-font-size * 1.375;
+      @include margin-top(1.3);
+      @include margin-bottom(0.5);
+    }
+
+    h3 {
+      @include margin-top(1.3);
+    }
+
+    & h3 + h4 {
+      font-size: $typographic-base-font-size * 1.2;
+      padding-left: 0.2rem;
+      @include margin-top(1);
+      @include margin-bottom(0.5);
+    }
+
+    & ul + h4 {
+      @include margin-top(1);
     }
     // h2 이전 '\'
     & h2:before {
@@ -35,29 +73,19 @@
       color: #f7a046;
     }
 
-    & h3 {
-      padding-left: 0.4rem;
-    }
     // h3 이전 # 붙이도록 추가
     & h3:before {
       content: '# ';
       color: #f7a046;
     }
 
-    & h4 {
-      padding-left: 0.8rem;
-    }
-
-    // & h4 + ul {
-    //   padding-left: 4rem;
-    // }
     // h3 이전 # 붙이도록 추가
     & h4:before {
       content: '';
       color: #f7a046;
     }
     & p {
-      padding-left: 1rem;
+      padding-left: 0.7rem;
     }
     // table 스타일 변경
     & table {
@@ -134,7 +162,7 @@
         content: '';
       }
       & ul {
-        padding-left: 2rem;
+        padding-inline-start: 1.8rem;
       }
     }
 
@@ -143,7 +171,7 @@
     }
     // 커스텀
     & ul {
-      padding-left: 2rem;
+      padding-left: 1.6rem;
       list-style: disc;
       @include margin-bottom(1);
 
@@ -164,12 +192,23 @@
   }
 }
 
+// and (max-width: 946px)
+@media (min-width: 800px) and (max-width: 946px) {
+  .content {
+    &__body {
+      & ul {
+        padding-inline-start: 3.5rem;
+      }
+    }
+  }
+}
+
 @include breakpoint-md {
   .content {
     padding: 0;
 
     &__title {
-      font-size: $typographic-base-font-size * 2.3;
+      font-size: $typographic-base-font-size * 2.2;
       @include line-height(2.25);
       @include margin-top(2.25);
       @include margin-bottom(0.5);
@@ -185,8 +224,9 @@
         @include line-height(1.125);
         @include margin-bottom(1.125);
       }
+
       & ul {
-        padding-left: 4rem;
+        padding-inline-start: 4.2rem;
       }
     }
   }
@@ -217,29 +257,8 @@
           padding-left: 1.3rem;
         }
       }
-
       & ul {
-        padding-left: 2rem;
-      }
-    }
-  }
-}
-
-@media (min-width: 800px) and (max-width: 853px) {
-  .content {
-    &__body {
-      & ul {
-        padding-left: 2.5rem;
-      }
-    }
-  }
-}
-
-@media (min-width: 853px) and (max-width: 946px) {
-  .content {
-    &__body {
-      & ul {
-        padding-left: 3.8rem;
+        padding-left: 1.5rem;
       }
     }
   }
