@@ -2,7 +2,7 @@
 title: 
 date: '2019-06-13T23:46:37.121Z'
 template: 'post'
-draft: True
+draft: false
 slug: '/how-to-make-gatsby-blog/'
 category: 'network'
 tags:
@@ -29,4 +29,6 @@ description: 'OSI7 레이어에 대해 알아보았다.'
 
 - 단계와 순서, 계측의 독립, 상위계층과 하위 계층의 관계를 정확하게 파악할 것 
 
-  
+
+> ## 참고 
+> - [하루 3분 네트워크 교실, 아이노 에이미 저, 이현주 옮김](http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&linkClass=3309&barcode=9788931454727)
