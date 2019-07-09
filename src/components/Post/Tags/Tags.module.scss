@@ -26,10 +26,9 @@
         color: #555;
         line-height: 1.625;
         padding: 0.5rem 1.2rem;
-        transition: transform 0.7s linear;
+        transition: transform 0.7s ease-in;
 
         &:hover {
-          font-weight: bold;
           color: $color-primary;
           transform: scale(1.1);
         }
