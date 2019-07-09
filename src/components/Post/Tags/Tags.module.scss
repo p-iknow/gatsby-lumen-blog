@@ -26,11 +26,12 @@
         color: #555;
         line-height: 1.625;
         padding: 0.5rem 1.2rem;
+        transition: transform 0.7s linear;
 
-        &:hover,
-        &:focus {
+        &:hover {
+          font-weight: bold;
           color: $color-primary;
-          font-weight: 600;
+          transform: scale(1.1);
         }
       }
       &-link::before {

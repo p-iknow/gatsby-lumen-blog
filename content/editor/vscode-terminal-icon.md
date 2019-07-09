@@ -41,7 +41,7 @@ rm -rf fonts  # -> 다운받은 폴더를 깔끔하게 지워준다.
 - 상단 검색창에 `terminal font`를 검색하면 아래와 같이 terminal > intergrated: Font Family 창을 볼 수 있다. 
 - 폰트를 `Ubuntu Mono derivative Powerline` 로 설정한다.  ([Powrline 을 지원하는 모든 글꼴](https://github.com/powerline/fonts) 중 아무거나 선택해도 무방하다 본인은 iterm 과 동일한 폰트를 선택했다.)
 
-![vs code terminal font 설정](assets/image-20190709112837575.png)
+![vs code terminal font 설정](assets/image-20190709113121347.png)
 
 - 위 설정을 setting.json 에서 수정해도 무방하다.
 
@@ -61,3 +61,8 @@ rm -rf fonts  # -> 다운받은 폴더를 깔끔하게 지워준다.
 "짜잔~~!!",  이제 vscode 에서도 정상적으로 그려지는 git icon을 확인할 수 있다.
 
 ![vscode terminal](assets/image-20190709113706314.png)
+
+> ## 참고 
+>
+> - https://gist.github.com/480/3b41f449686a089f34edb45d00672f28
+> - https://github.com/powerline/fonts
