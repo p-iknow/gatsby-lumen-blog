@@ -9,12 +9,12 @@ tags:
   - 'editor'
   - 'vscode'
   - 'terminal'
-description: ' 멋진 터미널을 만들기 검색을 하고,  블로그(아마도 이 블로그)를  참고했을 것이다. oh-my-zsh 를 깔고, 테마를 적용하고 짜잔 멋진 터미널이 탄생했다. 그런데 vs code 내부의 터미널에서 터미널을 열었더니  뭉게진 git 아이콘이 덩그러니 있다.  "무엇이 문제일까?" 해당 아이콘은 powerline 이라고 불리는 폰트의 기능(?) 인데 폰트가 powerline 옵션을 지원해야 한다. "그래서 어떡해야 하는가?" 그래서 정리했다.'
+description: '고운 터미널의 모습을 갖추기 위해  블로그(아마도 이 블로그)를  참고해서  oh-my-zsh 를 깔고, 테마를 적용했을 것이다. 그리고 "짜잔~~ " 멋진 터미널이 탄생했을 것이다. 그런데 vs code 내부의 터미널에서 터미널을 열었더니  뭉게진 git 아이콘이 덩그러니 있다.  "무엇이 문제일까?" 해당 아이콘은 powerline 이라고 불리는 폰트의 기능(?) 인데 폰트가 powerline 옵션을 지원해야 한다. "그래서 어떡해야 하는가?" 그래서 정리했다.'
 ---
 
 ## 들어가며 
 
- 멋진 터미널을 만들기 검색을 하고,  [블로그(아마도 이 블로그)](https://beomi.github.io/2017/07/07/Beautify-ZSH/)를  참고했을 것이다. oh-my-zsh 를 깔고, 테마를 적용하고 짜잔 멋진 터미널이 탄생했다. 그런데 vs code 내부의 터미널에서 터미널을 열었더니  뭉게진 git 아이콘이 덩그러니 있다.  "무엇이 문제일까?" 해당 아이콘은 powerline 이라고 불리는 폰트의 기능(?) 인데 폰트가 powerline 옵션을 지원해야 한다. "그래서 어떡해야 하는가?" 그래서 정리했다.
+고운 터미널의 모습을 갖추기 위해  [블로그(아마도 이 블로그)](https://beomi.github.io/2017/07/07/Beautify-ZSH/)를  참고해서  oh-my-zsh 를 깔고, 테마를 적용했을 것이다. 그리고 "짜잔~~ " 멋진 터미널이 탄생했을 것이다. 그런데 vs code 내부의 터미널에서 터미널을 열었더니  뭉게진 git 아이콘이 덩그러니 있다.  "무엇이 문제일까?" 해당 아이콘은 powerline 이라고 불리는 폰트의 기능(?) 인데 폰트가 powerline 옵션을 지원해야 한다. "그래서 어떡해야 하는가?" 그래서 정리했다.
 
 ![vscode 터미널에서 git icon이 뭉개질 때  ](assets/image-20190709103702401.png)
 
@@ -43,9 +43,11 @@ rm -rf fonts  # -> 다운받은 폴더를 깔끔하게 지워준다.
 
 ![vs code terminal font 설정](assets/image-20190709112837575.png)
 
-### setting.json 에서 수정해도 무방하다.
+- 위 설정을 setting.json 에서 수정해도 무방하다.
 
 ```.json
+# vscode의 setting.json
+
 {  
   // terminal font 설정
   "terminal.integrated.fontFamily": "Ubuntu Mono derivative Powerline",
@@ -56,6 +58,6 @@ rm -rf fonts  # -> 다운받은 폴더를 깔끔하게 지워준다.
 
 ## 3. 정상으로 그려지는 git icon 확인
 
-짜잔~~!!, 이제 vscode 에서도 정상적으로 그려지는 git icon을 확인할 수 있다.
+"짜잔~~!!",  이제 vscode 에서도 정상적으로 그려지는 git icon을 확인할 수 있다.
 
 ![vscode terminal](assets/image-20190709113706314.png)
