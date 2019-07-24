@@ -4,9 +4,9 @@ date: '2019-05-24T23:46:37.121Z'
 template: 'post'
 draft: false
 slug: 'js/comma-operator/'
-category: 'js'
+category: 'JS'
 tags:
-  - 'js'
+  - 'JS'
   - 'comma operator'
 description: '"," 가 operator 였다는 사실을 알았는가?, 타인의 코드에서 볼 수 있는 comma operator에 대해 알아보자'
 ---
@@ -79,7 +79,7 @@ console.log(x);
 
 ### For 문
 
-for 문은 모두 익숙할 것이다. 아래와 같이 for 문에 `,` 를 쓰는데 `,` 는 operator 이다.
+for 문은 모두 익숙할 것이다. 아래와 같이 for 문에 `,` 를 쓰는데 `,` 는 operator 이다.
 
 ```js
 for (var i = 0, j = 9; i <= 9; i++, j--)
@@ -88,7 +88,7 @@ for (var i = 0, j = 9; i <= 9; i++, j--)
 
 ### 별도 예제들
 
-아래의 결과에 납득이 가지 않는다면 [연산자 우선순위](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)에 대한 학습이 필요하다. 링크를 눌러 살펴보자.
+아래의 결과에 납득이 가지 않는다면 [연산자 우선순위](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)에 대한 학습이 필요하다. 링크를 눌러 살펴보자.
 
 ```js
 var a, b, c;
@@ -136,7 +136,7 @@ blurRow = (blurred, x, i, arr) => {
 - `( ) => ( ... , ..., blurred )`가`() =>{... return blurred; }` 로 바뀌었다.
 - arrow function(화살표 함수) 사용시 뒤 이어지는 문(statement)의 평가 값이 return 된다. 단, 화살표 뒤에 block `{ }` 이 표기되면 기존 함수와 같이 명시적으로 return 을 써야 한다.
 - 결국 위 코드를 썼던 사람의 의도는 `() =>{... return blurred; }` 형태로 별도 리턴을 하기 싫었던 것이다. 그래서 `( ... , ... , blurred )` 형태로 함수를 작성한 것이다.
-- 그러나 방금 코드의 맥락에서는 return 을 명시적으로 활용한 코드가 가독성이 좋다. `,` 활용으로 인해 코드를 읽기가 힘들다.
+- 그러나 방금 코드의 맥락에서는 return 을 명시적으로 활용한 코드가 가독성이 좋다. `,` 활용으로 인해 코드를 읽기가 힘들다.
 - return 을 생략하는게 좋은 맥락은 코드가 간결할 때이다. 아래에 코드를 살펴보자.
 
 ```js
@@ -151,4 +151,4 @@ addPlusOneMultiplytow = a => ((a += 1), a * 2);
 - 쉼표 연산자는 각각의 피연산자를 왼쪽에서 오른쪽 순서로 평가하고, 마지막 연산자의 값을 반환한다.
 - 보통 for 문이나, 한줄에 여러개의 할당문을 쓸 때 활용한다.
 - 추가로 `=>` 화살표 함수 뒤의 `statement`가 간결한 경우 2개 이상의 연산을 한뒤 return 을 별도 쓰지 않기 위해 활용된다.
-- 다만 로직이 복잡한 statement를 `() => (... , ...)`로 썻을 때 가독성이 좋지 않다.
+- 다만 로직이 복잡한 statement를 `() => (... , ...)`로 썻을 때 가독성이 좋지 않다.
