@@ -22,16 +22,15 @@ description: '검색창에 단어를 입력하면 검색 자동완성 이벤트�
 
 ## mousedown, mouseup, click & blur 이벤트 순서
 
+[이해를 위한 코드펜 링크](https://codepen.io/godotwait/pen/xvVMYp/)를 먼저 참고하자
+
 1. 사용자 마우스를 누르면서 &rarr; `mousedown event` 발동
 2. (특정 영역에 `focus` 된 요소가 있다면 해당 요소의 `blur`(`foucsout`둘의 차이는 `bubbling` 에 있다) `event` 발동
 3. 마우스에서 손가락이 떨어지며   &rarr; `mouseup event` 발동
 4. `click event` 발동 
 
-### 이해를 위한 Codepen
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="html,result" data-user="godotwait" data-slug-hash="xvVMYp" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="mousedown, mouseup, click &amp;amp; blur order">
-  <span>See the Pen <a href="https://codepen.io/godotwait/pen/xvVMYp/">
-  mousedown, mouseup, click &amp; blur order</a> by godotwait (<a href="https://codepen.io/godotwait">@godotwait</a>)
+
 
 ## 문제 원인 파악하기
 
