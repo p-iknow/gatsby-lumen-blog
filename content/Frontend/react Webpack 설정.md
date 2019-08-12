@@ -14,7 +14,7 @@ description: 'webpack, babel 많이 들어는 봤으나 정작 해당 설정을 
 
 ## 들어가며 
 
-webpack, babel 많이 들어는 봤으나 정작 해당 설정을 눈앞에 마주하면 아득 하기만 했다. 설정 이라는 영역은 사실 경험이 쌓이지 않으면 단번에 이해하기가 어렵다. 또한 webpack 과 babel은 수시로 update 되고 규칙과 네이밍이 미세하게 조정되며 어려움을 더한다. 그래서 이번에 리엑트를 시작하며  CRA(create react app) 없이 직접  Webpack 설정을 통해  React 빌드 환경을 구성하고자 한다. webpack에 어려움을 느꼈던 분들에게 도움이 될 수 있었으며 좋겠다. 참고로 이 글은  2019.08.09 에 `webpack v4`, `babel 7` 기준으로 작성했다. 
+webpack, babel 많이 들어는 봤으나 정작 해당 설정을 눈앞에 마주하면 아득 하기만 했다. 설정 이라는 영역은 경험이 쌓이지 않으면 단번에 이해하기가 어렵다. 또한 webpack 과 babel은 수시로 update 되고 규칙과 네이밍이 미세하게 조정되며 어려움을 더한다. 그래서 이번에 리엑트를 시작하며  CRA(create react app) 없이 직접  Webpack 설정을 통해  React 빌드 환경을 구성하고자 한다. webpack에 어려움을 느꼈던 분들에게 도움이 될 수 있었으며 좋겠다. 참고로 이 글은  2019.08.09 에 `webpack v4`, `babel 7` 기준으로 작성했다. 
 
 ## 1-1 필요한 Lib 
 
@@ -49,7 +49,7 @@ yarn add react react-dom react-prop-types
 
 # -D 플래그를 붙이면 devDependencies 에 설치해서 개발용으로 사용할 수 있음
 
-yarn add @babel/core babel-loader @babel/preset-env babel-preset-react sass-loader node-sass css-loader style-loader html-webpack-plugin webpack webpack-dev-server webpack-cli -D
+yarn add @babel/core babel-loader @babel/preset-env @babel/preset-react sass-loader node-sass css-loader style-loader html-webpack-plugin webpack webpack-dev-server webpack-cli -D
 ```
 
 ## 1-3 Babel 설정 
@@ -90,7 +90,7 @@ module.exports = function(api) {
 
 - [react-hot-loader/babel](https://github.com/gaearon/react-hot-loader) : react 프로젝트의 코드 변동시 새로고침이 아닌 변경된 부분만 동적으로 업데이트 되는 옵션)
 - [@babel/plugin-proposal-class-properties](https://github.com/tc39/proposal-class-fields) : TC39 stage 3에 있는 class propery를 사용하기 위한 플러그인이다. 아직 stage에 있는 기능을 코드에 사용하기 위해서는 바벨 설정에 해당 플러그인을 등록해야 한다. 
--  [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime) : babel 7 이전 버전에서 `@babel/polyfill` 로 폴리필을 설정했으나, 해당 설정은 전역 공간에 폴리필 코드를 노출시켜 전역공간을 오염시키는 이슈가 있었고, 이런 부분을 해결하기 위해 도입되었다. 이 설정을 통해 `async` 같은 함수를 코드에 포함시킬 수 있다. 자세한 내용은 [링크](https://babeljs.io/docs/en/babel-plugin-transform-runtime#why)를 참조하자. 필자는 이 [링크](https://www.valentinog.com/blog/await-react/)를 참조하여 설정을 진행했다.  
+-  [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime) : babel 7 이전 버전에서 `@babel/polyfill` 로 폴리필을 설정했으나, 해당 설정은 전역 공간에 폴리필 코드를 노출시켜 전역공간을 오염시키는 이슈가 있었고, 이런 부분을 해결하기 위해 도입되었다. 이 설정을 통해 `async` 같은 함수를 코드에 포함시킬 수 있다. 자세한 내용은 [링크](https://babeljs.io/docs/en/babel-plugin-transform-runtime#why)를 참조하자. 필자는 이 [링크](https://www.valentinog.com/blog/await-react/)를 참조하여 설정을 진행했다.  
 
 ## 1-4 Webpack 설정 
 
@@ -318,20 +318,20 @@ import { commentLog } from '../styles/commentlog.css
 
 ##### includePaths, data 
 
-scss 를 사용하는 경우 자주 사용하는 변수 or mixin을 별도에 파일로 지정해두고 각 컴포넌트의 css에서 import(`import ../scss/variable.scss, import ../scss/mixin.scss`)해서 쓰는 경우가 많다. 
+scss 를 사용하는 경우 자주 사용하는 변수 or mixin을 별도에 파일로 지정해두고 각 컴포넌트의 css에서 import(`import ../scss/variable.scss, import ../scss/mixin.scss`)해서 쓰는 경우가 많다. 
 
 ```js
-import '../scss/variable.scss'
-import '../scss/mixin.scss'
+import '../scss/variable.scss'
+import '../scss/mixin.scss'
 
 ```
 
 이 때 `includePaths` 옵션의 경우 해당 value 값에 지정된 path를 import path 앞에 자동으로 붙여줘 path를 간략하게 쓰도록 도와준다.
 
 ```js
-// import '../scss/variable.scss'
+// import '../scss/variable.scss'
 // 대신 이렇게 작성이 가능하다. 
-import 'variable.scss' 
+import 'variable.scss' 
 
 
 ```
@@ -467,7 +467,7 @@ process.env.NODE_ENV
 
 ```
 
-위 코드는 아래와 같은 역할을 한다. 
+위 코드는 아래와 같은 역할을 한다. 
 
 ```js
 new webpack.DefinePlugin({
