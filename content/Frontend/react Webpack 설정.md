@@ -45,11 +45,11 @@ yarn init -y
 
 # 여러 패키지 한 번에 설치하고 싶으면 패키지명 사이에 한 칸 space로 구분
 # add 를 dependencies 에 설치내용이 추가됨
-yarn add react react-dom react-prop-types 
+yarn add react react-dom react-prop-types @babel/runtime
 
 # -D 플래그를 붙이면 devDependencies 에 설치해서 개발용으로 사용할 수 있음
 
-yarn add @babel/core babel-loader @babel/preset-env @babel/preset-react sass-loader node-sass css-loader style-loader html-webpack-plugin webpack webpack-dev-server webpack-cli -D
+yarn add @babel/core babel-loader @babel/preset-env @babel/preset-react @babel/plugin-transform-runtime sass-loader node-sass css-loader style-loader html-webpack-plugin webpack webpack-dev-server webpack-cli -D
 ```
 
 ## 1-3 Babel 설정 
@@ -90,7 +90,8 @@ module.exports = function(api) {
 
 - [react-hot-loader/babel](https://github.com/gaearon/react-hot-loader) : react 프로젝트의 코드 변동시 새로고침이 아닌 변경된 부분만 동적으로 업데이트 되는 옵션)
 - [@babel/plugin-proposal-class-properties](https://github.com/tc39/proposal-class-fields) : TC39 stage 3에 있는 class propery를 사용하기 위한 플러그인이다. 아직 stage에 있는 기능을 코드에 사용하기 위해서는 바벨 설정에 해당 플러그인을 등록해야 한다. 
--  [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime) : babel 7 이전 버전에서 `@babel/polyfill` 로 폴리필을 설정했으나, 해당 설정은 전역 공간에 폴리필 코드를 노출시켜 전역공간을 오염시키는 이슈가 있었고, 이런 부분을 해결하기 위해 도입되었다. 이 설정을 통해 `async` 같은 함수를 코드에 포함시킬 수 있다. 자세한 내용은 [링크](https://babeljs.io/docs/en/babel-plugin-transform-runtime#why)를 참조하자. 필자는 이 [링크](https://www.valentinog.com/blog/await-react/)를 참조하여 설정을 진행했다.  
+-  [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime) : babel 7 이전 버전에서 `@babel/polyfill` 로 폴리필을 설정했으나, 해당 설정은 전역 공간에 폴리필 코드를 노출시켜 전역공간을 오염시키는 이슈가 있었고, 이런 부분을 해결하기 위해 도입되었다. 이 설정을 통해 `async` 같은 함수를 코드에 포함시킬 수 있다. 자세한 내용은 [링크](https://babeljs.io/docs/en/babel-plugin-transform-runtime#why)를 참조하자. 필자는 이 [링크](https://www.valentinog.com/blog/await-react/)를 참조하여 설정을 진행했다.
+-  @babel/plugin-transform-runtime에 corejs옵션을 사용하지않으면 regenerator-runtime polyfill만 추가된다. 자세한 내용은 이 [링크](https://babeljs.io/docs/en/babel-plugin-transform-runtime#corejs)를 참조하자 (아직 이 부분에 대한 이해가 부족해 제대로 쓰지 못했다. 여기 쓰여진 내용은 참고만 하고 자세한 내용은 링크를 통해 확인 하셨으면 한다. 추후 업데이트 할 예정이다.) 
 
 ## 1-4 Webpack 설정 
 
