@@ -1,6 +1,6 @@
 ---
 title: Custom Promise 구현으로 프로미스 파혜치기
-date: '2019-05-24T23:46:37.121Z'
+date: '2019-06-30T23:46:37.121Z'
 template: 'post'
 draft: false
 slug: 'js/custom-promise'
