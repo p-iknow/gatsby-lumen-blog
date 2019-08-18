@@ -61,6 +61,8 @@ const selectionSort = arr => {
 
 ![선택정렬](https://user-images.githubusercontent.com/35516239/63230416-405fd680-c247-11e9-8ebd-d94e0f3d14cb.png)
 
+그림에서 화살표는 최솟값을 찾기 위해 비교하는 두 원소를 나타내며(안쪽 루프), 각 단계는 바깥쪽 루프에 대응된다.
+
 ## 참고
 
 [자바스크립트 자료 구조와 알고리즘, 로이아니 그로네르 지음](http://www.yes24.com/Product/Goods/22885878)
