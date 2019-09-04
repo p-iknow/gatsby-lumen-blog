@@ -124,6 +124,8 @@ useEffect(() => {
 
  todos 데이터의 상태와, loading 상태를 같이두는 것은 로딩한 데이터가 더 이상 수정이 없다는 가정하에만 괜찮은 로직인 것 같다 라고 판단함 
 
+커스텀 Hooks 에서 loading 상태와 error 상태를 리듀서로 관리 하도록 변경 
+
 ### 위 익명함수를 함수로 빼서 설계 
 
 ```js
@@ -152,7 +154,14 @@ const fetchTodos = async () => {
 
  ### `useFetch` 라는 **custom hook** 만들기(다른 데서도 재사용) 
 
-처음에는 `useFetch` 내부에 fetch 데이터를 `parsing` 하는 부분을 넣을까 고민했으나, `api` 별로 데이터를 주는 방식이 다른점을 고려했을 때 `callback` 을 만들어 인자로 전달하는 점이 더 좋을 것으로 판단함, 대신에 상태코드를 처리하는 함수를 생성
+#### checkStatus 에러처리, 및 useFectch 수정 
+
+ `fetch` 데이터 parsing 영역이 api 마다 다를 것이라 생각해서 callback 함수에 parsing을 정의할 까 고민했다. 그러나 callback을 외부에 작성하면 매 fetch API 요청 마다 parsing 로직을
+재작성 해야하는데 이렇게 하면 hooks 를 재사용하는 의미가 없어진다. 
+
+보통은 api가 
+동일한 스키마를 가지고 있는게 일반적이며 api 구조가 달라질 useFetch 를
+ 수정하도록 하면 된다.
 
 ```js
 function useFetch({ fetchUrl, deps = [] }) {
@@ -165,7 +174,7 @@ function useFetch({ fetchUrl, deps = [] }) {
   const fetchData = async () => {
     dispatch({ type: 'LOADING' });
     try {
-      // 데이터 파싱 부분
+      // 데이터 파싱 부분 useFetch 내부에 작성하도록 결정
       const response = await fetch(FetchUrl);
     	const data = await response.json();
       dispatch({ type: 'SUCCESS', data: data.body });
@@ -183,78 +192,88 @@ function useFetch({ fetchUrl, deps = [] }) {
 }
 ```
 
-아래와 같이 callback 을 만들어 인자로 전달하는 방식 채택 
+### APP js 가 비대해졌다. 
+
+**뭐가 문제일까?**
+
+거의 대다수의 상태를 최상위 컴포넌트인 app 에서 관리하고 있다. TodoListTemplate 컴포넌트에 주입을 위해 app에 전부를 선언하다가 커져버렸다. 상태 변수를 쓰는 이벤트 콜백함수들도 모두 app 에서 선언되어 사용한다. 
+
+**왜 이런 Template 컴포넌트를 썻는가?**
+
+만약에 이걸 안한다면.. TodoListWrapper 란 컴포넌트를 만들게되어 children 내부에 모든걸 다 넣어줘야 한다. 이런식으로 말이다: `<TodoListWrapper><Form/><TodoList/></TodoListWrapper>` 물론 이런 방식, 전혀 문제되지 않는다.
+
+그런데 예를 들어서 Form 과 TodoList 사이에 테두리를 설정한다고 했을 때 만약에 Template 컴포넌트를 사용하는 경우에 이런 스타일은 Template 내에서 주면 되겠지만, Wrapper 같은 컴포넌트를 사용하게 되면 해당 스타일을 Form 혹은 TodoList 쪽에 넣어줘야 한다.
+
+이 부분을 개선할 수 없을지 고민해보자 
 
 ```js
-// App.js
+const App = () => {
+  const [todos, setTodos] = useState([]);
+  const [folded, setFolded] = useState(false);
+  const [value, setValue] = useState('');
+  const [todosFetchState, refetch] = useFetch({ fetchUrl: FetchUrl });
+  const { data, loading, error } = todosFetchState;
+  useEffect(() => {
+    setTodos(data);
+    // eslint-disable-next-line
+  }, [data]);
 
-const fetchTodos = async () => {
-  // 로딩을 명시적으로 보여주기위한 2초 지연
-  await sleep();
-  const response = await fetch(FetchUrl);
-  const data = await response.json();
-  return data.body;
-};
-
-const [todosFetchState] = useFetch({ callback: fetchTodos, deps: [] })
-
-/-------------------------------------------------------------------------
-// useFetch
-import { useReducer, useEffect } from 'react';
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'LOADING':
-      return {
-        loading: true,
-        data: null,
-        error: null
-      };
-    case 'SUCCESS':
-      return {
-        loading: false,
-        data: action.data,
-        error: null
-      };
-    case 'ERROR':
-      return {
-        loading: false,
-        data: null,
-        error: action.error
-      };
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`);
-  }
-}
-
-function useFetch({ callback, deps = [] }) {
-  const [state, dispatch] = useReducer(reducer, {
-    loading: false,
-    data: null,
-    error: false
-  });
-
-  const fetchData = async () => {
-    dispatch({ type: 'LOADING' });
-    try {
-      const data = await callback();
-      dispatch({ type: 'SUCCESS', data });
-    } catch (e) {
-      dispatch({ type: 'ERROR', error: e });
-    }
+  const onChange = ({ target }) => {
+    setValue(target.value);
   };
 
-  useEffect(() => {
-    fetchData();
-    // eslint-disable-next-line
-  }, deps);
+  const onCreate = () => {
+			...
+  };
 
-  return [state, fetchData];
-}
+  const onKeyPress = ({ key }) => {
+			...
+  };
 
-export default useFetch;
+  const onToggle = id => {
+			...
+  };
+
+  const onRemove = id => {
+			...
+  };
+
+  const onFold = () => {
+   		...
+  };
+
+  return (
+    <TodoListTemplate
+      form={
+        <Form
+          value={value}
+          onCreate={onCreate}
+          onChange={onChange}
+          onKeyPress={onKeyPress}
+        />
+      }
+      status={<Status todos={todos} />}
+      folded={folded}
+      subtitle={<Subtitle folded={folded} onFold={onFold} />}
+    >
+      <TodoItemList
+        onToggle={onToggle}
+        onRemove={onRemove}
+        todos={todos}
+        loading={loading}
+        error={error}
+        refetch={refetch}
+      />
+    </TodoListTemplate>
+  );
+};
+export default hot(App);
 
 ```
+
+#### todos 와 setTodos 만 전달하자
+
+todos 와 setTodos 만 props 전달하고 create, toggle, remove, keyPress 등의 메소드 들은 각 컴포넌트 내부에서 props 로 todos 와 setTodos를  전달받아 생성하도록 바꾸자. 결과적으로 app.js 의 비대해짐이 한결 나아졌다. 
 
 
 
@@ -311,6 +330,8 @@ const { onChange, onCreate, onKeyPress, onToggle, onRemove, onFold } = this;
 -  현재 어떤 키워드로 검색해야 할지 몰라 이슈 해결 유보중 
 
 - style을 가져왔는지 확인하자(네트워크 탭) 
+
+- style을 하나씩 import 하고 있는 것 발견 - 이것이 이슈가 될 수 있음 
 
   ![깜빡임 이슈](https://user-images.githubusercontent.com/35516239/63646773-1df02080-c753-11e9-9510-8cea1a563724.gif)
 
