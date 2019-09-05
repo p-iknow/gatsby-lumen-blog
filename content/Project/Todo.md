@@ -13,8 +13,8 @@
   - [ ]  API서버에서는 todolist 초기 데이터를 JSON으로 반환한다.
   - [ ]  클라이언트에서는 이 데이터를 기본으로 렌더링한다.
 - 추가UI구성
-  - [ ]  우측상단에 **할일과 완료된일의 갯수**를 보여주는 UI를 추가로 만든다. (우측상단 동그라미 영역)
-  - [ ]  이 부분을 개발할때 **useContext API, useReducer**를 사용해서 state를 관리 한다.
+  - [x]  우측상단에 **할일과 완료된일의 갯수**를 보여주는 UI를 추가로 만든다. (우측상단 동그라미 영역)
+  - [x]  이 부분을 개발할때 **useContext API, useReducer**를 사용해서 state를 관리 한다.
 
 ## 실행 계획 
 
@@ -274,6 +274,65 @@ export default hot(App);
 #### todos 와 setTodos 만 전달하자
 
 todos 와 setTodos 만 props 전달하고 create, toggle, remove, keyPress 등의 메소드 들은 각 컴포넌트 내부에서 props 로 todos 와 setTodos를  전달받아 생성하도록 바꾸자. 결과적으로 app.js 의 비대해짐이 한결 나아졌다. 
+
+### Context + useReducer 패턴 적용
+
+사실 이제까지 진행 해 왔던  구조에서 props가 전달되는 depth 가 깊지 않아서 context 를 쓴 효과는 크지 않았다. 다만 기존 엔트리 포인트로서는 거대했던 App 컴포넌트의 크기가 줄어들고, 상태를 사용하는 컴포넌트에 상태에 관한 로직이 정리되서 타인이 확인할 때 편할 수 있겠다는 생각이 들었다. 
+
+#### Context 이전 
+
+![image](https://user-images.githubusercontent.com/35516239/64322359-62a27400-cffd-11e9-8808-1693ae84b905.png)
+
+#### Context 이후
+
+![image](https://user-images.githubusercontent.com/35516239/64322286-40105b00-cffd-11e9-9a28-6894270bad54.png)
+
+#### useReducer 사용으로 로직이 정리됨 
+
+reducer 내부에 todo 의 주요 상태 로직이 정의되어 있어 해당 로직을 한번에 파악하기 쉽고, 컴포넌트 내부는 view 에 집중할 수 있게 되는 장점이 있었다. 
+
+```js
+export default function todoReducer(state, action) {
+  switch (action.type) {
+    case 'TODO_UPLOAD':
+      return state.concat(action.todos);
+    case 'TODO_CREATE':
+      return state.concat(action.todo);
+    case 'TODO_TOGGLE':
+      return state.map(todo =>
+        todo.id === action.id
+          ? { ...todo, status: todo.status === 'todo' ? 'done' : 'todo' }
+          : todo
+      );
+    case 'TODO_REMOVE':
+      return state.filter(todo => todo.id !== action.id);
+    default:
+      throw new Error(`Unhandled action type: ${action.type}`);
+  }
+}
+```
+
+### useFetch 가 TODO_UPLOAD로 이어지는 어색함
+
+useFetch 가 리턴함 data 상태가 null 아닐 때 todoDispatch 를 통해 todo 상태를 세팅하는데 이 부분이 상당히 어색하다.
+
+```js
+function TodoProvider({ children }) {
+  const [todoState, todoDispatch] = useReducer(todoReducer, []);
+
+  const [fetchState, refetch] = useFetch({ fetchUrl: FetchUrl });
+  const { data } = fetchState;
+
+  useEffect(() => {
+    if (data) {
+      todoDispatch({ type: 'TODO_UPLOAD', todos: data });
+    }
+    // eslint-disable-next-line
+  }, [data]);
+	...
+	return ...
+}
+```
 
 
 
