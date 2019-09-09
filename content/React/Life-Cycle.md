@@ -59,7 +59,7 @@ constructor 내부에서 side effect(부수 효과)를 발생시키거나 subscr
 
 > ###  주의해야할 사항
 >
-> **state에 props를 복사하면 안 됩니다! 가장 흔히 범하는 실수 중 하나다.**
+> **state에 props를 복사하면 안된다! 가장 흔히 범하는 실수 중 하나다.**
 >
 > ```js
 > constructor(props) {
@@ -71,7 +71,7 @@ constructor 내부에서 side effect(부수 효과)를 발생시키거나 subscr
 >
 > 이것은 불필요한 작업이며(`this.props.color`를 직접 사용하면 됩니다), 버그를 발생시킵니다(`color` props의 값이 변하더라도 state에 반영되지 않는다. 의도와 달라지는 것이다).
 >
-> **props의 갱신을 의도적으로 무시해야 할 때만 이와 같은 패턴을 사용하자.** 이 경우, 해당 props의 이름을 `initialColor` 또는 `defaultColor` 등으로 변경하는 편이 자연스럽습다. 그러면 이후 필요에 따라 컴포넌트가 [`key`를 변경](https://ko.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key)하여 초기 state를 “재설정”하도록 강제할 수 있다.
+> **props의 갱신을 의도적으로 무시해야 할 때만 이와 같은 패턴을 사용하자.** 이 경우, 해당 props의 이름을 `initialColor` 또는 `defaultColor` 등으로 변경하는 편이 자연스럽다. 그러면 이후 필요에 따라 컴포넌트가 [`key`를 변경](https://ko.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key)하여 초기 state를 “재설정”하도록 강제할 수 있다.
 >
 > props의 값에 의존하는 state가 필요할 때 어떻게 해야 하는지에 대하여 알고 싶다면,  [state로부터 값을 가져오지 않는 법에 대한 블로그 글](https://ko.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html)을 읽어보자.
 
