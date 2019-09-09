@@ -13,10 +13,6 @@ description: 'JS 로 programmers 의 "완주하지 못한 선수"를 풀었다.'
 
 ## Problem
 
-## What I learned
-
-
-
 ## Solve
 
 ### 내 풀이 
@@ -30,6 +26,9 @@ description: 'JS 로 programmers 의 "완주하지 못한 선수"를 풀었다.'
 ```js
 
 ```
+
+## What I learned
+
 
 
 ### 참고

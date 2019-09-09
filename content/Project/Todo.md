@@ -10,8 +10,8 @@
   - [x] 모든 Classes 컴포넌트를 Hooks를 사용해서 함수형 컴포넌트로 변경한다.
   - [x]  **useFetch** 라는 **custom hook** 을 만들어서, 다른 컴포넌트에서도 데이터 통신작업에서 **재사용**할 수 있도록 해보자.
 - Express를 사용해서 API 서버환경을 만든다.
-  - [ ]  API서버에서는 todolist 초기 데이터를 JSON으로 반환한다.
-  - [ ]  클라이언트에서는 이 데이터를 기본으로 렌더링한다.
+  - [x]  API서버에서는 todolist 초기 데이터를 JSON으로 반환한다.
+  - [x]  클라이언트에서는 이 데이터를 기본으로 렌더링한다.
 - 추가UI구성
   - [x]  우측상단에 **할일과 완료된일의 갯수**를 보여주는 UI를 추가로 만든다. (우측상단 동그라미 영역)
   - [x]  이 부분을 개발할때 **useContext API, useReducer**를 사용해서 state를 관리 한다.
@@ -50,6 +50,9 @@
 - https://codesandbox.io/s/o5yw60jwlq?from-embed
 
 ### State Refactoring
+
+- [x] state 깔끔하게 만들기 
+- [x] reducer 적용하기
 
 todos 와 loading 두 개의 상태 관리가 필요할까? 더 깔끔하게 적용하는 법은 없을까?
 
@@ -314,8 +317,6 @@ export default function todoReducer(state, action) {
 
 ### useFetch 가 TODO_UPLOAD로 이어지는 어색함
 
-useFetch 가 리턴함 data 상태가 null 아닐 때 todoDispatch 를 통해 todo 상태를 세팅하는데 이 부분이 상당히 어색하다.
-
 ```js
 function TodoProvider({ children }) {
   const [todoState, todoDispatch] = useReducer(todoReducer, []);
@@ -326,12 +327,7 @@ function TodoProvider({ children }) {
   useEffect(() => {
     if (data) {
       todoDispatch({ type: 'TODO_UPLOAD', todos: data });
-    }
-    // eslint-disable-next-line
-  }, [data]);
-	...
-	return ...
-}
+    }}
 ```
 
 
@@ -360,6 +356,10 @@ const { onChange, onCreate, onKeyPress, onToggle, onRemove, onFold } = this;
 ```
 
 `componentDidMount ` 보다는 `useEffect` 가 더 직관적이다. 해당 함수는 sideEffect를 일으켜야 하는 함수로서, 더 명확한 것 같다. 
+
+this를 사용하지 않아 this 에 대한 이해도가 없는 사람들에게 편한 것 같다. 
+
+코드 크기가 확연하게 줄어든다. 
 
 ## Fold(Arcodian UI) Animation 이슈
 
