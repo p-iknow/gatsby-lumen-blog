@@ -1,5 +1,4 @@
 ---
-tㅓ
 title: 퀵 정렬, quick sort(with JS) 
 date: '2019-08-20T23:46:37.121Z'
 template: 'post'
@@ -136,7 +135,7 @@ const swap = (arr, index1, index2) => {
 
 
 
-서브배열 `[2, 3, 5, 4]`의 하위 서브배열 `[5, 4]` 역시 파티션이 필요하다
+서브배열 `[2, 3, 5, 4]`의 하위 서브배열 `[5, 4]` 역시 파티션이 필요하다
 
 ![퀵정렬 5단계](https://user-images.githubusercontent.com/35516239/63343183-4f9a6d80-c388-11e9-883a-fb9df5258911.png)
 
