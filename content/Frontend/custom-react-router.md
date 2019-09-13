@@ -1,3 +1,5 @@
+
+
 ## 개발환경 설정
 
 ### Using CRA 
@@ -10,7 +12,7 @@ cd custom-react-router
 ### 의존성 설치
 
 ```bash
-yarn add history querystringfy
+yarn add history querystringfy path-to-regexp
 ```
 
 #### [history](https://github.com/ReactTraining/history) 
@@ -37,3 +39,51 @@ qs.stringify({ foo: bar }, '&');  // &foo=bar
 qs.stringify({ foo: '' }, '&');   // &foo=
 ```
 
+### exact 
+
+ `location.pathname` 과 정확하게 일치하는지에 대한 옵션
+
+```jsx
+<Route exact path="/one" component={About} />
+```
+
+|  path  | location.pathname |  exact  | matches? |
+| :----: | :---------------: | :-----: | :------: |
+| `/one` |    `/one/two`     | `true`  |    no    |
+| `/one` |    `/one/two`     | `false` |   yes    |
+
+### Strict : bool
+
+끝에 나오는 구분자(delimiter, 주로 "/"  )에 대한 옵션
+
+```jsx
+<Route exact strict path="/one" component={About}
+```
+
+|  path   | location.pathname | matches? |
+| :-----: | :---------------: | :------: |
+| `/one/` |      `/one`       |    no    |
+| `/one/` |      `/one/`      |   yes    |
+| `/one/` |    `/one/two`     |   yes    |
+
+### sensitive: bool
+
+대소문자 구분에 관한 옵션 
+
+```jsx
+<Route sensitive path="/one" component={About} />
+```
+
+|  path  | location.pathname | sensitive | matches? |
+| :----: | :---------------: | :-------: | :------: |
+| `/one` |      `/one`       |  `true`   |   yes    |
+| `/One` |      `/one`       |  `true`   |    no    |
+| `/One` |      `/one`       |  `false`  |   yes    |
+
+### multiple path 
+
+```jsx
+<Router>
+    <Route path={["/home", "/users", "/widgets"]} component={Home} />
+</Router>
+```
