@@ -77,7 +77,7 @@ module.exports = {
 
 - bundle 이 main 과 vendor 코드로 분리되었다. 잘 바뀌지 않는 vendor 번들의 경우 브라우저에 캐싱하여 매번 로드되지 않도록 하면 초기 로딩시간을 일부 향상 시킬 수 있다. 
 
-![image-20190918192416044](/Users/godot/dev/step17-23/doc/assets/image-20190918192416044.png)
+![after-spliting](https://user-images.githubusercontent.com/35516239/65244941-99f94080-db26-11e9-85fd-5b37de08ff9e.png)
 
 ## `React.lazy` 와 `React.Suspend`를 통한 코드 스플리팅
 
@@ -117,7 +117,7 @@ function MyComponent() {
 
 `MyComponent` 컴포넌트가 랜더링되면 `OtherComponent`컴포넌트를 포함한 번들이 자동으로 로드된다. React 컴포넌트를 `export default`로 해석되는 `Promise`로 반환하고 `React.lazy`로 dynamic `import()`를 할때에는 함수 형태로 사용한다.
 
-### Suspense
+## Suspense
 
 `dynamic import` 를 사용하여 해당 자원이 필요할 때 로딩하면 초기 로딩속도는 분명하게 빨라진다. 그러나 필요할 때 네트워크 요청이 시작되어 불러오므로 요청 부터 화면 렌더링 까지 일정시간  delay가 있을 수 있다. 이때  `Suspense` 컴포넌트를 사용한다면, `MyComponent`가 랜더링 될 때까지 동적으로 불러온 `OtherComponent`가 아직 로드가 되지 않은경우 **로딩중**과 같은 `fallback content` 표현이 가능하다. (실제로 `React.lazy`를 통해 불러온 컴포넌트를 `Suspense` 컴포넌트로 감싸지 않으면 브라우저에서 에러를 낸다.) 
 
