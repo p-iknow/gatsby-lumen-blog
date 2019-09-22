@@ -1,15 +1,14 @@
 ---
-title: 974-980일 회고
-date: '2019-09-22T10:46:37.121Z'
+title: 981-987일 회고
+date: '2019-09-29T10:46:37.121Z'
 template: 'post'
 draft: True
-slug: 'reflection/week/190922'
+slug: 'reflection/week/190929'
 category: 'Reflection-Of-Week'
 tags:
   - 'Log'
   - 'log-of-week'
-description: '974-980일 회고'
-
+description: '981-987일 회고입니다. 기록하고 회고합니다. 회고를 반영합니다. 제가 자라는 방식입니다.'
 
 ---
 
@@ -33,5 +32,5 @@ description: '974-980일 회고'
 
 
 
-## TIL / FEEDBACK 
+## 190922
 
