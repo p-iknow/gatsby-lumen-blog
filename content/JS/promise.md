@@ -19,7 +19,7 @@ description: 'es6 이후로 js 에서도 함수의 인자에 어떤 type이 들�
 
 ## 들어가며 
 
-JS를 시작한지 얼마 안된 상태에서 Promise는 어렵다. 비동기도 어려운데 `.then ` 과 `.catch` 로 전개되는 흐름, 함수(`resolve, reject`) 가 인자로 전달되는 풍경은 머리속을 하얗게 만든다. 물리학에 한 획을 그은 파이만 아저씨는 이렇게 복잡하고 어려운 내용을 공부할 때 실제 그 대상을 직접 만들어보면서 공부 했다고 한다. 그래서 무모하지만 필자도 나만의 Custom Promise를 만들어보며 promise를 이해해 보려고 한다. 해당 글이 promise로 인해 골머리를 앓고 있는 이들에게 조금이나마 도움이 될 수 있으면 한다. 
+JS를 시작한지 얼마 안된 상태에서 Promise는 어렵다. 비동기도 어려운데 `.then ` 과 `.catch` 로 전개되는 흐름, 함수(`resolve, reject`) 가 인자로 전달되는 풍경은 머리속을 하얗게 만든다. 물리학에 한 획을 그은 파이만 아저씨는 이렇게 복잡하고 어려운 내용을 공부할 때 실제 그 대상을 직접 만들어보면서 공부 했다고 한다. 무모하지만 필자도  Custom Promise를 만들어보며 promise를 이해해 보려고 한다. 해당 글이 promise로 인해 골머리를 앓고 있는 이들에게 조금이나마 도움이 될 수 있으면 한다. 
 
 ## Promise의 기본동작 살펴보기
 
@@ -480,7 +480,7 @@ const MyPromise = class {
 
 추후 `this.laterCalls.forEach(latercall => latercall());`  내부에서 `latercall` 이 실행될 때는 더 이상 resolve 가 선언됬던 상위스코프는 **실행컨텍스트**에 존재하지 않는다. 그러나 선언당시에 등록해두었던 스코프 체인으로 resolve를 참조할 수 있고 우리는 이를 **클로저**라고 한다. 
 
-실행컨텍스트에 대한 자세한 내용은 이 [링크](https://poiemaweb.com/js-execution-context)를 참고하자. 클로저는 이 [링크](https://poiemaweb.com/js-closure)를 참고하면 된다. 
+실행컨텍스트에 대한 자세한 내용은 이 [링크](https://poiemaweb.com/js-execution-context)를 참고하자. 클로저는 이 [링크](https://poiemaweb.com/js-closure)를 참고하면 된다. 
 
 #### callback(this.value) 에서 this는 어떻게 첫번째 프로미스를 참조하는가?
 
