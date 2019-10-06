@@ -1,6 +1,6 @@
 ---
 title: HakerRank - StairCase
-date: '2019-05-20T23:46:37.121Z'
+date: '2019-10-05T23:46:37.121Z'
 template: 'post'
 draft: true
 slug: 'algorithm/hakerrank/StairCase'
@@ -11,15 +11,7 @@ tags:
 description: 'HakerRank - StairCase를 풀었다'
 ---
 
-#  HakerRank - Algorithms - Warmup 
-
 ## Problem
-
-
-
-
-
-## What I learned 
 
 
 
@@ -32,12 +24,6 @@ description: 'HakerRank - StairCase를 풀었다'
 ## Solution
 
 ```javascript
-
-```
-
-## Python Solution
-
-```python
 
 ```
 
