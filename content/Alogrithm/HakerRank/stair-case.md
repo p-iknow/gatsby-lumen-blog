@@ -3,7 +3,7 @@ title: HakerRank - StairCase
 date: '2019-05-20T23:46:37.121Z'
 template: 'post'
 draft: false
-slug: 'algorithm/hakerrank/StairCase'
+slug: 'algorithm/hakerrank/stair-case'
 category: 'algorithm'
 tags:
   - 'algorithm'

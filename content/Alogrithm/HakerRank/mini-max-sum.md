@@ -3,7 +3,7 @@ title: HakerRank - Mini Max Sum
 date: '2019-05-20T23:46:37.121Z'
 template: 'post'
 draft: false
-slug: 'algorithm/hakerrank/Mini-Max-Sum'
+slug: 'algorithm/hakerrank/mini-max-sum'
 category: 'algorithm'
 tags:
   - 'algorithm'

@@ -3,12 +3,12 @@ title: HakerRank - Day 7: Regular Expressions I
 date: '2019-10-05T23:46:37.121Z'
 template: 'post'
 draft: false
-slug: 'algorithm/hakerrank/StairCase'
+slug: 'algorithm/hakerrank/day7-regular-expressions-I'
 category: 'algorithm'
 tags:
   - 'algorithm'
   - 'codesignal'
-description: 'HakerRank - Regular Expressions I 를 풀었다'
+description: 'HakerRank - Day 7: Regular Expressions I 를 풀었다'
 ---
 
 ## Problem
