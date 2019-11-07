@@ -64,15 +64,7 @@ const merge = (left, rigth) => {
     }
   }
   
-  while(il < left.length){
-    result.push(left[il++]);
-  }
-  
-  while (ir < right.length){
-    result.push(right[ir++])
-  }
-  
-  return result;
+ return [...result, ...left.slice(il), ...right.slice(ir)];
 }
 ```
 
