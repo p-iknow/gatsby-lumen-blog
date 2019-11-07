@@ -14,7 +14,7 @@ description: 'passport는 한마디로 인증을 편하게 관리하기 위한 �
 
 ## 들어가며
 
-프론트 개발을 공부하다 처음으로 백엔드 코드를 작성하기 시작했다. 로그인을 구현하기 위해 passport 를 사용하는데 코드가 어렵고 이해되지 않는 부분이 많았다. 필자 처럼 혼돈을 겪을 사람들을 위해 아래에 passport local 전략에 대해 정리했다. 
+프론트 개발을 공부하다 처음으로 백엔드 코드를 작성하기 시작했다. 로그인을 구현하기 위해 passport 를 사용해야 했다. 가려진 부분이 많아 해당 패키지를 이용할 때 무슨 일이 일어나는지 알수가 없었다. 필자 처럼 passport 의 마법 같은 인증 로직 처리에 당황할 사람들을 위해 아래에 passport local 전략에 대해 정리했다. 참고로 [생활코딩에 갓고잉님의 passport 강좌](https://opentutorials.org/course/3402)가 마련되어 있다. 보다 나은 이해를 위해 참고 부탁드린다.
 
 ## pssport 의 역할 
 
@@ -62,6 +62,8 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 ```
+
+
 strategy callback 실행되고 `done(err, user, info)` 함수에 전달된 인자들이  `passpor.authenticate('local' (err, user, info) => {...})` 의 인자로 전달됨, 단  [passport.authenticate 의 인자로 custom callback](http://www.passportjs.org/docs/authenticate/)을 사용할 경우에만 이를 확인 가능하고, 나머지의 경우 passport.authenticate 함수가 실행될 때 자동으로 `req.login(user, callback)`[req.login 공식문서](http://www.passportjs.org/docs/login/) 을 실행시켜 `serealizeUser(user, done) => {...}` 의 인자로 전달된다  )
 
 ```js
@@ -106,7 +108,10 @@ module.exports = () => {
 };
 
 ```
-- `pssport.authenticate` 의 콜백 `(err, user, info) => {...}` 이 실행되며, callback 내부의 `req.login(user, loginErr => {...})` 실행, 현재는 위에서 언급했던 authenticate의 custom callback을 활용하기 때문에 
+
+
+`pssport.authenticate` 의 콜백 `(err, user, info) => {...}` 이 실행되며, callback 내부의 `req.login(user, loginErr => {...})` 실행, 현재는 위에서 언급했던 authenticate의 custom callback을 활용하기 때문에 
+
 ```js
 router.post('/login', (req, res, next) => {
   // POST /api/user/login
@@ -132,7 +137,8 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 ```
-- req.login 의 실행으로  sequalizeUser((user, done )=> {...}) 의 인자로 전달된 callback 이 실행되며  
+`req.login` 의 실행으로 ` sequalizeUser((user, done )=> {...})` 의 인자로 전달된 callback 이 실행되며  
+
 ```js
 const passport = require('passport');
 const db = require('../models');
@@ -142,7 +148,8 @@ passport.serializeUser((user, done) => { // 이 부분 실행
     return done(null, user.id);
   });
 ```
-- `done(null, user.id)` 의 결과로 아래의 세션 객체가 생성된다. 
+`done(null, user.id)` 의 결과로 아래의 세션 객체가 생성된다. 
+
 ```json
 {
   "cookie": {
@@ -184,7 +191,7 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 ```
-- 이후 매 요청시에 `passport.deserializeUser` 메소드가 실행되는데 이 때 callback 함수의 첫번째 인자로 전달되는 id 값은 `passport.serializeUser` 의 callback 함수의 내부에서 실행된 `done(null, userId)` 의 두번째로 전달된 userId 값이다. (내부적으로는 session 객체 내부의 passport 프로퍼티에서 읽어온 것이다.) , deserializeUser 의 callback 함수는 전달된 식별자 값인 id 를 통해 user 정보를 조회하고 이를 req.user(request 객체의 user property) 에 저장해 준다.
+이후 매 요청시에 `passport.deserializeUser` 메소드가 실행되는데 이 때 callback 함수의 첫번째 인자로 전달되는 id 값은 `passport.serializeUser` 의 callback 함수의 내부에서 실행된 `done(null, userId)` 의 두번째로 전달된 userId 값이다. (내부적으로는 session 객체 내부의 passport 프로퍼티에서 읽어온 것이다.) , deserializeUser 의 callback 함수는 전달된 식별자 값인 id 를 통해 user 정보를 조회하고 이를 req.user(request 객체의 user property) 에 저장해 준다.
 
 ```js
 const passport = require('passport');
