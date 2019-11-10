@@ -1,5 +1,5 @@
 ---
-title: HakerRank - Day 5: Template Literals
+title: HakerRank - Day 5 Template Literals
 date: '2019-10-05T23:46:37.121Z'
 template: 'post'
 draft: false
@@ -46,7 +46,7 @@ function main() {
 
 ### Tagged Template
 
-해당 문제는 `Tagged Template` 에 대한 이해가 있어야 풀 수 있다. 아래에 그에 대한 설명이 담긴 링크를 첨부하였다.
+해당 문제는 `Tagged Template` 에 대한 이해가 있어야 풀 수 있다. 아래에 그에 대한 설명이 담긴 링크를 첨부하였다.
 
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates
 
