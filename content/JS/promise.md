@@ -44,11 +44,7 @@ executor = (resolve, reject) => {
 
 ### then 메소드
 
-- 생된된 프로미스 인스턴스의 `then` 메소드는 `callback` 함수를 인자로 받아 실행된다
-
-- 해당 `callback`은 처음 생성된 프로미스 인스턴의 `resolve` 함수가 실행된 이후 실행된다. 
-
-- 해당 `callback`이 실행될 때 전달되는 `value` 인자는 처음 생성된 프로미스 인스턴스 `resolve`에 인자로 전달된 값이다.
+생된된 프로미스 인스턴스의 `then` 메소드는 `callback` 함수를 인자로 받아 실행된다. 해당 `callback`은 처음 생성된 프로미스 인스턴의 `resolve` 함수가 실행된 이후 실행된다. 해당 `callback`이 실행될 때 전달되는 `value` 인자는 처음 생성된 프로미스 인스턴스 `resolve`에 인자로 전달된 값이다.
 
 ```js
 new MyPromise((resolve, reject) => {
@@ -128,7 +124,7 @@ new MyPromise((resolve, reject) => {
   });
 ```
 
-- 위 결과를 토대로 다시한번 플로우를 살펴보자
+위 결과를 토대로 다시한번 플로우를 살펴보자
 
 ```js
 // 동기 로직
@@ -167,19 +163,19 @@ const MyPromise = class {
   }
 ```
 
-' `.then` 메소드는 `Promise`를 리턴한다. 그래서 `.then` 메소드를 다시 호출할 수 있다.d이로써  `.then`의 체이닝이 가능한 이유가 명확해졌다.
+' `.then` 메소드는 `Promise`를 리턴한다. 그래서 `.then` 메소드를 다시 호출할 수 있다. 이로써  `.then`의 체이닝이 가능한 이유가 명확해졌다.
 
 ### 프로미스 인스턴스의 상태가 필요해지는 순간
 
 다음은 둘째 '`resolve`가 실행됬는지 혹은 `.then` 내부에 `callback`이 실행되었느지 여부에 따라 .then 의 로직이 바뀌는데 어떻게 가능한 것인가?' 에 대한 답을 해야한다. 
 
-위에서 봤듯이 프로미스 인스턴스의 `resolve`가 실행됬는지에 따라 `then 메소드` 의 작동방식이 달라진다. `.then `메소드의 작동을 달리하기 위해 프로미스의 상태값을 지정하는 것을 고려해볼 수 있다. 상태값에 대항 상세는 아래와 같이한다.
+위에서 봤듯이 프로미스 인스턴스의 `resolve`가 실행됬는지에 따라 `then 메소드` 의 작동방식이 달라진다. `.then `메소드의 작동을 달리하기 위해 프로미스의 상태값을 지정하는 것을 고려해볼 수 있다. 상태 값에 대한 상세는 아래와 같이한다.
 
-프로미스 객체는 `state` 라는 상태를 가지며 각 조건에 따라 해당 값은 달라진다..
+프로미스 객체는 `state` 라는 상태를 가지며 각 조건에 따라 해당 값은 달라진다.
 
 - `pending(default)` (executor 내부의 resolve, reject가 실행되지 않았을 경우는 그냥 기다린다는 의미로 pending을 썻다.)
 - `resolved`(executor 함수에서 resolve 가 실행되었을 때)
-- `rejected`(executor 함수에서 resolve 가 실행되었을 때) (아직 언급도 안한 reject를 은근 쓸쩍 끼워 넣었다^^)
+- `rejected`(executor 함수에서 resolve 가 실행되었을 때, 아직 언급도 안한 reject를 은근 쓸쩍 끼워 넣었다^^)
 - 코드로 살펴보면 아래와 같을 것이다.
 
 ```js
@@ -196,7 +192,7 @@ const MyPromise = class {
 
   reject(value) {
     this.value = value;
-    this.state = "resolved"; //reject가 실핼될 때 상태를 바꾼다.
+    this.state = "rejected"; //reject가 실핼될 때 상태를 바꾼다.
   }
 
   then(callback) {
@@ -209,7 +205,7 @@ const MyPromise = class {
 };
 ```
 
-"promise 가 상태값을 가지고 resolve, reject 실행시 상태를 변경한다. `.then` 메소드는 promise의 상태를 구분하여 동작한다." 라는 문장으로 `resolve` 실행 여부에 따른 .then 의 다른 동작이 설명 가능해졌다.
+"`promise` 가 상태값을 가지고 resolve, reject 실행시 상태를 변경한다. `.then` 메소드는 promise의 상태를 구분하여 동작한다." 라는 문장으로 `resolve` 실행 여부에 따른 `.then`  동작이 설명 가능하다.
 
 ### `.then(callback)` 에서 내부 `callback` 함수의 지연실행
 
@@ -240,7 +236,7 @@ const MyPromise = class {
 
   reject(value) {
     this.value = value;
-    this.state = "resolved";
+    this.state = "rejected";
     lastCalls.forEach(lastcall => lastcall())
     // callback(this.value) 가 실행되고 여기서 this는 첫번째 프로미스를 가르킨다.
   }
@@ -348,7 +344,7 @@ new MyPromise((resolve, reject) => {
 
 구글링을 통해 영어 블로그의 어떤 현자가 Promise를 구현한 것을 참고했고 해당 로직을 아래코드와 같이 적용했다.
 
-**핵심은 두번째로 생성되는 `resolve` 함수의 지연실행이다.** 처음 작성했던 `callback`의 지연실행을 참고하면 첫번째 프로미스의 `resolve` 내부에서 `callback` 대신에두번째로 생성되는 `Promise`의 `resolve`를 실행하게 만들면 된다. `callback` 이 아닌 `두번째 promise(then 메소드의 실행으로 탄생한)`의 `resolve` 함수의 지연실행 인 것이다.
+**핵심은 두번째로 생성되는 `resolve` 함수의 지연실행이다.** 처음 작성했던 `callback`의 지연실행을 참고하면 첫번째 프로미스의 `resolve` 내부에서 `callback` 대신에 두번째로 생성되는 `Promise`의 `resolve`를 실행하게 만들면 된다. `callback` 이 아닌 `두번째 promise(then 메소드의 실행으로 탄생한)`의 `resolve` 함수의 지연실행 인 것이다.
 
 아래 코드를 보자.
 
@@ -369,12 +365,12 @@ const MyPromise = class {
         // innerPromise의 인자로 내부 프로미스의 resolve("두번째 프로미스")실행에 인자로 전달된 "두번째 프로미스가 전달된다
         // innerPromiseValue = "두번째 프로미스"
         this.value = innerPromiseValue; // 여기서 this는 두번째 프로미스를 가르키게 된다.
-        this.status = state;
+        this.status = 'resolved';
         this.laterCalls.forEach(latercall => latercall());
       });
     } else {
       this.value = value;
-      this.state = state;
+      this.state = 'resolved';
       this.laterCalls.forEach(latercall => latercall());
     }
     // callback(this.value) 가 실행되고 여기서 this는 현재 실행된 resolve 가 선언되었던 프로미스를 참조한다.
@@ -384,13 +380,13 @@ const MyPromise = class {
     this.value = value;
     this.state = 'resolved';
     lastCalls.forEach(lastcall => lastcall());
-    // callback(this.value)  가 실행되고 여기서 this는 첫번째 프로미스를 가르킨다.
+    // callback(this.value)가 실행되고 여기서 this는 첫번째 프로미스를 가르킨다.
   }
 
   then(callback) {
     if (this.state === 'pending')
       return new MyPromise(resolve => {
-        // 두번째 promise executor가 실핼될 때 첫번째 프로미스로 두번째 resolve 함수의 실행을 담은 arrow function을 보낸다. 해당 arrow function 내부의 this 는 첫번째 프로미스를 가르킨다. 
+        // 두번째 promise executor가 실핼될 때 첫번째 프로미스의 laterCalls 배열에 두번째 resolve 함수의 실행을 담은 arrow function을 보낸다. 해당 arrow function 내부의 this 는 첫번째 프로미스를 가르킨다. 
         this.laterCalls.push(() => resolve(callback(this.value)));
       });
     if (this.state === 'resolved')
@@ -458,7 +454,7 @@ this는 왜 첫번째 Promise를 가르키는 것인지 의문이 들 수 있다
  
 ```
 
-#### resolve 함수 내부에서 this는 어떻게 두번째 프로미스를 가르킬 수 있을까?  
+#### resolve 함수 내부에서 this가 어떻게 두번째 프로미스를 가르킬 수 있을까?  
 
 우선 `latercall` 에 담겨 있는  `resolve` 가 실행될 때 resolve 함수 내부에서의 this가  어떻게 두번째 프로미스를  가르킬 수 있는지 알아보자.
 
@@ -668,7 +664,7 @@ const test3 = new Promise((resolve, reject) => {
   })
   .then(res => {
     console.log(res);
-    // // throw 하면 캐치로 가지만, 프로미스에서는 then 건너뛰고 캐치로 감
+    // throw 하면 캐치로 가지만, 프로미스에서는 then 건너뛰고 캐치로 감
     throw new Error('이 에러는 catch에 잡힙니다.');
   })
   .then(res => {
