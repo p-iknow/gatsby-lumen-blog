@@ -2,7 +2,7 @@
 title: interview - spiral matrix with JS
 date: '2019-10-04T23:46:37.121Z'
 template: 'post'
-draft: false
+draft: True
 slug: 'algorithm/interview/spiral-matrix'
 category: 'algorithm'
 tags:
