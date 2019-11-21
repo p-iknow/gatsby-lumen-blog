@@ -8,14 +8,14 @@ category: 'JS'
 tags:
   - 'JS'
   - 'promise'
-description: 'es6 이후로 js 에서도 함수의 인자에 어떤 type이 들어가는 표시할 수 있는 방법이 생겼다. 바로 object destructuring 이다.
-오늘은 해당 키워드에 대해 알아보자'
+description: 'JS를 시작한지 얼마 안된 상태에서 Promise는 어렵다. 비동기도 어려운데 .then 과 .catch 로 전개되는 흐름, 함수(resolve, reject) 가 인자로 전달되는 풍경은 머리속을 하얗게 만든다. 물리학에 한 획을 그은 파이만 아저씨는 이렇게 복잡하고 어려운 내용을 공부할 때 실제 그 대상을 직접 만들어보면서 공부 했다고 한다. 무모하지만 필자도  Custom Promise를 만들어보며 promise를 이해해 보려고 한다. 해당 글이 promise로 인해 골머리를 앓고 있는 이들에게 조금이나마 도움이 될 수 있으면 한다. '
 ---
 
 ## TLDR;
 
 - 이 글을 통해 프로미스 패턴의 동작 원리와 순서에 대해 이해할 수 있다.
 - 프로미스를 만들며 this, closer, arrow function, bind 개념에 대해 이해할 수 있다.
+- 프로미스를 말하면서 마이크로 테스크 큐를 빼놓을 수 없지만 프로미스의 동작에 보다 집중하기 위해 여기에서 다루지 않았다.
 
 ## 들어가며 
 
@@ -138,7 +138,7 @@ resolve(value) -> 첫번째 callback(value) -> 두번째 callback()
 
 세가지의 의문점이 생긴다.
 - 첫째, `.then` 이 어떻게 연속으로 체이닝이 될 수 있는가?`
-- 둘째, `resolve` 가 실행됬는지 혹은 `.then` 내부에 `callback`이 실행되었느지 여부에 따라 `.then` 의 로직이 바뀌는데 어떻게 가능한 것인가?
+- 둘째, `resolve` 가 실행됬는지 혹은 `.then` 내부에 `callback`이 실행되었느지 여부에 따라 `.then` 의 로직이 바뀌는데 어떻게 가능한 것인가?
 - 셋째, 어떻게 비동기 `resolve` 이후 `.then(callback)`에 전달한 `callback`이 실행될 수 있는가?, 어떻게 비동기 `resolve(value)` 실행에 전달된 인자 값`(value)`이 다음 `.then` 메소드의 `callback(value)`의 인자로 전달될 수 있는가?`
 
 이 의문점을 가지고 Promise를 구현해보자
@@ -147,7 +147,7 @@ resolve(value) -> 첫번째 callback(value) -> 두번째 callback()
 
 ### `.then` 메소드가 리턴하는 것은 무엇인가?
 
-우선 첫째 `.then 은 어떻게 연속으로 체이닝이 될 수 있는가?` 에 대한 답을 해보자.`.then` 은 프로미스의 method 이다. 그렇다면 두번째 `.then` 호출하기 위해서는 `new promise(executor).then(callback)` 의 리턴값이 `Promise` 객체여야 한다.  
+우선 첫째 `.then 은 어떻게 연속으로 체이닝이 될 수 있는가?` 에 대한 답을 해보자.`.then` 은 프로미스의 method 이다. 그렇다면 두번째 `.then` 호출하기 위해서는 `new promise(executor).then(callback)` 의 리턴값이 `Promise` 객체여야 한다.  
 
 그렇다. `Promise(executor).then(callbak)` 는 프로미스를 리턴 해야 한다.(아마도 내부적으로 자기 자신을 리턴 `return this`, 혹은 새로운 프로미스를 리턴할 것이다.`return new Promise(executor)`)
 
@@ -169,7 +169,7 @@ const MyPromise = class {
 
 다음은 둘째 '`resolve`가 실행됬는지 혹은 `.then` 내부에 `callback`이 실행되었느지 여부에 따라 .then 의 로직이 바뀌는데 어떻게 가능한 것인가?' 에 대한 답을 해야한다. 
 
-위에서 봤듯이 프로미스 인스턴스의 `resolve`가 실행됬는지에 따라 `then 메소드` 의 작동방식이 달라진다. `.then `메소드의 작동을 달리하기 위해 프로미스의 상태값을 지정하는 것을 고려해볼 수 있다. 상태 값에 대한 상세는 아래와 같이한다.
+위에서 봤듯이 프로미스 인스턴스의 `resolve`가 실행됬는지에 따라 `then 메소드` 의 작동방식이 달라진다. `.then `메소드의 작동을 달리하기 위해 프로미스의 상태값을 지정하는 것을 고려해볼 수 있다. 상태 값에 대한 상세는 아래와 같이한다.
 
 프로미스 객체는 `state` 라는 상태를 가지며 각 조건에 따라 해당 값은 달라진다.
 
