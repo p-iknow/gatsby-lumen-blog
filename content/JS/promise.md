@@ -11,11 +11,14 @@ tags:
 description: 'JS를 시작한지 얼마 안된 상태에서 Promise는 어렵다. 비동기도 어려운데 .then 과 .catch 로 전개되는 흐름, 함수(resolve, reject) 가 인자로 전달되는 풍경은 머리속을 하얗게 만든다. 물리학에 한 획을 그은 파이만 아저씨는 이렇게 복잡하고 어려운 내용을 공부할 때 실제 그 대상을 직접 만들어보면서 공부 했다고 한다. 무모하지만 필자도  Custom Promise를 만들어보며 promise를 이해해 보려고 한다. 해당 글이 promise로 인해 골머리를 앓고 있는 이들에게 조금이나마 도움이 될 수 있으면 한다. '
 ---
 
+![js-custom-promise](https://user-images.githubusercontent.com/35516239/69477287-b451e200-0e27-11ea-9770-217e576f08e1.jpg)
+
 ## TLDR;
 
 - 이 글을 통해 프로미스 패턴의 동작 원리와 순서에 대해 이해할 수 있다.
 - 프로미스를 만들며 this, closer, arrow function, bind 개념에 대해 이해할 수 있다.
 - 프로미스를 말하면서 마이크로 테스크 큐를 빼놓을 수 없지만 프로미스의 동작에 보다 집중하기 위해 여기에서 다루지 않았다.
+- 전체 코드는 이 [링크](https://github.com/P-iknow/codesquad-amazone/blob/P-iknow/public/PLib/myPromise.js)에 있다. 테스트 코드는 [여기](https://github.com/P-iknow/codesquad-amazone/blob/P-iknow/public/PLib/testMyPromis.js) 있다.
 
 ## 들어가며 
 
