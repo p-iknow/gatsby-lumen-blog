@@ -72,16 +72,20 @@ template: "page"
 
 ## :office: Career
 
-#### 아티언스, 웹 데이터 분석 설계
+### 튜터링(마켓디자이너스), 프론트엔드 엔지니어
+
+- 기간: 2019.12.11 ~ 재직중
+
+### 아티언스, 웹 데이터 분석 설계
 
 - 기간: 2017.12.19 - 2019.04.30
 
-### Position
+#### Position
 
 - KIA & Hyundai 해외 사이트 웹데이터 분석 환경 구축 및 컨설팅 PM
 - U+ 개인 사이트 웹 데이터 분석 환경 구축 및 컨설팅 PM
 
-### Role
+#### Role
 
 - 웹 데이터 분석 서비스 기획 및 가이드 작성 
 
@@ -89,7 +93,7 @@ template: "page"
 - 약 30개 사이트의 GTM(Google Tag Manager) 운영 
 - UX 분석(Beausible, Hotjar 활용) 컨설팅
 
-### skill
+#### skill
 
 - Google Analytics, Google Tag Manager
 

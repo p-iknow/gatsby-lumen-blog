@@ -6,7 +6,7 @@
 
 ## Context
 
-진행중인 TypeScript-React 프로젝트에서 ESLint와 Prettier를 사용하여 코드를 코드 컨벤션을 정리(Lint and Format) 하기로 결정했습니다 . ESLint와 Prettier `Formatting(형식)` 의 충돌로 대해 며칠 동안 고민이 많았는데. 우리의 코드는 다음과 같았습니다.
+진행중인 TypeScript-React 프로젝트에서 ESLint와 Prettier를 사용하여 코드를 코드 컨벤션을 정리(Lint and Format) 하기로 결정했습니다 . ESLint와 Prettier `Formatting(형식)` 의 충돌로 대해 며칠 동안 고민이 많았는데. 우리의 코드는 다음과 같았습니다.
 
 ![img](https://blog.theodo.com/1b3534309d72ef5f466a977754477909/conflict-1.gif)
 
@@ -83,7 +83,7 @@ function printUser(firstName, lastName, number, street, code, city, country) {
 printUser('John', 'Doe', 48, '998 Primrose Lane', 53718, 'Madison', 'United States of America');
 ```
 
-우리는 4 크기의 탭 들여 쓰기를 사용하고 있음을 기억하세요!
+우리가 4 크기의 탭 들여 쓰기를 사용하고 있음을 기억하세요!
 
 아래와 같이  프로젝트에 dev-dependency 로 **ESLint** 와 **Prettier** 추가 하여 사용 합니다.
 
@@ -113,9 +113,9 @@ printUser('John', 'Doe', 48, '998 Primrose Lane', 53718, 'Madison', 'United Stat
 
 `npx eslint main.js`
 
-[![에스 린트](https://blog.theodo.com/static/9692405bea9cba760627c64b0e1fefa0/6b427/eslint.png)](https://blog.theodo.com/static/9692405bea9cba760627c64b0e1fefa0/6b427/eslint.png)
+![에스 린트](https://blog.theodo.com/static/9692405bea9cba760627c64b0e1fefa0/6b427/eslint.png)
 
-ESLint는 `console.log`을 허용하지 않으며 탭 들여 쓰기를 감지합니다. `tab` 대신에 2개의 `space` 를 권장하고  80자를 초과하는 두 줄을 알려줍니다.
+ESLint는 `console.log`을 허용하지 않으며 탭 들여 쓰기를 감지합니다. `tab` 대신에 2개의 `space` 를 권장하고  80자를 초과하는 두 줄을 알려줍니다.
 
 이제 ESLint를 `--fix` 옵션과 함께 실행한 뒤 어떻게 되는지 봅시다.
 
@@ -123,9 +123,9 @@ ESLint는 `console.log`을 허용하지 않으며 탭 들여 쓰기를 감지합
 
 [![엘리트 수정](https://blog.theodo.com/static/f651201843936ab433fd70203a774a6f/5b815/eslint_fix.png)](https://blog.theodo.com/static/f651201843936ab433fd70203a774a6f/5b815/eslint_fix.png)
 
-ESLint는 들여 쓰기 문제를 해결했지만  `max-len` 과 관련된 문제는 해결 하지 못했습니다 .
+ESLint는 들여 쓰기 문제를 해결했지만  `max-len` 과 관련된 문제는 해결 하지 못했습니다 .
 
-이제 **prettier**를  실행합시다.  prettier는 기본적으로 `2 space`  들여 쓰기와 `max-lang: 80`  자 길이로 설정 되어 있습니다. ESLint와 동일한 설정 입니다.
+이제 **prettier**를  실행합시다.  prettier는 기본적으로 `2 space`  들여 쓰기와 `max-lang: 80`  자 길이로 설정 되어 있습니다. ESLint와 동일한 설정 입니다.
 
 `npx prettier main.js --write`
 
@@ -141,7 +141,7 @@ printUser('John', 'Doe', 48, '998 Primrose Lane', 53718, 'Madison', 'United Stat
 
 ```
 
-**Prettier** 는 **ESLint가** 할 수 없었던 max-len rule 을 수정했습니다.  그러나 Prettier는 `code quality` 과 관련된 `console.log`  문에 대해 경고하지 않았습니다 .ESLinst, Prettier 둘은 잘하는 분야가 서로 다릅니다.  `code quality`와 `code formatting`, 모두를 잘 수행하기 위해서는 두 도구를 함깨 사용해야합니다.
+**Prettier** 는 **ESLint가** 할 수 없었던 max-len rule 을 수정했습니다.  그러나 Prettier는 `code quality` 과 관련된 `console.log`  문에 대해 경고하지 않았습니다 .ESLinst, Prettier 둘은 잘하는 분야가 서로 다릅니다.  `code quality`와 `code formatting`, 모두를 잘 수행하기 위해서는 두 도구를 함께 사용해야합니다.
 
 EditorConfig와 Prettier에 관한 두 번째 질문에 대해 답하겠습니다. Prettier는  EditorConfig 를 대체 할 수 없습니다. **EditorConfig의 역할은 당신이 사용할 IDE 혹은 에디터의 설정을 덮어써서  당신이 앞으로 쓰게 될 코드가 정해진 형식(Editorconfig 세팅)에 맞게 Formatting 되도록 하는 것 입니다.  Prettier는 이미 작성된 코드를 형식화하도록 편집기를 구성하는 것입니다** .
 
@@ -151,6 +151,6 @@ EditorConfig를 사용하면 Editor 혹은 IDE는 이미 EditorConfig의 Rule에
 
 세 가지 도구를 모두 사용하면 개발 경험이 확실히 향상됩니다. 문제는 도구가 서로 잘 작동하도록 도구를 구성하는 방법입니다.
 
-그러나 우리가 더 깊이 들어가기 전에 당신이 알아 두어야할 점이 있습니다. 저는Prettier를 사용하기 위해 ESLint를 포기한 팀을 보았습니다. 프로젝트를 위해 세 가지 도구를 모두 사용하지 않고 하나만 선택 해야하는 경우 선택은 당신의 몫 입니다. 하지만 명심 하십시요. **Prettier 는 어떤 linting(코드 품질을 위한) 기능을 제공하지 않습니다.** 단지 코드를 Formatting 할 뿐 입니다. 따라서 **Prettier** 사용을 고려하기 전에 **ESLint를 사용을 먼저 고려하는 것이 좋습니다** .
+그러나 우리가 더 깊이 들어가기 전에 당신이 알아 두어야할 점이 있습니다. 저는Prettier를 사용하기 위해 ESLint를 포기한 팀을 보았습니다. 프로젝트를 위해 세 가지 도구를 모두 사용하지 않고 하나만 선택 해야하는 경우 선택은 당신의 몫 입니다. 하지만 명심 하십시요. **Prettier 는 어떤 linting(코드 품질을 위한) 기능을 제공하지 않습니다.** 단지 코드를 Formatting 할 뿐 입니다. 따라서 **Prettier** 사용을 고려하기 전에 **ESLint를 사용을 먼저 고려하는 것이 좋습니다** .
 
 두 가지를 모두 사용하려면 **형식 충돌(Formatting Conflict)** 이 나타날 수 있습니다. ESLint 와 Prettier를 함께 사용할 때, 서로 다르게 코드를 Fortmatting 하도록 설정할 수도 있고, EditorConfig와 Prettier를 함께 사용했을 때, 중복 설정을  할 수도 있습니다. 그렇다면 이러한 도구들을 함께 사용하려면  어떻게 설정해야 할까요? 답은 **[다음 블로그 글](https://blog.theodo.com/2019/08/empower-your-dev-environment-with-eslint-prettier-and-editorconfig-with-no-conflicts/)** 에 작성했습니다.
