@@ -1,166 +1,147 @@
-/*
- Solarized Color Schemes originally by Ethan Schoonover
- http://ethanschoonover.com/solarized
+@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css);
+// @import './variables.scss';
+.gatsby-highlight {
+  background-color: hsla(207, 95%, 15%, 1);
+  display: block;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.35em solid #0687f0;
+  font-size: 13px;
+}
 
- Ported for PrismJS by Hector Matos
- Website: https://krakendev.io
- Twitter Handle: https://twitter.com/allonsykraken)
-*/
+blockquote {
+  color: $blockquote-text-color;
+}
 
-/*
-SOLARIZED HEX
---------- -------
-base03    #002b36
-base02    #073642
-base01    #586e75
-base00    #657b83
-base0     #839496
-base1     #93a1a1
-base2     #eee8d5
-base3     #fdf6e3
-yellow    #b58900
-orange    #cb4b16
-red       #dc322f
-magenta   #d33682
-violet    #6c71c4
-blue      #268bd2
-cyan      #2aa198
-green     #859900
-*/
+code {
+  font-weight: 500;
+}
 
 code[class*='language-'],
 pre[class*='language-'] {
-  // 커스텀 항목
-  font-size: 0.9em;
-  font-family: 'Inconsolata', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
+  color: #e0e0e0;
+  background: none;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono',
     monospace;
-  line-height: 1.6;
-
-  color: #657b83; /* base00 */
-  // font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  // font-size: 1em;
-
   text-align: left;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
+  line-height: 1.6;
 
-  // line-height: 1.5;
-
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
 
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
+
+  -ms-overflow-style: none; // IE 10+
+  overflow: -moz-scrollbars-none; // Firefox
 }
 
-pre[class*='language-']::-moz-selection,
-pre[class*='language-'] ::-moz-selection,
-code[class*='language-']::-moz-selection,
-code[class*='language-'] ::-moz-selection {
-  background: #073642; /* base02 */
-}
-
-pre[class*='language-']::selection,
-pre[class*='language-'] ::selection,
-code[class*='language-']::selection,
-code[class*='language-'] ::selection {
-  background: #073642; /* base02 */
+pre[class*='language-']::-webkit-scrollbar {
+  display: none; // Safari and Chrome
 }
 
 /* Code blocks */
 pre[class*='language-'] {
-  padding: 1em;
-  margin: 0.5em 0;
+  padding: 1.2em;
+  margin: 1.5em 0;
   overflow: auto;
-  border-radius: 0.3em;
+  border-radius: 0.6em;
 }
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  // 커스텀
-  background-color: #fafafa; /* base3 */
-  // background-color: #fdf6e3; /* base3 */
+  background: #212121;
 }
 
 /* Inline code */
 :not(pre) > code[class*='language-'] {
-  background: #fafafa;
-  padding: 0.1em;
+  padding: 0.11em 0.3em;
+  margin: 0 0.1em;
   border-radius: 0.3em;
-  font-size: 0.8em;
-  color: #657b83;
+  white-space: normal;
+  border: 1.2px solid $inline-text-color;
+  background: $inline-dimmed-color;
+  color: $inline-text-color;
 }
 
 .token.comment,
+.token.block-comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #93a1a1; /* base1 */
+  color: #616161;
 }
 
 .token.punctuation {
-  color: #586e75; /* base01 */
+  color: #e0e0e0;
 }
 
-.namespace {
-  opacity: 0.7;
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+  color: #e2777a;
+}
+
+.token.function-name {
+  color: #6196cc;
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+  color: #ff9100;
 }
 
 .token.property,
-.token.tag,
-.token.boolean,
-.token.number,
+.token.class-name,
 .token.constant,
-.token.symbol,
-.token.deleted {
-  color: #268bd2; /* blue */
+.token.symbol {
+  color: #ffff00;
 }
 
 .token.selector,
-.token.attr-name,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+  color: #b388ff;
+}
+
 .token.string,
 .token.char,
-.token.builtin,
-.token.url,
-.token.inserted {
-  color: #2aa198; /* cyan */
-}
-
-.token.entity {
-  color: #657b83; /* base00 */
-  background: #eee8d5; /* base2 */
-}
-
-.token.atrule,
 .token.attr-value,
-.token.keyword {
-  color: #859900; /* green */
-}
-
-.token.function,
-.token.class-name {
-  color: #b58900; /* yellow */
-}
-
 .token.regex,
-.token.important,
 .token.variable {
-  color: #cb4b16; /* orange */
+  color: #00e676;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: #67cdcc;
 }
 
 .token.important,
 .token.bold {
   font-weight: bold;
 }
+
 .token.italic {
   font-style: italic;
 }
 
 .token.entity {
   cursor: help;
+}
+
+.token.inserted {
+  color: green;
 }
