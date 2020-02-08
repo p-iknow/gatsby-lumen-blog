@@ -10,6 +10,15 @@ exports[`Content renders correctly 1`] = `
     test
   </h1>
   <div
+    className="meta"
+  >
+    <p
+      className="meta__date"
+    >
+      2020년 02월 9일
+    </p>
+  </div>
+  <div
     className="content__body"
     dangerouslySetInnerHTML={
       Object {

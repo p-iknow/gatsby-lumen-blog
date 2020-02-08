@@ -4,10 +4,16 @@ exports[`Author renders correctly 1`] = `
 <div
   className="author"
 >
+  <img
+    alt="Test name"
+    className="author__photo"
+    height="65"
+    src="/test.jpg"
+    width="65"
+  />
   <p
     className="author__bio"
   >
-    Test bio
     <a
       className="author__bio-twitter"
       href="https://www.twitter.com/#"
@@ -17,8 +23,14 @@ exports[`Author renders correctly 1`] = `
       <strong>
         Test name
       </strong>
-       on Twitter
     </a>
+    <span
+      className="author__bio-subtitle"
+    >
+      Test bio
+      <br />
+      계발자 이영창 입니다.
+    </span>
   </p>
 </div>
 `;

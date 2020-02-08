@@ -29,6 +29,8 @@ exports[`Author renders correctly 1`] = `
     className="author__subtitle"
   >
     test
+    <br />
+    계발자 이영창 입니다.
   </p>
 </div>
 `;

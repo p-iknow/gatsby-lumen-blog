@@ -14,7 +14,7 @@ exports[`Menu renders correctly 1`] = `
         className="menu__list-item-link"
         href="/#0/"
       >
-        Item 0
+        ITEM 0
       </a>
     </li>
     <li
@@ -24,7 +24,7 @@ exports[`Menu renders correctly 1`] = `
         className="menu__list-item-link"
         href="/#1/"
       >
-        Item 1
+        ITEM 1
       </a>
     </li>
   </ul>
