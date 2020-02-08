@@ -40,7 +40,7 @@ $button-border-radius: 20px;
 // Layout
 $layout-post-single-width: 945px;
 // layout post width 속성 변경
-$layout-post-width: ($layout-post-single-width - 305px) * 1.2;
+$layout-post-width: ($layout-post-single-width - 305px);
 
 $layout-width: 1070px;
 $layout-breakpoint-sm: 685px;

@@ -6,7 +6,7 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 0 0 0 calc(100vw - 100%);
   font-family: $typographic-font-family;
   color: $typographic-base-font-color;
   line-height: $typographic-base-line-height;
@@ -39,14 +39,14 @@ h2 {
   font-size: $typographic-base-font-size * 1.6875;
   @include line-height(1.5);
   @include margin-top(2);
-  @include margin-bottom(1);
+  @include margin-bottom(0.5);
 }
 
 h3 {
   font-size: $typographic-base-font-size * 1.375;
   @include line-height(1);
   @include margin-top(2);
-  @include margin-bottom(1);
+  @include margin-bottom(0.5);
 }
 
 h4 {
@@ -69,6 +69,7 @@ h6 {
   @include margin-top(2.5);
   @include margin-bottom(0.5);
 }
+
 img {
   border: 0;
   max-width: 100%;
@@ -119,7 +120,7 @@ ul {
   @include margin-bottom(1);
 
   & li {
-    padding: 0 5px;
+    padding: 0 0px;
     margin-bottom: 10px;
   }
 }
@@ -127,7 +128,7 @@ ul {
 // 체크박스 컨트롤을 위한 수정
 #이번주-도전 ~ ul,
 #다음주-도전 ~ ul {
-  padding-left: 1.3em;
+  padding-left: 0.2rem;
   list-style: none;
 }
 #이번주-도전 ~ ul li ul,
@@ -137,8 +138,9 @@ ul {
 
 #이번주-도전 ~ ul input[type='checkbox'],
 #다음주-도전 ~ ul input[type='checkbox'] {
-  transform: scale(1.5);
-  margin-right: 0.8em;
+  transform: scale(1.1);
+
+  margin-right: 0.2em;
   vertical-align: 0%;
 }
 
@@ -206,7 +208,7 @@ figcaption {
 @include breakpoint-xs {
   #이번주-도전 ~ ul,
   #다음주-도전 ~ ul {
-    padding-left: 0.8rem;
+    padding-left: 0.2rem;
   }
 
   #이번주-도전 ~ ul input[type='checkbox'],

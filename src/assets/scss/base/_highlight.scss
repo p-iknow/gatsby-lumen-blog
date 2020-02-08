@@ -70,6 +70,11 @@ pre[class*='language-'] {
   background: $inline-dimmed-color;
   color: $inline-text-color;
 }
+/* inline code font-size */
+p code[class*='language-'],
+li code[class*='language-'] {
+  font-size: 13px;
+}
 
 .token.comment,
 .token.block-comment,
