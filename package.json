@@ -82,7 +82,9 @@
     "react": "^16.8.6",
     "react-disqus-comments": "^1.4.0",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "typeface-catamaran": "^0.0.72",
+    "typeface-noto-sans-kr": "^0.0.63"
   },
   "devDependencies": {
     "@babel/core": "7.4.5",
