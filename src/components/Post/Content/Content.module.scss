@@ -2,19 +2,21 @@
 @import '../../../assets/scss/mixins';
 
 .content {
-  color: rgb(73, 80, 87);
+  color: #252627;
   max-width: $layout-post-single-width;
   padding: 0 15px;
   margin: 0 auto;
+  overflow: hidden;
 
   &__title {
-    font-size: $typographic-base-font-size * 2.5;
+    font-size: 2.15rem;
+    font-family: Catamaran;
     max-width: $layout-post-width;
     margin-left: auto;
     margin-right: auto;
-    font-weight: 600;
+    font-weight: 800;
     text-align: center;
-    @include line-height(1.65);
+    @include line-height(1.6);
     @include margin-top(1);
     @include margin-bottom(0.5);
   }
@@ -32,72 +34,75 @@
         & p {
           max-width: $layout-post-width;
           margin-top: 0;
-          @include margin-bottom(1);
+          @include margin-bottom(0);
           @include line-height(1.5);
         }
       }
     }
 
     & h2 {
-      font-size: $typographic-base-font-size * 2;
-      @include margin-top(1.5);
+      font-weight: 800;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+      @include margin-top(1.3);
+      @include margin-bottom(0);
       line-height: $typographic-base-font-size * 2;
     }
 
-    & h2:nth-of-type(1) {
-      @include margin-top(2.4);
-    }
-
-    & h2 + h3 {
-      font-size: $typographic-base-font-size * 1.5;
-      @include margin-top(1.3);
-      @include margin-bottom(0.5);
+    & h2:before {
+      content: '#';
+      padding-right: 0.3rem;
+      font-size: 1.8rem;
+      color: #f7a046;
     }
 
     h3 {
-      font-size: $typographic-base-font-size * 1.5;
-      @include margin-top(1.3);
+      font-size: 1.125rem;
+      font-weight: 800;
+      @include margin-top(0.8);
+      @include margin-bottom(0);
     }
 
     h4 {
-      font-size: $typographic-base-font-size * 1.275;
-    }
-
-    & h3 + h4 {
-      font-size: $typographic-base-font-size * 1.275;
-      padding-left: 0.2rem;
-      @include margin-top(1);
-      @include margin-bottom(0.5);
+      font-size: 1.125rem;
+      @include margin-top(0.8);
+      @include margin-bottom(0);
     }
 
     & ul + h4 {
       @include margin-top(1);
     }
-    // h2 이전 '\'
-    // & h2:before {
-    //   content: '';
-    //   padding-left: 0.8rem;
-    //   border-left: 0.5rem solid #f7a046;
-    // }
 
-    // h3 이전 # 붙이도록 추가
-    & h3:before {
-      content: '#  ';
-      padding-right: 0.275rem;
-      font-size: $typographic-base-font-size * 1.275;
-      color: #f7a046;
+    h5 {
+      font-size: 1rem;
+      @include margin-top(0.8);
+      @include margin-bottom(0);
     }
 
-    // h3 이전 # 붙이도록 추가
-    & h4:before {
-      content: ' ';
-      font-size: $typographic-base-font-size * 1.175;
-      color: #f7a046;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Catamaran';
     }
+    & strong {
+      padding: 0.05em 0.3em;
+      margin: 0 0.1em;
+      border-radius: 0.3em;
+      white-space: normal;
+      font-size: 0.875rem;
+      // border: 1px solid #758493;
+      background: #f6f2f0;
+      color: #606e7c;
+      line-height: 0rem;
+    }
+
     & p {
-      padding-left: 0.7rem;
-      font-size: $typographic-base-font-size * 1.175;
-      line-height: $typographic-base-font-size * 2;
+      font-size: 1rem;
+      line-height: $typographic-base-font-size * 1.7;
+      margin-bottom: 0.8125rem;
     }
     // table 스타일 변경
     & table {
@@ -168,10 +173,10 @@
     }
     // blockquote 정렬을 위한 커스텀 수정
     & blockquote {
-      margin-left: 5em;
+      padding-left: 0.7rem;
 
       & h2::before {
-        content: '';
+        display: none;
       }
       & ul {
         padding-inline-start: 1.8rem;
@@ -180,22 +185,22 @@
 
     & img {
       max-width: 100%;
+      @include margin-top(0.5);
     }
     // 커스텀
     & ul {
-      font-size: $typographic-base-font-size * 1.175;
-      padding-left: 1.6rem;
+      font-size: 1rem;
+      padding-inline-start: 3.2rem;
       list-style: disc;
       @include margin-bottom(1);
 
       & li {
         padding-left: 0rem;
-        margin-bottom: 9px;
         // list 내부 리스트의 수정
         & p {
           padding: 0;
           margin-top: 0;
-          margin-bottom: 9px;
+          margin-bottom: 0px;
         }
         & ul {
           padding-left: 25px;
@@ -212,7 +217,27 @@
   .content {
     &__body {
       & ul {
-        padding-inline-start: 3.5rem;
+        padding-inline-start: 3.2rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 411px) and (max-width: 689px) {
+  .content {
+    &__body {
+      & ul {
+        padding-left: 1.6rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 690px) and (max-width: 710px) {
+  .content {
+    &__body {
+      & ul {
+        padding-left: 3rem;
       }
     }
   }
@@ -221,27 +246,9 @@
 @include breakpoint-md {
   .content {
     padding: 0;
-
-    &__title {
-      font-size: $typographic-base-font-size * 2.5;
-      @include line-height(2.25);
-      @include margin-top(2.25);
-      @include margin-bottom(0.5);
-    }
-
     &__body {
-      font-size: $typographic-base-font-size * 1.125;
-      @include line-height(1.125);
-      @include margin-bottom(1.125);
-
-      & p {
-        font-size: $typographic-base-font-size * 1.175;
-        @include line-height(1.275);
-        @include margin-bottom(1.125);
-      }
-
       & ul {
-        padding-inline-start: 4.2rem;
+        padding-inline-start: 3.2rem;
       }
     }
   }
@@ -251,20 +258,20 @@
 @include breakpoint-xs {
   .content {
     &__title {
-      font-size: $typographic-base-font-size * 1.6;
+      font-size: 2.125rem;
     }
 
     &__body {
       & h2 {
-        font-size: $typographic-base-font-size * 1.4;
+        font-size: 1.5rem;
       }
 
       & h3 {
-        font-size: $typographic-base-font-size * 1.2;
+        font-size: 1.25rem;
       }
 
       & h4 {
-        font-size: $typographic-base-font-size * 1.15;
+        font-size: 1.15rem;
       }
       & blockquote {
         margin-left: 0;

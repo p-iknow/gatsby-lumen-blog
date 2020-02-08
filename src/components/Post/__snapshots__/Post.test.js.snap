@@ -22,6 +22,15 @@ exports[`Post renders correctly 1`] = `
         test
       </h1>
       <div
+        className="meta"
+      >
+        <p
+          className="meta__date"
+        >
+          2016년 09월 1일
+        </p>
+      </div>
+      <div
         className="content__body"
         dangerouslySetInnerHTML={
           Object {
@@ -34,16 +43,6 @@ exports[`Post renders correctly 1`] = `
   <div
     className="post__footer"
   >
-    <div
-      className="meta"
-    >
-      <p
-        className="meta__date"
-      >
-        Published 
-        1 Sep 2016
-      </p>
-    </div>
     <div
       className="tags"
     >
@@ -75,10 +74,16 @@ exports[`Post renders correctly 1`] = `
     <div
       className="author"
     >
+      <img
+        alt="Test name"
+        className="author__photo"
+        height="65"
+        src="/test.jpg"
+        width="65"
+      />
       <p
         className="author__bio"
       >
-        Test bio
         <a
           className="author__bio-twitter"
           href="https://www.twitter.com/#"
@@ -88,8 +93,14 @@ exports[`Post renders correctly 1`] = `
           <strong>
             Test name
           </strong>
-           on Twitter
         </a>
+        <span
+          className="author__bio-subtitle"
+        >
+          Test bio
+          <br />
+          계발자 이영창 입니다.
+        </span>
       </p>
     </div>
   </div>

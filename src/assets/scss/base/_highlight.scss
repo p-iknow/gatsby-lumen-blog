@@ -1,113 +1,103 @@
-/*
- Solarized Color Schemes originally by Ethan Schoonover
- http://ethanschoonover.com/solarized
+@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css);
+// @import './variables.scss';
+.gatsby-highlight {
+  background-color: rgba(245, 242, 240, 100);
+  display: block;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.3em solid #fdead5;
+  border-radius: 0.5rem;
+  font-size: 13px;
+}
 
- Ported for PrismJS by Hector Matos
- Website: https://krakendev.io
- Twitter Handle: https://twitter.com/allonsykraken)
-*/
+blockquote {
+  color: $blockquote-text-color;
+}
 
-/*
-SOLARIZED HEX
---------- -------
-base03    #002b36
-base02    #073642
-base01    #586e75
-base00    #657b83
-base0     #839496
-base1     #93a1a1
-base2     #eee8d5
-base3     #fdf6e3
-yellow    #b58900
-orange    #cb4b16
-red       #dc322f
-magenta   #d33682
-violet    #6c71c4
-blue      #268bd2
-cyan      #2aa198
-green     #859900
-*/
+code {
+  font-weight: 500;
+}
 
 code[class*='language-'],
 pre[class*='language-'] {
-  // 커스텀 항목
-  font-size: 0.9em;
-  font-family: 'Inconsolata', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
+  color: rgb(56, 38, 38);
+  background: none;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono',
     monospace;
-  line-height: 1.6;
-
-  color: #657b83; /* base00 */
-  // font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  // font-size: 1em;
-
   text-align: left;
+  text-shadow: 0 1px white;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
+  line-height: 1.6;
 
-  // line-height: 1.5;
-
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
 
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
+
+  -ms-overflow-style: none; // IE 10+
+  overflow: -moz-scrollbars-none; // Firefox
 }
 
-pre[class*='language-']::-moz-selection,
-pre[class*='language-'] ::-moz-selection,
-code[class*='language-']::-moz-selection,
-code[class*='language-'] ::-moz-selection {
-  background: #073642; /* base02 */
-}
-
-pre[class*='language-']::selection,
-pre[class*='language-'] ::selection,
-code[class*='language-']::selection,
-code[class*='language-'] ::selection {
-  background: #073642; /* base02 */
+pre[class*='language-']::-webkit-scrollbar {
+  display: none; // Safari and Chrome
 }
 
 /* Code blocks */
 pre[class*='language-'] {
-  padding: 1em;
-  margin: 0.5em 0;
+  padding: 1.2em;
+  margin: 1.5em 0;
   overflow: auto;
-  border-radius: 0.3em;
+  border-radius: 0.6em;
 }
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  // 커스텀
-  background-color: #fafafa; /* base3 */
-  // background-color: #fdf6e3; /* base3 */
+  background: #f5f2f0;
 }
 
 /* Inline code */
 :not(pre) > code[class*='language-'] {
-  background: #fafafa;
-  padding: 0.1em;
+  padding: 0.11em 0.3em;
+  margin: 0 0.1em;
   border-radius: 0.3em;
-  font-size: 0.8em;
-  color: #657b83;
+  white-space: normal;
+  border: 1.2px solid $inline-text-color;
+  background: $inline-dimmed-color;
+  color: $inline-text-color;
+}
+/* inline code font-size */
+p code[class*='language-'],
+li code[class*='language-'] {
+  font-size: 0.8rem;
+}
+
+h2 code[class*='language-'] {
+  font-size: 1.2rem;
+}
+
+h3 code[class*='language-'] {
+  font-size: 1rem;
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #93a1a1; /* base1 */
+  color: slategray;
 }
 
 .token.punctuation {
-  color: #586e75; /* base01 */
+  color: #999;
 }
 
-.namespace {
+.token.namespace {
   opacity: 0.7;
 }
 
@@ -118,7 +108,7 @@ pre[class*='language-'] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #268bd2; /* blue */
+  color: #905;
 }
 
 .token.selector,
@@ -126,31 +116,34 @@ pre[class*='language-'] {
 .token.string,
 .token.char,
 .token.builtin,
-.token.url,
 .token.inserted {
-  color: #2aa198; /* cyan */
+  color: #690;
 }
 
-.token.entity {
-  color: #657b83; /* base00 */
-  background: #eee8d5; /* base2 */
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #9a6e3a;
+  background: hsla(0, 0%, 100%, 0.5);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: #859900; /* green */
+  color: #07a;
 }
 
 .token.function,
 .token.class-name {
-  color: #b58900; /* yellow */
+  color: #dd4a68;
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-  color: #cb4b16; /* orange */
+  color: #e90;
 }
 
 .token.important,

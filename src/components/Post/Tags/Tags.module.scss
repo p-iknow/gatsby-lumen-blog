@@ -9,13 +9,9 @@
     list-style: none;
     margin: 0 -0.3125rem;
     padding: 0;
-    &-item:hover {
-      transform: scale(1.2);
-      margin: 0.625rem 0.8125rem;
-    }
     &-item {
       display: inline-block;
-      margin: 0.625rem 0rem;
+      margin: 0.625rem 0.2rem;
 
       &-link {
         font-size: $typographic-base-font-size * 0.9;
