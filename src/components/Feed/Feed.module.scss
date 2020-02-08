@@ -20,12 +20,6 @@
 
       &-link {
         color: $color-base;
-
-        &:hover,
-        &:focus {
-          color: $color-base;
-          border-bottom: 1px solid $color-base;
-        }
       }
     }
 
@@ -64,6 +58,7 @@
 
     &-readmore {
       font-size: $typographic-base-font-size;
+      font-weight: 600;
       color: $color-primary;
 
       &:hover,

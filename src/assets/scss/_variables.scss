@@ -4,7 +4,7 @@
 
 // Colors
 $color-base: #222;
-$color-primary: #5d93ff;
+$color-primary: #2a3f6a;
 $color-secondary: #f7a046;
 
 $color-white: #fff;
@@ -12,10 +12,8 @@ $color-gray: lighten($color-base, 40%);
 $color-gray-border: lighten($color-base, 77%);
 $color-gray-bg: lighten($color-base, 79%);
 
-// 'Spoqa Han Sans', 'Noto Sans HK'
-
 // Typographic
-$typographic-font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont,
+$typographic-font-family: Catamaran, -apple-system, BlinkMacSystemFont,
   'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
   sans-serif;
 
@@ -40,7 +38,7 @@ $button-border-radius: 20px;
 // Layout
 $layout-post-single-width: 945px;
 // layout post width 속성 변경
-$layout-post-width: ($layout-post-single-width - 305px);
+$layout-post-width: $layout-post-single-width - 305px;
 
 $layout-width: 1070px;
 $layout-breakpoint-sm: 685px;
@@ -51,8 +49,8 @@ $layout-breadpoint-800-for-padding: 800px;
 
 // code highlight
 // code
-$inline-dimmed-color: #ece5f1;
-$inline-text-color: #4b2043;
+$inline-dimmed-color: #f5f2f0;
+$inline-text-color: #ca6f00;
 
 // blog-templates
 $navigator-text-color: #cc007a;
