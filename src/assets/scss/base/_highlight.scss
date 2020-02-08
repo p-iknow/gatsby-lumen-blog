@@ -5,7 +5,8 @@
   display: block;
   padding-right: 1em;
   padding-left: 0.75em;
-  border-left: 0.5em solid #fdead5;
+  border-left: 0.3em solid #fdead5;
+  border-radius: 0.5rem;
   font-size: 13px;
 }
 
@@ -74,8 +75,17 @@ pre[class*='language-'] {
 /* inline code font-size */
 p code[class*='language-'],
 li code[class*='language-'] {
-  font-size: 13px;
+  font-size: 0.8rem;
 }
+
+h2 code[class*='language-'] {
+  font-size: 1.2rem;
+}
+
+h3 code[class*='language-'] {
+  font-size: 1rem;
+}
+
 .token.comment,
 .token.prolog,
 .token.doctype,

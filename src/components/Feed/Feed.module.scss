@@ -50,7 +50,7 @@
 
           &:hover,
           &:focus {
-            color: $color-primary;
+            border-bottom: 1px solid $color-secondary;
           }
         }
       }
@@ -59,12 +59,12 @@
     &-readmore {
       font-size: $typographic-base-font-size;
       font-weight: 600;
-      color: $color-primary;
+      color: $color-secondary;
 
       &:hover,
       &:focus {
-        color: $color-primary;
-        border-bottom: 1px solid $color-primary;
+        color: $color-secondary;
+        border-bottom: 1px solid $color-secondary;
       }
     }
   }
