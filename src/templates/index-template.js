@@ -55,7 +55,7 @@ export const query = graphql`
         frontmatter: {
           template: { eq: "post" }
           draft: { ne: true }
-          category: { ne: "TIL" }
+          category: { nin: ["TIL", "Reflection-Of-Week", "algorithm"] }
         }
       }
       sort: { order: DESC, fields: [frontmatter___date] }

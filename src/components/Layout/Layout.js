@@ -13,17 +13,13 @@ type Props = {
 const Layout = ({ children, title, description }: Props) => (
   <div className={styles.layout}>
     <Helmet>
-      <html lang="en" />
+      <html lang="ko" />
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta property="og:site_name" content={title} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />
       {/* 폰트 등록 */}
-      <link
-        href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap"
-        rel="stylesheet"
-      />
     </Helmet>
     {children}
   </div>

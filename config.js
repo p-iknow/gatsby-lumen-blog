@@ -22,6 +22,10 @@ module.exports = {
       path: '/tag/log',
     },
     {
+      label: 'Algorithm',
+      path: '/category/algorithm',
+    },
+    {
       label: 'Category',
       path: '/categories',
     },
