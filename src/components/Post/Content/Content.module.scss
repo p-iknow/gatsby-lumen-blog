@@ -87,6 +87,17 @@
     h6 {
       font-family: 'Catamaran';
     }
+    & strong {
+      padding: 0.05em 0.3em;
+      margin: 0 0.1em;
+      border-radius: 0.3em;
+      white-space: normal;
+      font-size: 0.875rem;
+      // border: 1px solid #758493;
+      background: #f6f2f0;
+      color: #606e7c;
+      line-height: 0rem;
+    }
 
     & p {
       font-size: 1rem;
@@ -165,7 +176,7 @@
       padding-left: 0.7rem;
 
       & h2::before {
-        content: ' ';
+        display: none;
       }
       & ul {
         padding-inline-start: 1.8rem;
@@ -212,16 +223,36 @@
   }
 }
 
-// @include breakpoint-md {
-//   .content {
-//     padding: 0;
-//     &__body {
-//       & ul {
-//         padding-inline-start: 3.2rem;
-//       }
-//     }
-//   }
-// }
+@media (min-width: 411px) and (max-width: 689px) {
+  .content {
+    &__body {
+      & ul {
+        padding-left: 1.6rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 690px) and (max-width: 710px) {
+  .content {
+    &__body {
+      & ul {
+        padding-left: 3rem;
+      }
+    }
+  }
+}
+
+@include breakpoint-md {
+  .content {
+    padding: 0;
+    &__body {
+      & ul {
+        padding-inline-start: 3.2rem;
+      }
+    }
+  }
+}
 
 // 모바일 화면
 @include breakpoint-xs {
