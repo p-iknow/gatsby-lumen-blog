@@ -48,7 +48,7 @@ cat vscode-extensions.txt | xargs -L1 code --install-extension
 
 일단 vscode-extension.txt 에는 아래와 같은 내용이 들어있다고 가정하자
 
-```txt
+```html
 ms-vscode.azurecli
 formulahendry.auto-close-tag
 naumovs.color-highlight

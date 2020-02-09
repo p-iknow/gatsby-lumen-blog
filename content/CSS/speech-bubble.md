@@ -1,6 +1,6 @@
 ---
 title: CSS로 Speech Bubble(말풍선) UI 만들기
-date: '2019-05-21T23:46:37.121Z'
+date: '2020-02-09T23:46:37.121Z'
 template: 'post'
 draft: false
 slug: 'css/speech-bubble-ui/'
