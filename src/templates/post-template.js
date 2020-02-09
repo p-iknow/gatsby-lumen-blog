@@ -9,6 +9,7 @@ const getImgSrc = (htmlString, siteUrl) => {
   const result = /<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/.exec(htmlString);
   if (result == null || result.length < 2) return;
   let imgSrc = result[1];
+  if (imgSrc.includes('c.disquscdn.com/')) return;
 
   if (imgSrc.startsWith('/static'))
     imgSrc = siteUrl.concat(imgSrc.substring(1));

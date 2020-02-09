@@ -18,7 +18,7 @@ const Feed = ({ edges }: Props) => (
             className={styles['feed__item-meta-time']}
             dateTime={moment(edge.node.frontmatter.date).format('MMMM D, YYYY')}
           >
-            {moment(edge.node.frontmatter.date).format('MMMM YYYY')}
+            {moment(edge.node.frontmatter.date).format('YYYY년 MM월 D일')}
           </time>
           <span className={styles['feed__item-meta-divider']} />
           <span className={styles['feed__item-meta-category']}>

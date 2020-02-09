@@ -43,6 +43,8 @@
 
       &-category {
         &-link {
+          display: inline-block;
+          margin-left: 0px;
           font-size: $typographic-small-font-size;
           color: $color-secondary;
           font-weight: 600;
