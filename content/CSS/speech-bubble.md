@@ -1,3 +1,20 @@
+---
+title: CSS로 Speech Bubble(말풍선) UI 만들기
+date: '2019-05-21T23:46:37.121Z'
+template: 'post'
+draft: false
+slug: 'css/speech-bubble-ui/'
+category: 'css'
+tags:
+  - 'speech-bubble'
+  - 'css'
+description: '디자인 요구 사항 중 speech bubble ui가 있어서 이를 CSS 로 어떻게 구현하는지 원리를 파악해보았다. css 속성 중 :after, :before, position: absolute가 활용된다 '
+---
+
+## TLDR
+
+디자인 요구 사항 중 speech bubble ui가 있어서 이를 CSS 로 어떻게 구현하는지 원리를 파악해보았다. css 속성 중 `:after`, `:before`, `position: absolute`가 활용되며 해당 속성에 대한 이해가 있어야 이 글을 소화할 수 있다.
+
 ## 관련 Codepen 정리
 
 <iframe height="265" style="width: 100%;" scrolling="no" title="Speech Bubble" src="https://codepen.io/godotwait/embed/NWPMJKE?height=265&theme-id=default&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
@@ -19,4 +36,4 @@
 
 ## Speech Bubble Box에 border 가 있는 경우
 
-- `:before` 선택자를 통해 `triangle` 을 그린 뒤 `:after` 선택자로 더 작은 triangle 을 그려서 `:before` triangle을 덮어써서 구현할 수 있다. 이때 `:after` triangle 의 높이는 `:before` triangle 크기 보다 작아야 border보다 작아햐 한다.
+- `:before` 선택자를 통해 `triangle` 을 그린 뒤 `:after` 선택자로 더 작은 triangle 을 그려서 `:before` triangle을 덮어써서 구현할 수 있다. 이때 `:after` triangle 의 높이는 `:before` triangle 크기 보다 작아야 border보다 작아야 한다.
