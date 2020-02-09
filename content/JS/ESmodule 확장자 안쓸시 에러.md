@@ -1,5 +1,5 @@
 ---
-title: ESModule 확장자(.js) 쓰지 않았을 때 404 Not Fount 오류
+title: ESModule 확장자(.js) 쓰지 않았을 때 404 Not Found 오류
 date: '2020-01-31T23:46:37.121Z'
 template: 'post'
 draft: false
@@ -13,10 +13,10 @@ description: '브라우저에서 지원하는 ESModule을 사용할 때 .js 확�
 
 ## 이슈 
 
-별도의 번들링 없이 ESModule을 사용해 `import` 할때 확장자를 쓰지 않으면 에러가 발생한다. 평소 React  환경에서 webpack 번들링을 통해 ESModule을 사용할 때는 확장자 없이 `import` 를 했기에 문제가 있다고 생각했다. 
+별도의 번들링 없이 `ESModule`을 사용해 `import` 할때 확장자를 쓰지 않으면 에러가 발생한다. 평소 `React` 환경에서 `webpack` 번들링을 통해 `ESModule`을 사용할 때는 확장자 없이 `import` 를 했기에 문제가 있다고 생각했다. 
 
 ### 코드 샘플
-
+#### html
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ description: '브라우저에서 지원하는 ESModule을 사용할 때 .js 확�
   </body>
 </html>
 ```
-
+#### js
 ```js
 import ViewModel from "./ViewModel"; // 확장자(.js) 없으면 에러 발생
 import Scanner from "./Scanner.js"; // 확장자 붙이면 에러 발생 하지 않음 
@@ -49,19 +49,12 @@ import Scanner from "./Scanner.js"; // 확장자 붙이면 에러 발생 하지 
 
 ![Imgur](https://imgur.com/oVU7abr.png)
 
-
-
 ## 해결 
 
 ### 확장자를 예측하고 붙여주는 일은 사실 모듈 번들러의 일이었다.
+브라우저는 상대경로를 통해(`/ViewModel`) 절대 경로`http://127.0.0.1:5500/mvvm2-practice/ViewModel`를 만들기는 하지만,  해당 경로를 보고 자동으로 확장자를 붙이는 일을 하지는 않는다. 해당 경로를 탐색하고 그에 맞는 확장자를 붙여주고 문제가 없게 만드는 것은 `Webpack` 이나 `RollUp` 같은 모듈 번들러의 역할이었다.  
 
-브라우저는 상대경로를 통해(`/ViewModel`) 절대 경로(http://127.0.0.1:5500/mvvm2-practice/ViewModel)를 만들기는 하지만,  해당 경로를 보고 자동으로 확장자를 붙이는 일을 하지는 않는다. 해당 경로를 탐색하고 그에 맞는 확장자를 붙여주고 문제가 없게 만드는 것은 Webpack 이나 RollUp 같은 모듈 번들러의 역할이었다.  
-
-브라우저 입장에서http://127.0.0.1:5500/mvvm2-practice/ViewModel이라는 주소에 해당하는 static file은 없다. 에러를 Throw 하는게 당연하다. 때문에 브라우저 자체적으로 지원하는 ESModule을 사용할 때에는 파일명과 확장자를 병기 해야 한다.
+브라우저 입장에서`http://127.0.0.1:5500/mvvm2-practice/ViewModel` 이라는 주소에 해당하는 `static file`은 없다. 에러를 `throw` 하는게 당연하다. 때문에 브라우저 자체적으로 지원하는 `ESModule`을 사용할 때에는 파일명과 확장자를 병기 해야 한다.
 
 > ## 참고
->
-> https://stackoverflow.com/questions/55251956/how-does-javascript-import-find-the-module-without-an-extension
-
-
-
+> [스텍오버 플로우](https://stackoverflow.com/questions/55251956/how-does-javascript-import-find-the-module-without-an-extension)
