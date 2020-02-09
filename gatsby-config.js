@@ -10,6 +10,7 @@ module.exports = {
     subtitle: siteConfig.subtitle,
     copyright: siteConfig.copyright,
     disqusShortname: siteConfig.disqusShortname,
+    utterancesConfig: siteConfig.utterancesConfig,
     menu: siteConfig.menu,
     author: siteConfig.author,
   },

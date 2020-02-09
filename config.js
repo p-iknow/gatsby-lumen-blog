@@ -6,6 +6,15 @@ module.exports = {
   subtitle: '잘하기 위해 자랍니다.',
   copyright: '© All rights reserved.',
   disqusShortname: 'p-iknows-devlog',
+  utterancesConfig: {
+    src: 'https://utteranc.es/client.js',
+    repo: 'P-iknow/p-iknow-devlog-comment',
+    issueTerm: 'title',
+    label: 'comment',
+    theme: 'github-light',
+    crossorigin: 'anonymous',
+    async: true,
+  },
   postsPerPage: 6,
   googleAnalyticsId: 'UA-110581115-1',
   menu: [
