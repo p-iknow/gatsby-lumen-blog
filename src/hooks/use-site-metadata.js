@@ -28,6 +28,12 @@ const useSiteMetadata = () => {
             subtitle
             copyright
             disqusShortname
+            share {
+              facebookAppId
+            }
+            sponser {
+              buyMeACoffeeId
+            }
             utterancesConfig {
               src
               repo

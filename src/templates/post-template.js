@@ -26,6 +26,7 @@ const PostTemplate = ({ data }: Props) => {
     subtitle: siteSubtitle,
     author: { name },
     url: siteUrl,
+    sponser: { buyMeACoffeeId },
   } = useSiteMetadata();
   const {
     title: postTitle,
@@ -45,7 +46,7 @@ const PostTemplate = ({ data }: Props) => {
       author={name}
       imgSrc={imgSrc}
     >
-      <Post post={data.markdownRemark} />
+      <Post post={data.markdownRemark} sponserId={buyMeACoffeeId} />
     </Layout>
   );
 };

@@ -15,6 +15,12 @@ module.exports = {
     crossorigin: 'anonymous',
     async: true,
   },
+  share: {
+    facebookAppId: '991665871006232', // Add facebookAppId for using facebook share feature v3.2
+  },
+  sponsor: {
+    buyMeACoffeeId: 'piknow',
+  },
   postsPerPage: 6,
   googleAnalyticsId: 'UA-110581115-1',
   menu: [

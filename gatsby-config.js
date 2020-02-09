@@ -13,6 +13,8 @@ module.exports = {
     utterancesConfig: siteConfig.utterancesConfig,
     menu: siteConfig.menu,
     author: siteConfig.author,
+    share: siteConfig.share,
+    sponser: siteConfig.sponsor,
   },
   plugins: [
     {

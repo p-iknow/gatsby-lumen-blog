@@ -20,7 +20,6 @@ const Feed = ({ edges }: Props) => (
           >
             {moment(edge.node.frontmatter.date).format('YYYY년 MM월 D일')}
           </time>
-          <span className={styles['feed__item-meta-divider']} />
           <span className={styles['feed__item-meta-category']}>
             <Link
               to={edge.node.fields.categorySlug}
