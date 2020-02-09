@@ -44,7 +44,7 @@
       font-weight: 800;
       font-size: 1.5rem;
       line-height: 1.5rem;
-      @include margin-top(1.3);
+      @include margin-top(0.5);
       @include margin-bottom(0);
       line-height: $typographic-base-font-size * 2;
     }

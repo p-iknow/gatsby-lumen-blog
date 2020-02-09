@@ -5,7 +5,7 @@ export type RenderCallback = (data: any) => ReactNode;
 
 export type Entry = (string[]) => string;
 
-export type WidgetFor = (string) => string;
+export type WidgetFor = string => string;
 
 export type PageContext = {
   tag: string,
@@ -14,14 +14,14 @@ export type PageContext = {
   prevPagePath: string,
   nextPagePath: string,
   hasPrevPage: boolean,
-  hasNextPage: boolean
+  hasNextPage: boolean,
 };
 
 export type Node = {
   fields: {
     slug: string,
     categorySlug?: string,
-    tagSlugs?: string[]
+    tagSlugs?: string[],
   },
   frontmatter: {
     date: string,
@@ -29,13 +29,15 @@ export type Node = {
     category?: string,
     tags?: string[],
     title: string,
+    img?: string,
   },
   html: string,
-  id: string
+  id: string,
+  excerpt: string,
 };
 
 export type Edge = {
-  node: Node
+  node: Node,
 };
 
 export type Edges = Array<Edge>;
@@ -46,8 +48,8 @@ export type AllMarkdownRemark = {
   },
   group: {
     fieldValue: string,
-    totalCount: number
-  }[]
+    totalCount: number,
+  }[],
 };
 
 export type MarkdownRemark = Node;

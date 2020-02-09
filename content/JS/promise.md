@@ -2,6 +2,7 @@
 title: Custom Promise 구현으로 프로미스 파혜치기
 date: '2019-06-30T23:46:37.121Z'
 template: 'post'
+img: 'https://user-images.githubusercontent.com/35516239/69477287-b451e200-0e27-11ea-9770-217e576f08e1.jpg'
 draft: false
 slug: 'js/custom-promise'
 category: 'JS'
@@ -20,9 +21,9 @@ description: 'JS를 시작한지 얼마 안된 상태에서 Promise는 어렵다
 - 프로미스를 말하면서 마이크로 테스크 큐를 빼놓을 수 없지만 프로미스의 동작에 보다 집중하기 위해 여기에서 다루지 않았다.
 - 전체 코드는 이 [링크](https://github.com/P-iknow/codesquad-amazone/blob/P-iknow/public/PLib/myPromise.js)에 있다. 테스트 코드는 [여기](https://github.com/P-iknow/codesquad-amazone/blob/P-iknow/public/PLib/testMyPromis.js) 있다.
 
-## 들어가며 
+## 들어가며
 
-JS를 시작한지 얼마 안된 상태에서 Promise는 어렵다. 비동기도 어려운데 `.then ` 과 `.catch` 로 전개되는 흐름, 함수(`resolve, reject`) 가 인자로 전달되는 풍경은 머리속을 하얗게 만든다. 물리학에 한 획을 그은 파이만 아저씨는 이렇게 복잡하고 어려운 내용을 공부할 때 실제 그 대상을 직접 만들어보면서 공부 했다고 한다. 무모하지만 필자도  Custom Promise를 만들어보며 promise를 이해해 보려고 한다. 해당 글이 promise로 인해 골머리를 앓고 있는 이들에게 조금이나마 도움이 될 수 있으면 한다. 
+JS를 시작한지 얼마 안된 상태에서 Promise는 어렵다. 비동기도 어려운데 `.then` 과 `.catch` 로 전개되는 흐름, 함수(`resolve, reject`) 가 인자로 전달되는 풍경은 머리속을 하얗게 만든다. 물리학에 한 획을 그은 파이만 아저씨는 이렇게 복잡하고 어려운 내용을 공부할 때 실제 그 대상을 직접 만들어보면서 공부 했다고 한다. 무모하지만 필자도 Custom Promise를 만들어보며 promise를 이해해 보려고 한다. 해당 글이 promise로 인해 골머리를 앓고 있는 이들에게 조금이나마 도움이 될 수 있으면 한다.
 
 ## Promise의 기본동작 살펴보기
 
@@ -58,7 +59,7 @@ new MyPromise((resolve, reject) => {
 });
 ```
 
-이때 처음 생성한 프로미스 인스턴스의 `resolve`가 비동기로 실행되면 `then` 메소드 실행시 `callback`은 실행되지 않는다. `callback`은 앞에서 말했듯이 프로미스 인스턴스의` resolve`가 실행된 후 실행된다.
+이때 처음 생성한 프로미스 인스턴스의 `resolve`가 비동기로 실행되면 `then` 메소드 실행시 `callback`은 실행되지 않는다. `callback`은 앞에서 말했듯이 프로미스 인스턴스의`resolve`가 실행된 후 실행된다.
 
 ```js
 new MyPromise((resolve, reject) => {
@@ -140,6 +141,7 @@ resolve(value) -> 첫번째 callback(value) -> 두번째 callback()
 ```
 
 세가지의 의문점이 생긴다.
+
 - 첫째, `.then` 이 어떻게 연속으로 체이닝이 될 수 있는가?`
 - 둘째, `resolve` 가 실행됬는지 혹은 `.then` 내부에 `callback`이 실행되었느지 여부에 따라 `.then` 의 로직이 바뀌는데 어떻게 가능한 것인가?
 - 셋째, 어떻게 비동기 `resolve` 이후 `.then(callback)`에 전달한 `callback`이 실행될 수 있는가?, 어떻게 비동기 `resolve(value)` 실행에 전달된 인자 값`(value)`이 다음 `.then` 메소드의 `callback(value)`의 인자로 전달될 수 있는가?`
@@ -150,7 +152,7 @@ resolve(value) -> 첫번째 callback(value) -> 두번째 callback()
 
 ### `.then` 메소드가 리턴하는 것은 무엇인가?
 
-우선 첫째 `.then 은 어떻게 연속으로 체이닝이 될 수 있는가?` 에 대한 답을 해보자.`.then` 은 프로미스의 method 이다. 그렇다면 두번째 `.then` 호출하기 위해서는 `new promise(executor).then(callback)` 의 리턴값이 `Promise` 객체여야 한다.  
+우선 첫째 `.then 은 어떻게 연속으로 체이닝이 될 수 있는가?` 에 대한 답을 해보자.`.then` 은 프로미스의 method 이다. 그렇다면 두번째 `.then` 호출하기 위해서는 `new promise(executor).then(callback)` 의 리턴값이 `Promise` 객체여야 한다.
 
 그렇다. `Promise(executor).then(callbak)` 는 프로미스를 리턴 해야 한다.(아마도 내부적으로 자기 자신을 리턴 `return this`, 혹은 새로운 프로미스를 리턴할 것이다.`return new Promise(executor)`)
 
@@ -166,13 +168,13 @@ const MyPromise = class {
   }
 ```
 
-' `.then` 메소드는 `Promise`를 리턴한다. 그래서 `.then` 메소드를 다시 호출할 수 있다. 이로써  `.then`의 체이닝이 가능한 이유가 명확해졌다.
+' `.then` 메소드는 `Promise`를 리턴한다. 그래서 `.then` 메소드를 다시 호출할 수 있다. 이로써 `.then`의 체이닝이 가능한 이유가 명확해졌다.
 
 ### 프로미스 인스턴스의 상태가 필요해지는 순간
 
-다음은 둘째 '`resolve`가 실행됬는지 혹은 `.then` 내부에 `callback`이 실행되었느지 여부에 따라 .then 의 로직이 바뀌는데 어떻게 가능한 것인가?' 에 대한 답을 해야한다. 
+다음은 둘째 '`resolve`가 실행됬는지 혹은 `.then` 내부에 `callback`이 실행되었느지 여부에 따라 .then 의 로직이 바뀌는데 어떻게 가능한 것인가?' 에 대한 답을 해야한다.
 
-위에서 봤듯이 프로미스 인스턴스의 `resolve`가 실행됬는지에 따라 `then 메소드` 의 작동방식이 달라진다. `.then `메소드의 작동을 달리하기 위해 프로미스의 상태값을 지정하는 것을 고려해볼 수 있다. 상태 값에 대한 상세는 아래와 같이한다.
+위에서 봤듯이 프로미스 인스턴스의 `resolve`가 실행됬는지에 따라 `then 메소드` 의 작동방식이 달라진다. `.then`메소드의 작동을 달리하기 위해 프로미스의 상태값을 지정하는 것을 고려해볼 수 있다. 상태 값에 대한 상세는 아래와 같이한다.
 
 프로미스 객체는 `state` 라는 상태를 가지며 각 조건에 따라 해당 값은 달라진다.
 
@@ -208,13 +210,13 @@ const MyPromise = class {
 };
 ```
 
-"`promise` 가 상태값을 가지고 resolve, reject 실행시 상태를 변경한다. `.then` 메소드는 promise의 상태를 구분하여 동작한다." 라는 문장으로 `resolve` 실행 여부에 따른 `.then`  동작이 설명 가능하다.
+"`promise` 가 상태값을 가지고 resolve, reject 실행시 상태를 변경한다. `.then` 메소드는 promise의 상태를 구분하여 동작한다." 라는 문장으로 `resolve` 실행 여부에 따른 `.then` 동작이 설명 가능하다.
 
 ### `.then(callback)` 에서 내부 `callback` 함수의 지연실행
 
 셋째 **"어떻게 비동기 `resolve` 이후 `.then(callback)`의 `callback`이 실행될 수 있는가?, 어떻게 비동기 `resolve(value)` 실행에 전달된 인자 값(value)이 그후 다음 `.then` 메소드의 `callback(value)`의 인자로 전달될 수 있는가?"** 에 대한 답을 해보자.
 
-`resolve` 함수 이후 `callback` 을 실행하기 위한 방법으로 프로미스 `resolve` 함수 내부에서 `callback`을 실행시키는 방안을 생각해볼 수 있다. `resolve` 함수는 어떻게 뒤에 이어진 `.then` 메소드의 인자인  `callback`을 참조하여 실행할 수 있을까?
+`resolve` 함수 이후 `callback` 을 실행하기 위한 방법으로 프로미스 `resolve` 함수 내부에서 `callback`을 실행시키는 방안을 생각해볼 수 있다. `resolve` 함수는 어떻게 뒤에 이어진 `.then` 메소드의 인자인 `callback`을 참조하여 실행할 수 있을까?
 
 프로미스의 인스턴스 생성시 `callback`을 `저장할 공간(latercalls)`을 만들고 `.then` 메소드 실행시에 그 공간에 `callback`을 실행시키는 함수를 저장하는 방법을 생각해볼 수 있다.
 
@@ -226,33 +228,33 @@ const MyPromise = class {
 const MyPromise = class {
   constructor(executor) {
     this.state = 'pending';
-    this.lastcalls = [] // [callbakc(this.value)] 가 담기게 된다.
+    this.lastcalls = []; // [callbakc(this.value)] 가 담기게 된다.
     executor(this.resolve.bind(this), this.reject.bind(this));
   }
 
   resolve(value) {
     this.value = value;
-    this.state = "resolved";
-    lastCalls.forEach(lastcall => lastcall())
+    this.state = 'resolved';
+    lastCalls.forEach(lastcall => lastcall());
     // callback(this.value) 가 실행되고 여기서 this는 첫번째 프로미스를 가르킨다
   }
 
   reject(value) {
     this.value = value;
-    this.state = "rejected";
-    lastCalls.forEach(lastcall => lastcall())
+    this.state = 'rejected';
+    lastCalls.forEach(lastcall => lastcall());
     // callback(this.value) 가 실행되고 여기서 this는 첫번째 프로미스를 가르킨다.
   }
 
   then(callback) {
     // 비동기 resolve 일 경우
-    if(this.sate === "pending") {
-      this.lastcalls.push(() => callback(this.value))
-      return new Promise(executor)
+    if (this.sate === 'pending') {
+      this.lastcalls.push(() => callback(this.value));
+      return new Promise(executor);
     }
     // callback(this.value) 에서 this 는 첫번째로 생성된 프로미스를 가르킨다.
-    if(this.state === "resolved") return new Promise((resolve) =>
-			resolve(callback(this.value)));
+    if (this.state === 'resolved')
+      return new Promise(resolve => resolve(callback(this.value)));
   }
 };
 ```
@@ -316,9 +318,9 @@ new MyPromise((resolve, reject) => {
 
 위 코드에서 핵심은 `() => callback(this.value)`가 실행될 때 `this.value` 가 첫번째 프로미스의 `value`를 참조한다는 사실이다.
 
-JS 에서 `this` 는 동적(dynamic)으로 binding 된다. `this` 가 포함된 라인이 어디서 처리(평가)되는가에 따라 달라질 수 있다는 말이다. 그러나 이 동적인 `this` 를 정적으로 `binding` 할 수 있는 방법이 있는데, `=>  화살표 함수(arrow function)` 와 `func.bind(this)` 이다. 
+JS 에서 `this` 는 동적(dynamic)으로 binding 된다. `this` 가 포함된 라인이 어디서 처리(평가)되는가에 따라 달라질 수 있다는 말이다. 그러나 이 동적인 `this` 를 정적으로 `binding` 할 수 있는 방법이 있는데, `=> 화살표 함수(arrow function)` 와 `func.bind(this)` 이다.
 
-여기서는 화살표 함수가 사용됬다. 화살표 함수 내부에서 this는 함수의 선언 시점의 this로 고정된다. 
+여기서는 화살표 함수가 사용됬다. 화살표 함수 내부에서 this는 함수의 선언 시점의 this로 고정된다.
 
 `() => callbakc(this.value)` 는 첫번째 프로미스의 `then` 메소드 내부에서 선언되었고, 이 메소드 내부에서 `this` 는 첫번째로 생성된 promise 인스턴스를 가르킨다. 많은 문제가 해결된 것 같다. 그런데 문게 조금 더 남아있다. 아니 많이 남았다.
 
@@ -389,7 +391,7 @@ const MyPromise = class {
   then(callback) {
     if (this.state === 'pending')
       return new MyPromise(resolve => {
-        // 두번째 promise executor가 실핼될 때 첫번째 프로미스의 laterCalls 배열에 두번째 resolve 함수의 실행을 담은 arrow function을 보낸다. 해당 arrow function 내부의 this 는 첫번째 프로미스를 가르킨다. 
+        // 두번째 promise executor가 실핼될 때 첫번째 프로미스의 laterCalls 배열에 두번째 resolve 함수의 실행을 담은 arrow function을 보낸다. 해당 arrow function 내부의 this 는 첫번째 프로미스를 가르킨다.
         this.laterCalls.push(() => resolve(callback(this.value)));
       });
     if (this.state === 'resolved')
@@ -423,10 +425,10 @@ this는 왜 첫번째 Promise를 가르키는 것인지 의문이 들 수 있다
   }
 
 ```
-위에서 언급했던 것 처럼 `this` 는 동적 (dynamic) 스코프를 가지지만,  `this.laterCalls.push(() => resolve(callback(this.value)));` 는 `MyPromise` 생성자에 인자로 전달된 화살표 함수(`resolve => {...}`) 내부에서 선언되었다.  
 
-화살표 함수 내부에서의 `this`는 함수 선언시점의 `this` 에 정적(static) 으로 고정된다. 해당 화살표 함수의 선언 시점은 첫번째 생성된 프로미스 인스턴스의 `.then` 메소드 내부이므로 this는 첫번째 프로미스를 가르키게 된다. 
+위에서 언급했던 것 처럼 `this` 는 동적 (dynamic) 스코프를 가지지만, `this.laterCalls.push(() => resolve(callback(this.value)));` 는 `MyPromise` 생성자에 인자로 전달된 화살표 함수(`resolve => {...}`) 내부에서 선언되었다.
 
+화살표 함수 내부에서의 `this`는 함수 선언시점의 `this` 에 정적(static) 으로 고정된다. 해당 화살표 함수의 선언 시점은 첫번째 생성된 프로미스 인스턴스의 `.then` 메소드 내부이므로 this는 첫번째 프로미스를 가르키게 된다.
 
 ### `() => resolve(callback(this.value))`
 
@@ -440,32 +442,32 @@ this는 왜 첫번째 Promise를 가르키는 것인지 의문이 들 수 있다
       this.laterCalls.forEach(latercall => latercall());
       // latercall ()
       -> () => resolve(callback(this.value))
-      // 여기서 스코프 내부에 resolve 가 없지만 클로저 공간에 resolve가 존재한며, 해당 값을 참조하여 실행한다. 
+      // 여기서 스코프 내부에 resolve 가 없지만 클로저 공간에 resolve가 존재한며, 해당 값을 참조하여 실행한다.
       -> resolve(callback(this.value))
       // 여기서 this.value 는 첫번째 promise의 this.value를 참조한다.
       -> callback(this.value)
     }
   }
-  
-  // 두번째 프로미스가 생성될 때 
+
+  // 두번째 프로미스가 생성될 때
   constructor(executor) {
     ...
-    // resolve 함수를 bind 시켜서 executor의 인자에 전달 
+    // resolve 함수를 bind 시켜서 executor의 인자에 전달
     executor(this.resolve.bind(this), this.reject.bind(this));
   }
-  
- 
+
+
 ```
 
-#### resolve 함수 내부에서 this가 어떻게 두번째 프로미스를 가르킬 수 있을까?  
+#### resolve 함수 내부에서 this가 어떻게 두번째 프로미스를 가르킬 수 있을까?
 
-우선 `latercall` 에 담겨 있는  `resolve` 가 실행될 때 resolve 함수 내부에서의 this가  어떻게 두번째 프로미스를  가르킬 수 있는지 알아보자.
+우선 `latercall` 에 담겨 있는 `resolve` 가 실행될 때 resolve 함수 내부에서의 this가 어떻게 두번째 프로미스를 가르킬 수 있는지 알아보자.
 
-`this` 는 동적 스코프를 가지지만 화살표 함수(arrow function) 과 bind 함수를 통해 정적 스코프를 가지게 할 수 있다. `resolve` 에는 `bind` 함수를 통해 정적 스코프를 가지게 했다. 
+`this` 는 동적 스코프를 가지지만 화살표 함수(arrow function) 과 bind 함수를 통해 정적 스코프를 가지게 할 수 있다. `resolve` 에는 `bind` 함수를 통해 정적 스코프를 가지게 했다.
 
-두번째 프로미스가 생성될 때 `constructor` 내부에서 `executor`의 실행시에 resolve 함수에  `this`를  `bind` 시켜 인자로 전달했다.(`executor(this.resolve.bind(this), this.reject.bind(this));`) 때문에 resolve 함수 내부에서 `this`  는 두번째 프로미스를  가르킨다.
+두번째 프로미스가 생성될 때 `constructor` 내부에서 `executor`의 실행시에 resolve 함수에 `this`를 `bind` 시켜 인자로 전달했다.(`executor(this.resolve.bind(this), this.reject.bind(this));`) 때문에 resolve 함수 내부에서 `this` 는 두번째 프로미스를 가르킨다.
 
-#### `latercall` 이 실행될 때 해당 스코프에 `resolve`가 없다. 어떻게 resolve는 undefined 로 평가되지 않고 실행될 수 있을까? 
+#### `latercall` 이 실행될 때 해당 스코프에 `resolve`가 없다. 어떻게 resolve는 undefined 로 평가되지 않고 실행될 수 있을까?
 
 ```js
   then(callback) {
@@ -474,7 +476,7 @@ this는 왜 첫번째 Promise를 가르키는 것인지 의문이 들 수 있다
         // 상위 스코프
         // 아래 함수가 선언될 때 상위스코프를 참조할 수 있도록 해당 함수 공간의 스코프체인에 등록한다.
         this.laterCalls.push(() => {
-          // 콜백함수의 스코프 
+          // 콜백함수의 스코프
           resolve(callback(this.value)
         });
       });
@@ -486,17 +488,17 @@ this는 왜 첫번째 Promise를 가르키는 것인지 의문이 들 수 있다
   }
 ```
 
-`() => resolve(callback(this.value))` 콜백함수가 선언될 때 내부에서 `resolve`는  상위스코프의 `resolve` 를 참조한다.  함수 선언 당시에 해당 스코프를 스코프체인에 등록해서 접근 가능하도록 만들었기 때문이다. 
+`() => resolve(callback(this.value))` 콜백함수가 선언될 때 내부에서 `resolve`는 상위스코프의 `resolve` 를 참조한다. 함수 선언 당시에 해당 스코프를 스코프체인에 등록해서 접근 가능하도록 만들었기 때문이다.
 
-추후 `this.laterCalls.forEach(latercall => latercall());`  내부에서 `latercall` 이 실행될 때는 더 이상 resolve 가 선언됬던 상위스코프는 **실행컨텍스트**에 존재하지 않는다. 그러나 선언당시에 등록해두었던 스코프 체인으로 `resolve`를 참조할 수 있고 우리는 이를 **클로저**라고 한다. 
+추후 `this.laterCalls.forEach(latercall => latercall());` 내부에서 `latercall` 이 실행될 때는 더 이상 resolve 가 선언됬던 상위스코프는 **실행컨텍스트**에 존재하지 않는다. 그러나 선언당시에 등록해두었던 스코프 체인으로 `resolve`를 참조할 수 있고 우리는 이를 **클로저**라고 한다.
 
-실행컨텍스트에 대한 자세한 내용은 이 [링크](https://poiemaweb.com/js-execution-context)를 참고하자. 클로저는 이 [링크](https://poiemaweb.com/js-closure)를 참고하면 된다. 
+실행컨텍스트에 대한 자세한 내용은 이 [링크](https://poiemaweb.com/js-execution-context)를 참고하자. 클로저는 이 [링크](https://poiemaweb.com/js-closure)를 참고하면 된다.
 
 #### callback(this.value) 에서 this는 어떻게 첫번째 프로미스를 참조하는가?
 
-위에서 여러번 언급했다. 화살표 함수는 `this`를 선언시점에 정적으로 `bind` 시킨다. 
+위에서 여러번 언급했다. 화살표 함수는 `this`를 선언시점에 정적으로 `bind` 시킨다.
 
-`() => resolve(callback(this.value))` 가 선언된 시점은 첫번째 프로미스의 `then ` 메소드 내부이다. 때문에 `this` 는 첫번째 프로미스를 가르킨다.
+`() => resolve(callback(this.value))` 가 선언된 시점은 첫번째 프로미스의 `then` 메소드 내부이다. 때문에 `this` 는 첫번째 프로미스를 가르킨다.
 
 ### `value.then(innerPromiseValue => {this.value = InnerPromiseValue})`
 
@@ -534,7 +536,7 @@ this는 왜 첫번째 Promise를 가르키는 것인지 의문이 들 수 있다
 
 결과적으로 `value.then(()=>{this})` 내부 `callback` 함수 스코프에서 `this`는 `resolve` 를 실행시킨 프로미스를 참조하게 된다.
 
-## 완성코드 
+## 완성코드
 
 ```js
 const MyPromise = class {
@@ -595,7 +597,6 @@ const MyPromise = class {
   }
 };
 module.exports = MyPromise;
-
 ```
 
 ### 테스트 코드
@@ -676,6 +677,4 @@ const test3 = new Promise((resolve, reject) => {
   .catch(err => {
     console.error(err);
   });
-
 ```
-

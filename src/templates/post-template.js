@@ -5,6 +5,16 @@ import Post from '../components/Post';
 import { useSiteMetadata } from '../hooks';
 import type { MarkdownRemark } from '../types';
 
+const getImgSrc = (htmlString, siteUrl) => {
+  const result = /<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/.exec(htmlString);
+  if (result == null || result.length < 2) return;
+  let imgSrc = result[1];
+
+  if (imgSrc.startsWith('/static'))
+    imgSrc = siteUrl.concat(imgSrc.substring(1));
+  return imgSrc;
+};
+
 type Props = {
   data: MarkdownRemark,
 };
@@ -14,14 +24,17 @@ const PostTemplate = ({ data }: Props) => {
     title: siteTitle,
     subtitle: siteSubtitle,
     author: { name },
+    url: siteUrl,
   } = useSiteMetadata();
   const {
     title: postTitle,
     description: postDescription,
     tags: keywords,
+    img,
   } = data.markdownRemark.frontmatter;
   const metaDescription =
-    postDescription !== null ? postDescription : siteSubtitle;
+    postDescription || data.markdownRemark.excerpt || siteSubtitle;
+  const imgSrc = img || getImgSrc(data.markdownRemark.html, siteUrl);
 
   return (
     <Layout
@@ -29,6 +42,7 @@ const PostTemplate = ({ data }: Props) => {
       description={metaDescription}
       keywords={keywords}
       author={name}
+      imgSrc={imgSrc}
     >
       <Post post={data.markdownRemark} />
     </Layout>
@@ -40,6 +54,7 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
+      excerpt(pruneLength: 280)
       fields {
         slug
         tagSlugs
@@ -49,6 +64,7 @@ export const query = graphql`
         description
         tags
         title
+        img
       }
     }
   }

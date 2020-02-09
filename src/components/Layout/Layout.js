@@ -12,7 +12,14 @@ type Props = {
   author?: string,
 };
 
-const Layout = ({ children, title, description, keywords, author }: Props) => (
+const Layout = ({
+  children,
+  title,
+  description,
+  keywords,
+  author,
+  imgSrc,
+}: Props) => (
   <div className={styles.layout}>
     <Helmet>
       <html lang="ko" />
@@ -23,12 +30,20 @@ const Layout = ({ children, title, description, keywords, author }: Props) => (
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={title} />
-      <meta property="og:image" />
+      {imgSrc ? (
+        <meta property="og:image" content={imgSrc} />
+      ) : (
+        <meta property="og:image" />
+      )}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={author} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" />
+      {imgSrc ? (
+        <meta name="twitter:image" content={imgSrc} />
+      ) : (
+        <meta name="twitter:image" />
+      )}
     </Helmet>
     {children}
   </div>
