@@ -37,37 +37,39 @@ h1 {
 }
 
 h2 {
-  font-size: $typographic-base-font-size * 1.6875;
+  font-weight: 800;
+  font-size: 1.5rem;
   @include line-height(1.5);
-  @include margin-top(2);
-  @include margin-bottom(0.5);
+  @include margin-top(1);
+  @include margin-bottom(0.6);
 }
 
 h3 {
-  font-size: $typographic-base-font-size * 1.375;
+  font-weight: 800;
+  font-size: 1.25rem;
   @include line-height(1);
-  @include margin-top(2);
-  @include margin-bottom(0.5);
+  margin-top: 0;
+  @include margin-bottom(0.6);
 }
 
 h4 {
-  font-size: $typographic-base-font-size * 1.2;
+  font-size: 1.125rem;
   @include line-height(1);
-  @include margin-top(1.5);
-  @include margin-bottom(0.5);
+  margin-top: 0;
+  @include margin-bottom(0.6);
 }
 
 h5 {
-  font-size: $typographic-base-font-size;
+  font-size: 1rem;
   @include line-height(1);
-  @include margin-top(2.5);
-  @include margin-bottom(0.5);
+  // @include margin-top(0.8);
+  @include margin-bottom(0.6);
 }
 
 h6 {
-  font-size: $typographic-base-font-size;
+  font-size: 1rem;
   @include line-height(1);
-  @include margin-top(2.5);
+  @include margin-top(0.8);
   @include margin-bottom(0.5);
 }
 
@@ -113,7 +115,7 @@ a {
 
 iframe {
   display: block;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 b,
@@ -121,49 +123,25 @@ strong {
   font-weight: 600;
 }
 
-ul {
-  list-style: square;
+p {
+  @include line-height(1);
+  @include margin-top(0);
   @include margin-bottom(1);
+}
+
+ul {
+  margin-top: 0px;
+  @include margin-bottom(1);
+  list-style: disc;
+  font-size: 1rem;
 
   & li {
     padding: 0 0px;
-    margin-bottom: 10px;
-  }
-}
+    margin-bottom: 8px;
 
-// 체크박스 컨트롤을 위한 수정
-#이번주-도전 ~ ul,
-#다음주-도전 ~ ul {
-  padding-left: 0.2rem;
-  list-style: none;
-}
-#이번주-도전 ~ ul li ul,
-#다음주-도전 ~ ul li ul {
-  list-style-type: none;
-}
-
-#이번주-도전 ~ ul input[type='checkbox'],
-#다음주-도전 ~ ul input[type='checkbox'] {
-  transform: scale(1.1);
-
-  margin-right: 0.2em;
-  vertical-align: 0%;
-}
-
-p {
-  @include line-height(1);
-  @include margin-bottom(1);
-}
-
-// 커스텀
-blockquote {
-  margin-bottom: 16px;
-  margin-top: 0;
-  border-left: 0.4rem solid #dfe2e5;
-  color: #6a737d;
-  padding: 0 0.3rem;
-  & ul {
-    padding-left: 30px;
+    & p {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -204,13 +182,24 @@ figcaption {
   }
 }
 
-// 리스트 내부 이미지의 bottom, top 조정
-.gatsby-resp-image-link {
-  @include margin-top(1);
-  @include margin-bottom(1);
+// 체크박스 컨트롤을 위한 수정
+#이번주-도전 ~ ul,
+#다음주-도전 ~ ul {
+  padding-left: 0.2rem;
+  list-style: none;
+}
+#이번주-도전 ~ ul li ul,
+#다음주-도전 ~ ul li ul {
+  list-style-type: none;
 }
 
-//
+#이번주-도전 ~ ul input[type='checkbox'],
+#다음주-도전 ~ ul input[type='checkbox'] {
+  transform: scale(1.1);
+  margin-right: 0.2em;
+  vertical-align: 0%;
+}
+
 @include breakpoint-xs {
   #이번주-도전 ~ ul,
   #다음주-도전 ~ ul {
@@ -222,3 +211,83 @@ figcaption {
     transform: scale(1.2);
   }
 }
+
+// 커스텀
+blockquote {
+  margin-bottom: 16px;
+  margin-top: 0;
+  border-left: 0.4rem solid #dfe2e5;
+  color: #6a737d;
+  padding: 0 0.3rem;
+  & ul {
+    padding-left: 30px;
+  }
+}
+
+// 리스트 내부 이미지의 bottom, top 조정
+.gatsby-resp-image-link {
+  @include margin-top(1);
+  @include margin-bottom(1);
+}
+
+// table 스타일 변경
+table {
+  font-size: 1rem;
+  background: #fafafa;
+  width: 100%;
+  overflow: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+@media screen and (max-width: 959px) {
+  table {
+    table-layout: fixed;
+    word-break: break-all;
+  }
+}
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 0.5em 1em;
+  vertical-align: top;
+}
+table th.empty,
+table td.empty {
+  background: white;
+  border: none;
+}
+table th.no,
+table td.no {
+  color: crimson;
+}
+table th.yes span,
+table td.yes span {
+  background: #6ecd56;
+  color: white;
+  padding: 2px 5px;
+}
+table th {
+  background: #eee;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+table th strong {
+  display: block;
+}
+table code {
+  display: inline-block;
+  margin-bottom: 5px;
+  vertical-align: top;
+}
+table pre {
+  margin: 0;
+  padding: 0;
+}
+table pre:before {
+  display: none;
+}
+// 테이블 스타
+
+// h2 + ul {
+//   margin-top: -10px;
+// }

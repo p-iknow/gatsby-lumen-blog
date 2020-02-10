@@ -43,7 +43,7 @@
       }
 
       &-category {
-        margin-left: 0.5rem;
+        margin-left: 0.5rem !important;
         &-link {
           display: inline-block;
           font-size: $typographic-small-font-size;
