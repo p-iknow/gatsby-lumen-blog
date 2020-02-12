@@ -14,6 +14,7 @@ description: 'es-next에서 제공되는 class 내부의 private-field를 사용
 ---
 
 ## 이슈
+![vscode-private-field-error](https://imgur.com/qeyhpWx.png)
 `es-next`에서 제공되는 `class` 내부의 `private-field`를 사용해 `js` 를 작성하고 있다. 에디터로 `vs-code`를 사용하는데 `#` 키워드에 `invalid charater` 라는 오류가 표기 된다. 어떻게 하면 vscode 가 해당 키워드를 오류로 인식하지 않을까? 
 
 ## 원인
