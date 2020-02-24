@@ -1,5 +1,5 @@
 ---
-title: vscode, private field(#)를 오류로 인식하지 않게 만들기 
+title: vscode, private field(#)를 오류로 인식하지 않게 만들기
 date: '2020-02-12T23:46:37.121Z'
 template: 'post'
 draft: false
@@ -8,10 +8,12 @@ category: 'vscode'
 tags:
   - 'editor'
   - 'vscode'
-	- 'private-field'
-	- 'JS'
+  - 'JS'
+  - 'private-field'
 description: 'es-next에서 제공되는 class 내부의 private-field를 사용해 js 를 작성하고 있다. 에디터로 vs-code를 사용하는데 "#" 키워드에 invalid charater 라는 오류가 표기 된다. 어떻게 하면 vscode 가 해당 키워드를 오류로 인식하지 않을까?'
 ---
+
+![vscode-private-field-error](https://imgur.com/MjB74GG.png)
 
 ## 이슈
 
