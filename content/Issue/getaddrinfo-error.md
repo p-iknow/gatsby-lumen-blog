@@ -1,20 +1,20 @@
 ---
 title: "Error: getaddrinfo ENOTFOUND localhost"
-date: '2019-09-02T23:46:37.121Z'
+date: '2020-03-21T23:46:37.121Z'
 template: 'post'
 draft: false
 slug: 'issue-log/node-js/getaddrinfo-entfound-localhost'
 category: 'ISSUE'
 tags:
   - 'JS'
-  - 'NodeJS'
+  - 'Nodejs'
   - 'ISSUE'
-description: '`yarn gatsby develop` 으로 블로그 dev server를 실행시켰는데, 계속적으로 Error: getaddrinfo ENOTFOUND localhost 라는 오류가 발생한다. 이를 해결하는 방법을 다룬다.'
+description: 'yarn gatsby develop 으로 gatsby 정적 사이트 블로그의 dev server를 실행시켰는데, 계속적으로 Error: getaddrinfo ENOTFOUND localhost 라는 오류가 발생한다. 이를 해결하는 방법을 다룬다.'
 ---
 
 ## 이슈
 
-`yarn gatsby develop` 으로 블로그 dev server를 실행시켰는데, 계속적으로 `Error: getaddrinfo ENOTFOUND localhost` 라는 오류가 발생한다. 
+`yarn gatsby develop` 으로 정적 사이트 블로그의 dev server를 실행시켰는데, 계속적으로 `Error: getaddrinfo ENOTFOUND localhost` 라는 오류가 발생한다. 
 
 ![Error: getaddrinfo ENOTFOUND localhost error-log image](https://imgur.com/gOR3jfN.png)
 
