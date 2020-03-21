@@ -89,6 +89,8 @@
     & img {
       max-width: 100%;
       @include margin-top(0.5);
+      @include margin-bottom(1);
+
     }
     // 커스텀
     & ul {
