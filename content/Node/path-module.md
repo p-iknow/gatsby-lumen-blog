@@ -304,3 +304,7 @@ Windows 환경에서 기본적으로 `\` 하나를 써서 경로를 표현한다
 
 `/Users/ano/temp/directory` 에서 `/Users` 로 가고 싶다면 절대경로에서는 그냥 `/Users` 를 입력하면 된다. 상대 경로에서는 `../../..` 를 해야 3 디렉토리 위로 올라가 `/Users` 가 된다. 
 
+## 참고 
+- [노드 교과서, 조현영](http://www.yes24.com/Product/Goods/62597864) 
+- [[NodeJS] path.join 과 path.resolve 차이, 개발자 아저씨들 힘을모아](https://programming119.tistory.com/106) 
+- [노드 공식 documnet](https://nodejs.org/api/path.html)
