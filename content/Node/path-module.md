@@ -2,7 +2,7 @@
 title: Nodejs, path module, __dirname, __filename 에 대해 톺아보기
 date: '2020-03-22T23:46:37.121Z'
 template: 'post'
-draft: T
+draft: false
 slug: 'node-js/path-moudle/'
 category: 'Nodejs'
 tags:
