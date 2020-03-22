@@ -12,7 +12,7 @@ tags:
   - 'JS'
 description: '자바스크립트 알고리즘 코드 샘플의 모듈이 common.js 스펙이 아닌 es module 을 따르고 있었다. 디버깅을 하려니 import 와 export 구문을 인지하지 못했다. 브라우저를 통하지 않고 vs code의 디버깅 기능만을 활용하여 es module을 디버깅할 수 있는 방법이 필요했다. 검색을 통해서 해당 문제를 해결했다.'
 ---
-
+![vscode logo](https://imgur.com/iOTX11h.png)
 ## TLDR
 
 vscode 내부의 launch.json 설정을 통해 es moudle 기반의 js 파일을 디버깅할 수 있다.  

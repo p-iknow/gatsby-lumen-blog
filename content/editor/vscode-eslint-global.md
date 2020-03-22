@@ -11,7 +11,7 @@ tags:
   - 'eslint'
 description: 'vscode에서 eslint를 사용하기 위해 eslint 와 관련 플러그인을 글로벌 모드로 설치했으나 vscode에 들어와보니 오류가 발생한다. eslint v6의 이슈로 eslint plugin의 전역사용이 안된다. 최상위 폴더에 관련 플러그인을 설치하고 vscode 내부에서 플러그인을 로드하는 폴더를 설정해서 이슈를 해결했다. '
 ---
-
+![vscode logo](https://imgur.com/iOTX11h.png)
 ## 들어가며
 
 vscode에서 **eslint**를 사용하기 위해 eslint 와 관련 플러그인을 글로벌 모드로 설치했으나 vscode에 들어와보니 오류가 발생한다. eslint v6의 이슈로 eslint plugin의 전역사용이 안된다. 최상위 폴더에 관련 플러그인을 설치하고 vscode 내부에서 플러그인을 로드할 폴더를 설정해서 이슈를 해결했다.
@@ -41,4 +41,3 @@ npx install-peerdeps --dev eslint-config-airbnb
 
 - 해당폴더의 node_moudles 를 vscode eslint.nodePath 로 설정한다.  
 ![image](https://user-images.githubusercontent.com/35516239/64866062-b0f6e900-d675-11e9-9e89-957838ea6af1.png)
-

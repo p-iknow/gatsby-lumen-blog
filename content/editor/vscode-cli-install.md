@@ -11,6 +11,7 @@ tags:
   - 'terminal'
 description: '이번 글에서는 CLI(command line interface)를 통해 vscode의 extension 을 설치하는 법을 배운다. 해당 내용을 통해 새로운 컴퓨터에서 개발환경 세팅을 빠르게 완료할 수 있다.'
 ---
+![vscode logo](https://imgur.com/iOTX11h.png)
 
 ## 들어가며
 
