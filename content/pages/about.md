@@ -5,6 +5,14 @@ template: 'page'
 
 ![image](https://user-images.githubusercontent.com/35516239/58239236-ab525c00-7d83-11e9-8e0a-ccd20a91ca52.png)
 
+## Front-End Developer
+
+- **Github:** [https://github.com/P-iknow](https://github.com/P-iknow)
+- **Facebook** : [https://www.facebook.com/devpiknow](https://www.facebook.com/devpiknow)
+- **Email** : [apricotsoul@gmail.com](mailto:apricotsoul@gmail.com)
+- **Portfolio** : [Notion Link](https://www.notion.so/c677b3b5775541be82a52ba25974b166)
+
+
 ## :sparkles: 어떤 사람인가요?
 
 - 매일 성장하는 사람 계발자, 이영창 입니다.
@@ -40,6 +48,11 @@ template: 'page'
 - 함께 성장하는 법을 고민합니다.
 
 ## :hammer: Stack
+
+### Git & Github
+- 업무 일부에서 git flow 에 기반한 전략을 사용해서 버전관리 합니다.
+- 3way merge와, conflic 가 언제 발생하는지에 대해 이해하고 있습니다.
+- 업무 중 rebase, reset, revert, cherriy pick, stash 기능이 필요한 상황을 마주했고, 각 기능들을 활용하여 문제를 해결한 경험이 있습니다.
 
 ### JS
 
@@ -84,7 +97,10 @@ template: 'page'
 
 #### Role
 
-- 튜터들이 사용하는 웹 콘솔 유지보수 및 리펙토링
+- 튜터링 앱 유지보수
+- 튜터(선생님) 사용 웹서비스 유지 보수
+- 영어 중국어 서비스가 합쳐져 있던 기존 앱에서 중국어 앱 분리
+- 튜터링 주니어 앱(react-native) 개발
 
 ### 아티언스 | 2017.12.19 - 2019.04.30
 
