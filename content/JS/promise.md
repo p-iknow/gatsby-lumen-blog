@@ -48,7 +48,7 @@ executor = (resolve, reject) => {
 
 ### then 메소드
 
-생된된 프로미스 인스턴스의 `then` 메소드는 `callback` 함수를 인자로 받아 실행된다. 해당 `callback`은 처음 생성된 프로미스 인스턴의 `resolve` 함수가 실행된 이후 실행된다. 해당 `callback`이 실행될 때 전달되는 `value` 인자는 처음 생성된 프로미스 인스턴스 `resolve`에 인자로 전달된 값이다.
+생된된 프로미스 인스턴스의 `then` 메소드는 `callback` 함수를 인자로 받아 실행된다. 해당 `callback`은 처음 생성된 프로미스 인스턴의 `resolve` 함수가 실행된 이후 실행된다. 해당 `callback`이 실행될 때 전달되는 `value` 인자는 프로미스를 생성할 때 전달되는 콜백함수 내부에서 `resolve` 함수에 인자로 전달된 값("첫번째 프로미스")이다.
 
 ```js
 new MyPromise((resolve, reject) => {
@@ -59,7 +59,7 @@ new MyPromise((resolve, reject) => {
 });
 ```
 
-이때 처음 생성한 프로미스 인스턴스의 `resolve`가 비동기로 실행되면 `then` 메소드 실행시 `callback`은 실행되지 않는다. `callback`은 앞에서 말했듯이 프로미스 인스턴스의`resolve`가 실행된 후 실행된다.
+이때 첫번째로 프로미스를 생성할 때 전달한 콜백함수 내부에서 `resolve`가 비동기(setTimeout 으로 인함)로 실행되면 `then` 메소드 실행시 `callback`은 실행되지 않는다. `callback`은 앞에서 말했듯이 프로미스 생성시 전달한 콜백함수 내부의 `resolve` 함수가 실행된 후 실행된다.
 
 ```js
 new MyPromise((resolve, reject) => {
@@ -81,12 +81,21 @@ new MyPromise((resolve, reject) => {
 
 ```js
 // 동기 로직
-new promise() -> 동기 resolve(value) 실행 -> Promise 인스턴스 생성 -> .then 메소드 호출 -> callback(value) 호출
+new promise() 
+-> 동기 resolve(value) 실행 
+-> Promise 인스턴스 생성 
+-> .then 메소드 호출 
+-> callback(value) 호출
 
 // 비동기로직
-new Promise() -> 비동기 setTimeout(()=>resolve(value),100) -> Promise 인스턴스 생성 -> .then 메소드 호출
+new Promise() 
+-> 비동기 setTimeout(()=>resolve(value),100); 
+-> Promise 인스턴스 생성 
+-> .then 메소드 호출
+
 // 비동기 setTimeout 콜스텍에 등장
-resolve(value) -> callback(value)
+resolve(value) 
+-> callback(value)
 ```
 
 ### 체이닝(`new Promise().then.then`)
@@ -132,18 +141,31 @@ new MyPromise((resolve, reject) => {
 
 ```js
 // 동기 로직
-new promise() -> 동기 resolve(value) 실행 -> Promise 인스턴스 생성 -> 첫번째 .then 메소드 호출 -> 첫번째 callback(value) 호출  -> ??? -> 두번째 .then 메소드 호출
+new promise() 
+-> 동기 resolve(value) 실행 
+-> Promise 인스턴스 생성 
+-> 첫번째 .then 메소드 호출 
+-> 첫번째 callback(value) 호출  
+-> ???
+-> 두번째 .then 메소드 호출
 -> 두번째 callback 호출
+
 // 비동기로직
-new Promise() -> 비동기 setTimeout(()=>resolve(value),100) -> Promise 인스턴스 생성 -> .then 메소드 호출 -> ??? -> 두번째 .then 메소드 호출
+new Promise() 
+-> 비동기 setTimeout(()=>resolve(value),100); 
+-> Promise 인스턴스 생성 
+-> .then 메소드 호출 
+-> ??? 
+-> 두번째 .then 메소드 호출ㄴ
+
 // 비동기 setTimeout rsolve 콜스텍에 등장
 resolve(value) -> 첫번째 callback(value) -> 두번째 callback()
 ```
 
 세가지의 의문점이 생긴다.
 
-- 첫째, `.then` 이 어떻게 연속으로 체이닝이 될 수 있는가?`
-- 둘째, `resolve` 가 실행됬는지 혹은 `.then` 내부에 `callback`이 실행되었느지 여부에 따라 `.then` 의 로직이 바뀌는데 어떻게 가능한 것인가?
+- 첫째, 어떻게 `.then` 이  연속으로 체이닝이 될 수 있는가?`
+- 둘째, `resolve` 가 실행됬는지 혹은 `.then` 내부에 `callback`이 실행되었느지 여부에 따라 `.then` 의 로직이 바뀌는데(callback을 실행하거나 아니면 지나치고 다음 `.then` 을 실행하거나) 어떻게 가능한 것인가?
 - 셋째, 어떻게 비동기 `resolve` 이후 `.then(callback)`에 전달한 `callback`이 실행될 수 있는가?, 어떻게 비동기 `resolve(value)` 실행에 전달된 인자 값`(value)`이 다음 `.then` 메소드의 `callback(value)`의 인자로 전달될 수 있는가?`
 
 이 의문점을 가지고 Promise를 구현해보자
@@ -152,7 +174,7 @@ resolve(value) -> 첫번째 callback(value) -> 두번째 callback()
 
 ### `.then` 메소드가 리턴하는 것은 무엇인가?
 
-우선 첫째 `.then 은 어떻게 연속으로 체이닝이 될 수 있는가?` 에 대한 답을 해보자.`.then` 은 프로미스의 method 이다. 그렇다면 두번째 `.then` 호출하기 위해서는 `new promise(executor).then(callback)` 의 리턴값이 `Promise` 객체여야 한다.
+우선 첫째 **어떻게 .then 이 연속으로 체이닝이 될 수 있는가?** 에 대한 답을 해보자.`.then` 은 프로미스의 method 이다. 그렇다면 두번째 `.then` 호출하기 위해서는 `new promise(executor).then(callback)` 의 리턴값이 `Promise` 객체여야 한다.
 
 그렇다. `Promise(executor).then(callbak)` 는 프로미스를 리턴 해야 한다.(아마도 내부적으로 자기 자신을 리턴 `return this`, 혹은 새로운 프로미스를 리턴할 것이다.`return new Promise(executor)`)
 
@@ -172,7 +194,7 @@ const MyPromise = class {
 
 ### 프로미스 인스턴스의 상태가 필요해지는 순간
 
-다음은 둘째 '`resolve`가 실행됬는지 혹은 `.then` 내부에 `callback`이 실행되었느지 여부에 따라 .then 의 로직이 바뀌는데 어떻게 가능한 것인가?' 에 대한 답을 해야한다.
+다음은 둘째 "`resolve`가 실행됬는지 혹은 `.then` 내부에 `callback`이 실행되었느지 여부에 따라 `.then` 의 로직이 바뀌는데 어떻게 가능한 것인가?" 에 대한 답을 해야한다.
 
 위에서 봤듯이 프로미스 인스턴스의 `resolve`가 실행됬는지에 따라 `then 메소드` 의 작동방식이 달라진다. `.then`메소드의 작동을 달리하기 위해 프로미스의 상태값을 지정하는 것을 고려해볼 수 있다. 상태 값에 대한 상세는 아래와 같이한다.
 
@@ -259,7 +281,13 @@ const MyPromise = class {
 };
 ```
 
-위에서 이야기 하지 않은 부분이 있다, resolve가 동기적으로 실행될 경우 then에서는 `if(this.state === "resolved") return new Promise((resolve) => resolve(callback(this.value)))` 이런식으로 동작한다.
+위에서 이야기 하지 않은 부분이 있다, resolve가 동기적으로 실행될 경우 then에서는 아래와 같이 코드가 동작한다.
+ ```js
+ if(this.state === "resolved") {
+   return new Promise( resolve => resolve( callback(this.value) ) );
+ } 
+ 
+ ``` 
 
 테스트를 해보자.
 
@@ -292,7 +320,7 @@ new MyPromise((resolve, reject) => {
 ```js
   constructor(executor) {
     this.state = 'pending';
-    this.lastcalls = [] // [callbakc(this.value)] 가 담기게 된다.
+    this.lastcalls = []; // [callbakc(this.value)] 가 담기게 된다.
     executor(this.resolve.bind(this), this.reject.bind(this)); // bind this를 참고하자!!
   }
 
@@ -326,7 +354,7 @@ JS 에서 `this` 는 동적(dynamic)으로 binding 된다. `this` 가 포함된 
 
 ### .then(callBack)의 callback 함수 내부에서 새로운 프로미스를 만들어 리턴한다면?
 
-`요건 몰랐지?` 하는 심정이겟지만(필자도 만들다가 그랬다), 아래 코드와 같이 `.then(callBack)의 callback` 함수 내부에서 새로운 프로미스를 만들어 리턴하는 경우도 있다. 심지어 그 안에 들어있는 `resolve`는 또 비동기이다. 어떻게 해야하나 총체적 난국이다.
+`요건 몰랐지?` 하는 심정이겟지만(나도 만들다가 그랬다), 아래 코드와 같이 `.then(callBack)의 callback` 함수 내부에서 새로운 프로미스를 만들어 리턴하는 경우도 있다. 심지어 그 안에 들어있는 `resolve`는 또 비동기이다. 어떻게 해야하나 총체적 난국이다.
 
 ```js
 new MyPromise((resolve, reject) => {
